@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZPE Maranhão — Apresentação Institucional</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* ===== RESET ===== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+
+/* ===== CSS CUSTOM PROPERTIES ===== */
+:root {
+  --zpe-blue: hsl(220, 55%, 32%);
+  --zpe-green: hsl(120, 40%, 49%);
+  --zpe-gray: hsl(194, 20%, 74%);
+  --bg-dark: hsl(220, 55%, 8%);
+  --text-white: hsl(0, 0%, 96%);
+  --text-body: hsl(0, 0%, 85%);
+  --text-sec: hsl(0, 0%, 60%);
+  --text-foot: hsl(0, 0%, 45%);
+  --card-dark-bg: hsl(220, 55%, 16%);
+  --card-dark-border: hsl(0, 0%, 100%, 0.06);
+  --slide-padding: clamp(48px, 6vw, 96px);
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text-white);
+  background: var(--bg-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== SLIDES CONTAINER ===== */
+.slides-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== BASE SLIDE — Rule 1 ===== */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  pointer-events: none;
+  padding: var(--slide-padding);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: none;
+}
+.slide.active {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* Slide transition classes */
+.slide.slide-exit {
+  animation: slideExit 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  z-index: 1;
+  pointer-events: none;
+}
+.slide.slide-enter {
+  animation: slideEnter 500ms cubic-bezier(0, 0, 0.2, 1) 100ms forwards;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+@keyframes slideExit {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(-40px); }
+}
+@keyframes slideEnter {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== SLIDE THEMES ===== */
+.slide-dark {
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 20%, hsl(220, 55%, 32%, 0.35) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, hsl(120, 40%, 49%, 0.12) 0%, transparent 65%),
+    var(--bg-dark);
+  color: var(--text-white);
+}
+.slide-dark-data {
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 50%, hsl(120, 40%, 49%, 0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 80% 60% at 15% 20%, hsl(220, 55%, 32%, 0.3) 0%, transparent 70%),
+    var(--bg-dark);
+  color: var(--text-white);
+}
+.slide-light {
+  background: hsl(0, 0%, 97%);
+  color: var(--zpe-blue);
+}
+.slide-light::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, hsl(220, 55%, 32%, 0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 90%, hsl(120, 40%, 49%, 0.03) 0%, transparent 65%);
+  z-index: 0;
+  pointer-events: none;
+}
+.slide-light > * { position: relative; z-index: 1; }
+
+/* Dot grid overlay */
+.dot-grid::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, hsl(0, 0%, 100%, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===== TYPOGRAPHY ===== */
+.slide-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 72px);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 1em;
+}
+.slide-light .slide-title { color: var(--zpe-blue); }
+.slide-dark .slide-title,
+.slide-dark-data .slide-title { color: var(--text-white); }
+
+.display-number {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(64px, 10vw, 140px);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--zpe-green);
+}
+
+.label-cat {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: hsl(120, 40%, 49%, 0.7);
+}
+
+.text-body { color: var(--text-body); }
+.text-sec  { color: var(--text-sec); }
+.text-foot { color: var(--text-foot); font-size: 11px; }
+.slide-light .text-body { color: hsl(220, 30%, 40%); }
+.slide-light .text-foot { color: hsl(220, 15%, 55%); }
+
+.green-line {
+  width: 64px; height: 3px;
+  background: var(--zpe-green);
+  border-radius: 2px;
+}
+
+/* ===== ANIMATION SYSTEM — Rule 5 ===== */
+.anim { opacity: 0; }
+.slide.active .anim-1 { animation: fadeInUp 0.6s ease-out 0ms forwards; }
+.slide.active .anim-2 { animation: fadeInUp 0.6s ease-out 200ms forwards; }
+.slide.active .anim-3 { animation: fadeInUp 0.6s ease-out 400ms forwards; }
+.slide.active .anim-4 { animation: fadeInUp 0.6s ease-out 550ms forwards; }
+.slide.active .anim-5 { animation: fadeInUp 0.6s ease-out 700ms forwards; }
+.slide.active .anim-6 { animation: fadeInUp 0.6s ease-out 850ms forwards; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ===== CARDS ===== */
+.card-dark {
+  background: var(--card-dark-bg);
+  border: 1px solid var(--card-dark-border);
+  border-radius: 20px;
+  padding: clamp(24px, 3vw, 40px);
+  box-shadow: 0 8px 32px hsl(220, 55%, 8%, 0.5);
+}
+.card-light {
+  background: #ffffff;
+  border: 1px solid hsl(220, 20%, 90%);
+  border-radius: 16px;
+  padding: clamp(20px, 2.5vw, 32px);
+  box-shadow: 0 4px 24px hsl(220, 55%, 15%, 0.06);
+}
+
+/* ===== SLIDE 0 — CAPA ===== */
+.slide-capa {
+  padding: 0;
+  display: flex;
+  align-items: stretch;
+  background: #0a1628;
+}
+.capa-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.capa-bg img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.capa-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, hsl(220, 55%, 8%, 0.85) 0%, hsl(220, 55%, 8%, 0.6) 100%);
+  z-index: 1;
+}
+.capa-world-map {
+  position: absolute;
+  right: -5%;
+  top: 10%;
+  width: 65%;
+  opacity: 0.12;
+  z-index: 2;
+  pointer-events: none;
+}
+.capa-fade-left {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 60%;
+  background: linear-gradient(90deg, hsl(220, 55%, 8%, 0.9) 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.capa-fade-bottom {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 40%;
+  background: linear-gradient(0deg, hsl(220, 55%, 8%, 0.7) 0%, transparent 100%);
+  z-index: 2;
+  pointer-events: none;
+}
+.capa-content {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: clamp(64px, 10vw, 160px);
+  padding-right: 2rem;
+  position: relative;
+  z-index: 3;
+}
+/* Rule 4 — capa animations: opacity only */
+.slide-capa .capa-logo { opacity: 0; }
+.slide-capa .capa-slogan { opacity: 0; }
+.slide-capa .capa-line { opacity: 0; }
+.slide-capa .capa-footer-logos { opacity: 0; }
+
+.slide-capa.active .capa-logo { animation: fadeIn 0.8s ease-out 0ms forwards; }
+.slide-capa.active .capa-slogan { animation: fadeIn 0.8s ease-out 200ms forwards; }
+.slide-capa.active .capa-line { animation: fadeIn 0.8s ease-out 400ms forwards; }
+.slide-capa.active .capa-footer-logos { animation: fadeIn 0.8s ease-out 550ms forwards; }
+
+.capa-logo img {
+  height: clamp(48px, 6vw, 80px);
+  width: auto;
+}
+.capa-slogan {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(18px, 2.2vw, 28px);
+  color: hsl(0, 0%, 85%);
+  margin-top: 1.5rem;
+  line-height: 1.4;
+}
+.capa-line {
+  margin-top: 2rem;
+}
+.capa-footer-logos {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.capa-footer-logos img {
+  height: 36px;
+  width: auto;
+}
+.capa-footer-logos .investe-logo {
+  filter: brightness(0) invert(1) opacity(0.8);
+}
+
+/* ===== SLIDE 1 — O PROBLEMA ===== */
+.title-underline {
+  position: relative;
+  display: inline;
+}
+.title-underline::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: var(--zpe-green);
+  opacity: 0.5;
+  border-radius: 3px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.6s;
+}
+.slide.active .title-underline::before {
+  transform: scaleX(1);
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(16px, 2vw, 24px);
+  max-width: 960px;
+}
+.problem-card .card-icon {
+  width: 48px; height: 48px;
+  margin-bottom: 1rem;
+  color: var(--zpe-green);
+}
+.problem-card .card-icon svg {
+  width: 100%; height: 100%;
+  stroke: var(--zpe-green);
+  stroke-width: 1.5;
+  fill: none;
+}
+.problem-card h3 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-white);
+  margin-bottom: 0.5rem;
+}
+.problem-card p {
+  color: var(--text-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== SLIDE 2 — IMPACTO ===== */
+.slide-impacto {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.impacto-content {
+  max-width: 900px;
+  position: relative;
+  z-index: 1;
+}
+.impacto-l1 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(20px, 2.5vw, 32px);
+  color: hsl(0, 0%, 100%, 0.7);
+  margin-bottom: 0.5em;
+}
+.impacto-l2 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 5vw, 64px);
+  color: #fff;
+  line-height: 1.1;
+}
+.impacto-l3 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.1;
+  margin-bottom: 1em;
+}
+.impacto-l3 .green { color: var(--zpe-green); }
+.impacto-l3 .white { color: #fff; }
+.impacto-line {
+  width: 64px; height: 4px;
+  background: var(--zpe-green);
+  border-radius: 2px;
+  margin: 0 auto;
+}
+
+/* ===== SLIDE 3 — A SOLUÇÃO ===== */
+.solucao-layout {
+  display: flex;
+  gap: clamp(32px, 4vw, 64px);
+  align-items: stretch;
+  flex: 1;
+  min-height: 0;
+}
+.solucao-left {
+  flex: 0 0 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.solucao-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: clamp(12px, 1.5vw, 20px);
+  align-content: center;
+}
+.solucao-subtitle {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--zpe-green);
+  margin-top: -0.5em;
+  margin-bottom: 1.5em;
+}
+.solucao-map-container {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+}
+.solucao-world-bg {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.15;
+  filter: invert(1);
+  pointer-events: none;
+}
+.solucao-world-bg img { width: 100%; height: 100%; object-fit: contain; }
+.solucao-map-img {
+  width: 100%;
+  border-radius: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Pin pulsante */
+.map-pin {
+  position: absolute;
+  top: 25%;
+  left: 55%;
+  z-index: 10;
+  cursor: pointer;
+}
+.pin-dot {
+  width: 16px; height: 16px;
+  background: var(--zpe-green);
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0 0 12px hsl(120, 40%, 49%, 0.6);
+}
+.pin-pulse {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--zpe-green);
+  animation: pinPulse 2s ease-out infinite;
+}
+@keyframes pinPulse {
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.pin-tooltip {
+  position: absolute;
+  left: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: hsl(220, 55%, 12%, 0.95);
+  border: 1px solid hsl(0, 0%, 100%, 0.1);
+  border-radius: 8px;
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+.pin-tooltip-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #fff;
+}
+.pin-tooltip-sub {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  color: var(--zpe-green);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Badge 20 anos */
+.badge-20anos {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  z-index: 10;
+  background: var(--zpe-green);
+  border-radius: 12px;
+  padding: 10px 16px;
+  text-align: center;
+}
+.badge-20anos .badge-number {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: 28px;
+  color: #fff;
+  line-height: 1;
+}
+.badge-20anos .badge-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 9px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+}
+
+/* Solution cards */
+.sol-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.sol-card .sol-icon {
+  width: 36px; height: 36px;
+  color: var(--zpe-green);
+}
+.sol-card .sol-icon svg {
+  width: 100%; height: 100%;
+  stroke: var(--zpe-green);
+  stroke-width: 1.5;
+  fill: none;
+}
+.sol-card h3 {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--zpe-blue);
+}
+.sol-card p {
+  font-size: 13px;
+  line-height: 1.5;
+  color: hsl(220, 30%, 40%);
+}
+
+/* ===== SLIDE 4 — IMPACTO TRIBUTÁRIO ===== */
+.tributario-hero {
+  text-align: center;
+  margin-bottom: clamp(24px, 3vw, 48px);
+}
+.tributario-table {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+  border-collapse: collapse;
+}
+.tributario-table th {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid hsl(0, 0%, 100%, 0.1);
+  color: var(--text-sec);
+}
+.tributario-table td {
+  padding: 10px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid hsl(0, 0%, 100%, 0.06);
+  color: var(--text-body);
+}
+.tributario-table td:first-child {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  color: var(--text-white);
+}
+.tributario-table .zpe-col {
+  color: var(--zpe-green);
+  font-weight: 600;
+}
+.tributario-context {
+  font-size: 14px;
+  color: var(--text-sec);
+  margin-top: 4px;
+}
+
+/* ===== SLIDE 5 — LOGÍSTICA ===== */
+.logistica-layout {
+  display: flex;
+  gap: clamp(24px, 3vw, 48px);
+  align-items: center;
+  flex: 1;
+  min-height: 0;
+}
+.logistica-map {
+  flex: 0 0 55%;
+  position: relative;
+}
+.logistica-map svg {
+  width: 100%;
+  height: auto;
+}
+.logistica-info {
+  flex: 1;
+}
+.route-label {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  fill: #fff;
+  font-size: 13px;
+}
+.route-days {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  fill: var(--zpe-green);
+  font-size: 14px;
+}
+/* Animated route line */
+.route-line {
+  stroke: var(--zpe-green);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 500;
+  stroke-dashoffset: 500;
+  opacity: 0.6;
+}
+.slide.active .route-line {
+  animation: drawRoute 2s ease-out forwards;
+}
+.slide.active .route-line-2 { animation-delay: 0.3s; }
+.slide.active .route-line-3 { animation-delay: 0.6s; }
+@keyframes drawRoute {
+  to { stroke-dashoffset: 0; }
+}
+/* Route card that appears after line */
+.route-card {
+  opacity: 0;
+}
+.slide.active .route-card-1 { animation: fadeIn 0.5s ease-out 1.8s forwards; }
+.slide.active .route-card-2 { animation: fadeIn 0.5s ease-out 2.1s forwards; }
+.slide.active .route-card-3 { animation: fadeIn 0.5s ease-out 2.4s forwards; }
+
+/* ===== SLIDE 6 — INFRAESTRUTURA ===== */
+.infra-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.5vw, 20px);
+  max-width: 800px;
+}
+.infra-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 0;
+}
+.infra-bullet {
+  width: 10px; height: 10px;
+  min-width: 10px;
+  border-radius: 50%;
+  background: var(--zpe-green);
+  margin-top: 5px;
+}
+.infra-item-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--zpe-blue);
+}
+.infra-item-desc {
+  font-size: 13px;
+  color: hsl(220, 30%, 45%);
+}
+.infra-closing {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: hsl(220, 30%, 45%);
+  font-style: italic;
+  margin-top: 1.5em;
+  max-width: 800px;
+}
+
+/* ===== SLIDE 7 — SEGURANÇA JURÍDICA ===== */
+.timeline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin: clamp(24px, 3vw, 48px) 0;
+  position: relative;
+  max-width: 100%;
+  overflow-x: auto;
+}
+.timeline-line {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  height: 3px;
+  background: hsl(220, 20%, 85%);
+  z-index: 0;
+}
+.timeline-line-fill {
+  height: 100%;
+  background: var(--zpe-green);
+  width: 0;
+  border-radius: 2px;
+  transition: width 1.5s ease-out 0.5s;
+}
+.slide.active .timeline-line-fill { width: 100%; }
+.timeline-node {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  min-width: 120px;
+}
+.timeline-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: hsl(220, 20%, 80%);
+  border: 3px solid hsl(0, 0%, 97%);
+  margin-bottom: 12px;
+  transition: background 0.3s ease;
+}
+.timeline-node.highlight .timeline-dot {
+  width: 22px; height: 22px;
+  background: var(--zpe-green);
+  box-shadow: 0 0 16px hsl(120, 40%, 49%, 0.4);
+}
+.timeline-year {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--zpe-blue);
+  margin-bottom: 6px;
+}
+.timeline-node.highlight .timeline-year {
+  color: var(--zpe-green);
+}
+.timeline-text {
+  font-size: 12px;
+  color: hsl(220, 20%, 50%);
+  line-height: 1.4;
+  max-width: 140px;
+}
+.timeline-node.highlight .timeline-text {
+  font-weight: 600;
+  color: var(--zpe-blue);
+}
+.juridica-closing {
+  font-size: 14px;
+  color: hsl(220, 30%, 45%);
+  max-width: 800px;
+  line-height: 1.65;
+}
+
+/* ===== SLIDE 8 — SETORES ===== */
+.setores-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 24px);
+  max-width: 1000px;
+}
+.setor-card .setor-number {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 64px);
+  color: var(--zpe-green);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.setor-card .setor-label {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: hsl(120, 40%, 49%, 0.7);
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+.setor-card .setor-text {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-body);
+}
+
+/* ===== SLIDE 9 — PIPELINE ===== */
+.pipeline-indicators {
+  display: flex;
+  gap: clamp(24px, 4vw, 64px);
+  justify-content: center;
+  margin-bottom: clamp(24px, 3vw, 48px);
+}
+.pipeline-indicator {
+  text-align: center;
+}
+.pipeline-indicator .pi-number {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 6vw, 80px);
+  color: var(--zpe-green);
+  line-height: 1;
+}
+.pipeline-indicator .pi-label {
+  font-size: 13px;
+  color: var(--text-sec);
+  margin-top: 8px;
+}
+
+.planta-schema {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: flex-end;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 160px;
+}
+.planta-block {
+  border-radius: 8px;
+  flex: 1;
+}
+.planta-blue {
+  background: hsl(220, 55%, 32%, 0.5);
+  border: 1px solid hsl(220, 55%, 40%, 0.3);
+  height: 60%;
+}
+.planta-green {
+  background: hsl(120, 40%, 49%, 0.3);
+  border: 1px solid hsl(120, 40%, 49%, 0.3);
+  box-shadow: inset 0 0 30px hsl(120, 40%, 49%, 0.15);
+  height: 100%;
+}
+.planta-legend {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.planta-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-sec);
+}
+.planta-legend-sq {
+  width: 14px; height: 14px;
+  border-radius: 3px;
+}
+.planta-legend-sq.blue { background: hsl(220, 55%, 32%, 0.5); }
+.planta-legend-sq.green { background: hsl(120, 40%, 49%, 0.3); }
+.pipeline-closing {
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-sec);
+  margin-top: 24px;
+}
+
+/* ===== SLIDE 10 — COMO INSTALAR ===== */
+.instalar-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 4vw, 64px);
+  max-width: 900px;
+}
+.fase-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(48px, 5vw, 72px);
+  color: hsl(120, 40%, 49%, 0.15);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.fase-header {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--zpe-blue);
+  margin-bottom: 24px;
+}
+.fase-step {
+  margin-bottom: 20px;
+}
+.fase-step-num {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--zpe-green);
+  margin-bottom: 2px;
+}
+.fase-step-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--zpe-blue);
+  margin-bottom: 4px;
+}
+.fase-step-desc {
+  font-size: 13px;
+  color: hsl(220, 30%, 45%);
+  line-height: 1.5;
+}
+
+/* ===== SLIDE 11 — CTA ===== */
+.slide-cta {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #0a1628;
+}
+.cta-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.cta-bg img { width: 100%; height: 100%; object-fit: cover; }
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: hsl(220, 55%, 8%, 0.88);
+  z-index: 1;
+}
+.cta-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+.cta-title {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 5vw, 72px);
+  color: #fff;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 1em;
+}
+.cta-text {
+  font-size: clamp(16px, 1.8vw, 24px);
+  color: hsl(0, 0%, 100%, 0.9);
+  line-height: 1.5;
+  margin-bottom: 1.5em;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cta-contact {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: clamp(24px, 3vw, 36px);
+  color: var(--zpe-green);
+  line-height: 1.6;
+}
+.cta-tagline {
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 16px;
+  color: hsl(0, 0%, 75%);
+  margin-top: 2em;
+}
+.cta-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 2em;
+}
+.cta-logos img { height: 40px; width: auto; }
+
+/* ===== DETAIL SCREEN ===== */
+.detail-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: hsl(220, 55%, 6%, 0.97);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: scale(0.98);
+  pointer-events: none;
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+.detail-overlay.open {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.detail-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  z-index: 10;
+  width: 44px; height: 44px;
+  background: hsl(0, 0%, 100%, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail-close::before,
+.detail-close::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 2px;
+  background: #fff;
+  border-radius: 1px;
+}
+.detail-close::before { transform: rotate(45deg); }
+.detail-close::after  { transform: rotate(-45deg); }
+
+.detail-video-section {
+  flex: 0 0 62vh;
+  position: relative;
+  overflow: hidden;
+}
+.detail-video-section video {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+.detail-video-label {
+  position: absolute;
+  bottom: 24px; left: 32px;
+}
+.detail-video-label span {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--zpe-green);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
+.detail-video-fs {
+  position: absolute;
+  bottom: 24px; left: 140px;
+  background: hsl(0, 0%, 100%, 0.1);
+  border: 1px solid hsl(0, 0%, 100%, 0.15);
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+.detail-gallery-section {
+  flex: 0 0 28vh;
+  padding: 16px 32px;
+  display: flex;
+  flex-direction: column;
+}
+.detail-gallery-label {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--zpe-green);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 12px;
+}
+.detail-gallery {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  flex: 1;
+  padding-bottom: 8px;
+}
+.detail-gallery::-webkit-scrollbar { height: 4px; }
+.detail-gallery::-webkit-scrollbar-track { background: transparent; }
+.detail-gallery::-webkit-scrollbar-thumb { background: hsl(0, 0%, 100%, 0.2); border-radius: 2px; }
+.detail-gallery img {
+  height: 100%;
+  width: auto;
+  border-radius: 12px;
+  cursor: pointer;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.detail-gallery img:hover { transform: scale(1.03); }
+
+/* ===== LIGHTBOX ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: hsl(0, 0%, 0%, 0.92);
+  backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease;
+}
+.lightbox.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  width: 44px; height: 44px;
+  background: hsl(0, 0%, 100%, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-close::before,
+.lightbox-close::after {
+  content: '';
+  position: absolute;
+  width: 20px; height: 2px;
+  background: #fff;
+  border-radius: 1px;
+}
+.lightbox-close::before { transform: rotate(45deg); }
+.lightbox-close::after  { transform: rotate(-45deg); }
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px; height: 48px;
+  background: hsl(0, 0%, 100%, 0.1);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lightbox-nav::after {
+  content: '';
+  width: 12px; height: 12px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+.lightbox-prev { left: 24px; }
+.lightbox-prev::after { transform: rotate(135deg); }
+.lightbox-next { right: 24px; }
+.lightbox-next::after { transform: rotate(-45deg); }
+
+/* ===== HUD ===== */
+.hud {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 52px;
+  background: hsl(220, 55%, 8%, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.hud.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.hud-chapter {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  color: hsl(0, 0%, 100%, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+.hud-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.hud-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: hsl(0, 0%, 100%, 0.2);
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+.hud-dot.active {
+  background: var(--zpe-green);
+}
+.hud-counter {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: hsl(0, 0%, 100%, 0.5);
+  white-space: nowrap;
+}
+.hud-spacer { flex: 1; }
+.hud-fs-btn {
+  width: 36px; height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+.hud-fs-btn::before,
+.hud-fs-btn::after,
+.hud-fs-btn span::before,
+.hud-fs-btn span::after {
+  content: '';
+  position: absolute;
+  width: 10px; height: 10px;
+  border-color: hsl(0, 0%, 100%, 0.6);
+  border-style: solid;
+}
+.hud-fs-btn::before     { top: 4px;  left: 4px;  border-width: 2px 0 0 2px; }
+.hud-fs-btn::after      { top: 4px;  right: 4px; border-width: 2px 2px 0 0; }
+.hud-fs-btn span::before { bottom: 4px; left: 4px;  border-width: 0 0 2px 2px; }
+.hud-fs-btn span::after  { bottom: 4px; right: 4px; border-width: 0 2px 2px 0; }
+
+/* ===== PROGRESS BAR ===== */
+.progress-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--zpe-green);
+  z-index: 101;
+  transition: width 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== FULLSCREEN BUTTON (always visible) ===== */
+.fs-btn-fixed {
+  position: fixed;
+  top: 24px; right: 24px;
+  z-index: 1000;
+  width: 40px; height: 40px;
+  background: hsl(0, 0%, 0%, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid hsl(0, 0%, 100%, 0.15);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fs-btn-fixed::before,
+.fs-btn-fixed::after,
+.fs-btn-fixed span::before,
+.fs-btn-fixed span::after {
+  content: '';
+  position: absolute;
+  width: 10px; height: 10px;
+  border-color: hsl(0, 0%, 100%, 0.7);
+  border-style: solid;
+}
+.fs-btn-fixed::before     { top: 8px;  left: 8px;  border-width: 2px 0 0 2px; }
+.fs-btn-fixed::after      { top: 8px;  right: 8px; border-width: 2px 2px 0 0; }
+.fs-btn-fixed span::before { bottom: 8px; left: 8px;  border-width: 0 0 2px 2px; }
+.fs-btn-fixed span::after  { bottom: 8px; right: 8px; border-width: 0 2px 2px 0; }
+
+/* ===== TOUCH ARROWS ===== */
+.touch-arrow {
+  display: none;
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px; height: 44px;
+  background: hsl(0, 0%, 0%, 0.3);
+  border: none;
+  border-radius: 50%;
+  z-index: 100;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+.touch-arrow::after {
+  content: '';
+  width: 12px; height: 12px;
+  border-right: 2px solid hsl(0, 0%, 100%, 0.6);
+  border-bottom: 2px solid hsl(0, 0%, 100%, 0.6);
+}
+.touch-prev { left: 12px; }
+.touch-prev::after { transform: rotate(135deg); }
+.touch-next { right: 12px; }
+.touch-next::after { transform: rotate(-45deg); }
+
+@media (pointer: coarse), (max-width: 1024px) {
+  .touch-arrow { display: flex; }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .slide.slide-exit,
+  .slide.slide-enter,
+  .slide.active .anim-1,
+  .slide.active .anim-2,
+  .slide.active .anim-3,
+  .slide.active .anim-4,
+  .slide.active .anim-5,
+  .slide.active .anim-6,
+  .slide-capa.active .capa-logo,
+  .slide-capa.active .capa-slogan,
+  .slide-capa.active .capa-line,
+  .slide-capa.active .capa-footer-logos {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .anim { opacity: 1; }
+  .slide-capa .capa-logo,
+  .slide-capa .capa-slogan,
+  .slide-capa .capa-line,
+  .slide-capa .capa-footer-logos { opacity: 1; }
+  .route-line { stroke-dashoffset: 0; }
+  .route-card { opacity: 1; }
+  .timeline-line-fill { transition: none; width: 100%; }
+  .title-underline::before { transform: scaleX(1); transition: none; }
+  .pin-pulse { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- FULLSCREEN BUTTON (always visible) -->
+<button class="fs-btn-fixed" onclick="toggleFullscreen()" aria-label="Tela cheia"><span></span></button>
+
+<!-- TOUCH ARROWS -->
+<button class="touch-arrow touch-prev" onclick="prev()" aria-label="Anterior"></button>
+<button class="touch-arrow touch-next" onclick="next()" aria-label="Próximo"></button>
+
+<!-- SLIDES -->
+<div class="slides-container" id="slidesContainer">
+
+  <!-- SLIDE 0 — CAPA -->
+  <div class="slide slide-capa active" data-chapter="Capa">
+    <div class="capa-bg"><img src="bg_hero_blue_compressed.jpg" alt="" loading="eager"></div>
+    <div class="capa-overlay"></div>
+    <div class="capa-fade-left"></div>
+    <div class="capa-fade-bottom"></div>
+    <img class="capa-world-map" src="world_dotted.svg" alt="">
+    <div class="capa-content">
+      <div class="capa-logo"><img src="logo-zpe.png" alt="ZPE Maranhão"></div>
+      <p class="capa-slogan">A conexão estratégica do Maranhão com o mundo.</p>
+      <div class="capa-line"><div class="green-line"></div></div>
+      <div class="capa-footer-logos">
+        <img class="investe-logo" src="investe-ma-logo.png" alt="Investe Maranhão">
+        <img src="governo-ma-logo.png" alt="Governo do Maranhão">
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 1 — O PROBLEMA -->
+  <div class="slide slide-dark dot-grid" data-chapter="O Problema">
+    <h2 class="slide-title anim anim-1">Exportar no Brasil custa <span class="title-underline">caro demais.</span></h2>
+    <div class="problem-grid">
+      <div class="card-dark problem-card anim anim-2">
+        <div class="card-icon"><svg viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="36" rx="3" /><line x1="18" y1="16" x2="30" y2="16"/><line x1="18" y1="22" x2="30" y2="22"/><line x1="18" y1="28" x2="26" y2="28"/></svg></div>
+        <h3>Carga Tributária</h3>
+        <p>Impostos em cascata sobre importação de insumos e equipamentos encarecem cada etapa da operação.</p>
+      </div>
+      <div class="card-dark problem-card anim anim-3">
+        <div class="card-icon"><svg viewBox="0 0 48 48"><path d="M24 8a16 16 0 0 1 0 32" /><path d="M24 40a16 16 0 0 1 0-32"/><polyline points="28 20 24 24 20 20"/><polyline points="20 28 24 24 28 28"/></svg></div>
+        <h3>Conversão de Divisas</h3>
+        <p>Empresas são obrigadas a converter divisas ao repatriar receitas de exportação, corroendo a margem cambial.</p>
+      </div>
+      <div class="card-dark problem-card anim anim-4">
+        <div class="card-icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><polyline points="24 16 24 24 30 28"/></svg></div>
+        <h3>Burocracia Aduaneira</h3>
+        <p>Processos lentos e fragmentados atrasam operações e elevam custos administrativos e de armazenagem.</p>
+      </div>
+      <div class="card-dark problem-card anim anim-5">
+        <div class="card-icon"><svg viewBox="0 0 48 48"><path d="M24 10l-2 12h4l-2 12"/><circle cx="24" cy="24" r="16"/><circle cx="24" cy="18" r="3" fill="none"/></svg></div>
+        <h3>Infraestrutura Cara</h3>
+        <p>Logística fragmentada e distante dos grandes mercados globais aumenta o custo por tonelada exportada.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 — IMPACTO -->
+  <div class="slide slide-dark slide-impacto dot-grid" data-chapter="O Problema">
+    <div class="impacto-content">
+      <p class="impacto-l1 anim anim-1">O peso do Custo Brasil não se resume a burocracia ou taxas:</p>
+      <p class="impacto-l2 anim anim-2">ele corrói irreversivelmente</p>
+      <p class="impacto-l3 anim anim-3"><span class="green">a sua margem de lucro </span><span class="white">no mercado exterior.</span></p>
+      <div class="impacto-line anim anim-4"></div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 — A SOLUÇÃO -->
+  <div class="slide slide-light" data-chapter="O Problema">
+    <h2 class="slide-title anim anim-1">Existe um regime que resolve tudo isso.</h2>
+    <p class="solucao-subtitle anim anim-2">Garantido por lei federal.</p>
+    <div class="solucao-layout">
+      <div class="solucao-left anim anim-3">
+        <div class="solucao-map-container">
+          <div class="solucao-world-bg"><img src="world_dotted.svg" alt=""></div>
+          <img class="solucao-map-img" src="maranhao_stylized.jpg" alt="Maranhão">
+          <div class="map-pin" onclick="openDetailScreen()">
+            <div class="pin-dot"><div class="pin-pulse"></div></div>
+            <div class="pin-tooltip">
+              <div class="pin-tooltip-title">ZPE MARANHÃO</div>
+              <div class="pin-tooltip-sub">BACABEIRA</div>
+            </div>
+          </div>
+          <div class="badge-20anos">
+            <div class="badge-number">20 ANOS</div>
+            <div class="badge-label">DE SEGURANÇA JURÍDICA</div>
+          </div>
+        </div>
+      </div>
+      <div class="solucao-right anim anim-4">
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14"/><text x="18" y="23" text-anchor="middle" font-size="16" font-weight="700" fill="hsl(120,40%,49%)" stroke="none" font-family="Barlow">$</text></svg></div>
+          <h3>Suspensão de Impostos</h3>
+          <p>II, IPI, PIS/COFINS e AFRMM na importação de insumos e equipamentos.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36"><polyline points="4 28 12 16 20 22 32 8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Isenção de ICMS</h3>
+          <p>Garantida pelo Convênio ICMS 99/1998, reduzindo custos de operação.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="14"/><ellipse cx="18" cy="18" rx="14" ry="6"/><ellipse cx="18" cy="18" rx="6" ry="14"/></svg></div>
+          <h3>Liberdade Cambial</h3>
+          <p>Mantenha 100% das divisas obtidas com exportação no exterior.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36"><path d="M18 4c0 0-12 10-12 18a12 12 0 0 0 24 0C30 14 18 4 18 4z"/><circle cx="18" cy="22" r="3" fill="none"/></svg></div>
+          <h3>Local Estratégico</h3>
+          <p>Instalada na Região Metropolitana de São Luís.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36"><rect x="4" y="4" width="12" height="12" rx="2"/><rect x="20" y="4" width="12" height="12" rx="2"/><rect x="4" y="20" width="12" height="12" rx="2"/><rect x="20" y="20" width="12" height="12" rx="2"/></svg></div>
+          <h3>Logística Premium</h3>
+          <p>A 60km do Porto do Itaqui, o 4º maior porto público do Brasil.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36"><polyline points="18 4 18 18" stroke-linecap="round"/><polyline points="18 18 28 28" stroke-linecap="round"/><polyline points="18 18 8 28" stroke-linecap="round"/><circle cx="18" cy="4" r="2" fill="hsl(120,40%,49%)" stroke="none"/><circle cx="28" cy="28" r="2" fill="hsl(120,40%,49%)" stroke="none"/><circle cx="8" cy="28" r="2" fill="hsl(120,40%,49%)" stroke="none"/></svg></div>
+          <h3>Multimodalidade</h3>
+          <p>Única ZPE no NE com infraestrutura multimodal completa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 — IMPACTO TRIBUTÁRIO -->
+  <div class="slide slide-dark-data dot-grid" data-chapter="O Impacto Financeiro">
+    <div class="tributario-hero anim anim-1">
+      <div class="label-cat">ECONOMIA TRIBUTÁRIA ESTIMADA</div>
+      <div class="display-number" style="margin:8px 0">US$ <span class="counter-number" data-target="7">0</span> milhões</div>
+      <p class="tributario-context">para operações que importam US$ 15 mi em insumos e equipamentos por ano</p>
+    </div>
+    <table class="tributario-table anim anim-2">
+      <thead>
+        <tr><th>Tributo</th><th>Operação Convencional</th><th>ZPE Maranhão</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>II</td><td>Alíquota cheia conforme TEC</td><td class="zpe-col">Suspenso</td></tr>
+        <tr><td>IPI</td><td>Alíquota cheia conforme TIPI</td><td class="zpe-col">Suspenso</td></tr>
+        <tr><td>PIS/COFINS</td><td>Alíquota cheia</td><td class="zpe-col">Suspenso</td></tr>
+        <tr><td>AFRMM</td><td>25% sobre o frete marítimo</td><td class="zpe-col">Suspenso</td></tr>
+        <tr><td>ICMS</td><td>Variável conforme estado e operação</td><td class="zpe-col">Isento via Convênio ICMS 99/1998</td></tr>
+      </tbody>
+    </table>
+    <p class="text-foot anim anim-3" style="text-align:center;margin-top:24px;max-width:720px;margin-left:auto;margin-right:auto">
+      Baseado no Estudo Tributário Comparado da CZPE, com 11.760 simulações em 20 estados e 147 mercadorias. Valores variam conforme NCM e regime de apuração.
+    </p>
+  </div>
+
+  <!-- SLIDE 5 — LOGÍSTICA -->
+  <div class="slide slide-dark" data-chapter="O Impacto Financeiro">
+    <h2 class="slide-title anim anim-1" style="font-size:clamp(28px,3.5vw,48px)">Menos dias de navegação.<br>Mais margem para sua operação.</h2>
+    <div class="logistica-layout">
+      <div class="logistica-map anim anim-2">
+        <svg viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+          <!-- Ocean bg -->
+          <rect width="600" height="400" fill="hsl(220,55%,12%)" rx="16"/>
+          <!-- Americas simplified -->
+          <path d="M120 40 L160 30 L180 60 L170 100 L185 130 L175 160 L190 190 L180 220 L165 260 L155 300 L140 340 L120 360 L110 330 L100 280 L90 240 L95 200 L85 170 L90 140 L100 100 L110 70Z" fill="hsl(220,55%,20%)" opacity="0.8"/>
+          <!-- Africa/Europe simplified -->
+          <path d="M340 60 L380 50 L400 70 L410 100 L420 140 L430 180 L425 220 L410 260 L390 290 L370 310 L350 290 L340 250 L335 210 L330 180 L320 150 L325 120 L330 90Z" fill="hsl(220,55%,20%)" opacity="0.8"/>
+          <!-- Europe -->
+          <path d="M330 40 L370 30 L400 40 L410 60 L400 70 L380 50 L340 60 L330 50Z" fill="hsl(220,55%,20%)" opacity="0.8"/>
+          <!-- Maranhão highlight -->
+          <circle cx="175" cy="195" r="6" fill="hsl(120,40%,49%)"/>
+          <circle cx="175" cy="195" r="12" fill="hsl(120,40%,49%,0.3)">
+            <animate attributeName="r" values="10;18;10" dur="2s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+          </circle>
+          <!-- Label Itaqui -->
+          <text x="150" y="215" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="hsl(120,40%,49%)">ITAQUI</text>
+          <!-- Route to Europe -->
+          <path class="route-line" d="M181 192 Q260 120 360 60" />
+          <!-- Route to US East Coast -->
+          <path class="route-line route-line-2" d="M178 188 Q200 130 170 80" />
+          <!-- Route to Asia via Panama -->
+          <path class="route-line route-line-3" d="M172 192 Q130 160 110 140 Q90 120 80 100" />
+          <!-- Route cards -->
+          <g class="route-card route-card-1">
+            <rect x="340" y="38" width="90" height="40" rx="6" fill="hsl(220,55%,16%)" stroke="hsl(0,0%,100%,0.1)" stroke-width="1"/>
+            <text x="385" y="54" text-anchor="middle" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#fff">Europa</text>
+            <text x="385" y="70" text-anchor="middle" font-family="Barlow,sans-serif" font-weight="800" font-size="14" fill="hsl(120,40%,49%)">&#8722;5 dias</text>
+          </g>
+          <g class="route-card route-card-2">
+            <rect x="120" y="50" width="100" height="40" rx="6" fill="hsl(220,55%,16%)" stroke="hsl(0,0%,100%,0.1)" stroke-width="1"/>
+            <text x="170" y="66" text-anchor="middle" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#fff">Costa Leste EUA</text>
+            <text x="170" y="82" text-anchor="middle" font-family="Barlow,sans-serif" font-weight="800" font-size="14" fill="hsl(120,40%,49%)">&#8722;6 dias</text>
+          </g>
+          <g class="route-card route-card-3">
+            <rect x="30" y="75" width="100" height="40" rx="6" fill="hsl(220,55%,16%)" stroke="hsl(0,0%,100%,0.1)" stroke-width="1"/>
+            <text x="80" y="91" text-anchor="middle" font-family="Barlow,sans-serif" font-weight="700" font-size="11" fill="#fff">Ásia via Panamá</text>
+            <text x="80" y="107" text-anchor="middle" font-family="Barlow,sans-serif" font-weight="800" font-size="14" fill="hsl(120,40%,49%)">&#8722;7 dias</text>
+          </g>
+        </svg>
+      </div>
+      <div class="logistica-info">
+        <div class="anim anim-3">
+          <div class="label-cat">VANTAGEM LOGÍSTICA ANUAL ESTIMADA</div>
+          <div class="display-number" style="font-size:clamp(48px,7vw,96px);margin:8px 0">US$ <span class="counter-number" data-target="30">0</span> milhões</div>
+          <p class="text-body" style="font-size:14px;max-width:400px">vantagem logística anual estimada para operações de 100 mil TEUs/ano. Cada dia a menos de navegação representa até US$ 30.000 em economia por navio.</p>
+        </div>
+        <p class="text-foot anim anim-4" style="margin-top:24px;max-width:400px">
+          Porto do Itaqui: calado de 23 metros, o maior do Norte e Nordeste. Comporta navios Capesize e Neo-Panamax. 4º maior porto público do Brasil.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 — INFRAESTRUTURA -->
+  <div class="slide slide-light" data-chapter="A Infraestrutura">
+    <h2 class="slide-title anim anim-1">Tudo conectado.<br>Pronto para receber sua operação.</h2>
+    <div class="anim anim-2" style="margin-bottom:24px">
+      <div class="display-number" style="color:var(--zpe-green)"><span class="counter-number" data-target="2098">0</span></div>
+      <div class="label-cat">hectares nivelados</div>
+    </div>
+    <div class="infra-grid anim anim-3">
+      <div class="infra-item">
+        <div class="infra-bullet"></div>
+        <div><div class="infra-item-title">Porto do Itaqui</div><div class="infra-item-desc">60 km, calado 23m, 34 mi ton (2024)</div></div>
+      </div>
+      <div class="infra-item">
+        <div class="infra-bullet"></div>
+        <div><div class="infra-item-title">BR-135 e BR-402</div><div class="infra-item-desc">acesso direto, 0 km</div></div>
+      </div>
+      <div class="infra-item">
+        <div class="infra-bullet"></div>
+        <div><div class="infra-item-title">Ferrovia Carajás</div><div class="infra-item-desc">3 km, 120 mi ton/ano</div></div>
+      </div>
+      <div class="infra-item">
+        <div class="infra-bullet"></div>
+        <div><div class="infra-item-title">Ferrovia Transnordestina</div><div class="infra-item-desc">700 m</div></div>
+      </div>
+      <div class="infra-item">
+        <div class="infra-bullet"></div>
+        <div><div class="infra-item-title">Subestação 500 kV</div><div class="infra-item-desc">3 km</div></div>
+      </div>
+      <div class="infra-item">
+        <div class="infra-bullet"></div>
+        <div><div class="infra-item-title">Rio Itapecuru</div><div class="infra-item-desc">800 m</div></div>
+      </div>
+      <div class="infra-item">
+        <div class="infra-bullet"></div>
+        <div><div class="infra-item-title">Cabo submarino EllaLink</div><div class="infra-item-desc">conexão direta Europa, baixa latência</div></div>
+      </div>
+    </div>
+    <p class="infra-closing anim anim-4">Nenhuma outra ZPE brasileira reúne essa convergência de modais em um único sítio.</p>
+  </div>
+
+  <!-- SLIDE 7 — SEGURANÇA JURÍDICA -->
+  <div class="slide slide-light" data-chapter="A Infraestrutura">
+    <h2 class="slide-title anim anim-1">O projeto avança. Com atos formais.</h2>
+    <div class="timeline anim anim-2">
+      <div class="timeline-line"><div class="timeline-line-fill"></div></div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">1988</div>
+        <div class="timeline-text">Criação do regime original das ZPEs no Brasil</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2007</div>
+        <div class="timeline-text">Modernização do regime — Lei 11.508</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2021</div>
+        <div class="timeline-text">Fim do compromisso de 80% de exportação, inclusão de serviços</div>
+      </div>
+      <div class="timeline-node">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">2024</div>
+        <div class="timeline-text">Criação da ZPE Maranhão — Decreto Federal 12.131</div>
+      </div>
+      <div class="timeline-node highlight">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Dez/2025</div>
+        <div class="timeline-text">Licença Prévia emitida — LP 1085517/2025</div>
+      </div>
+      <div class="timeline-node highlight">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">Fev/2026</div>
+        <div class="timeline-text">Licença de Instalação emitida — LI 1009637/2026</div>
+      </div>
+    </div>
+    <p class="juridica-closing anim anim-3">Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada pela Receita Federal e pelo CZPE. Sem risco de interpretação divergente em nível estadual.</p>
+  </div>
+
+  <!-- SLIDE 8 — SETORES -->
+  <div class="slide slide-dark-data dot-grid" data-chapter="Setores e Oportunidade">
+    <h2 class="slide-title anim anim-1">O momento é agora.</h2>
+    <div class="setores-grid">
+      <div class="card-dark setor-card anim anim-2">
+        <div class="setor-number">44 mi</div>
+        <div class="setor-label">Fertilizantes (ton/ano)</div>
+        <p class="setor-text">Brasil importa 44 mi ton/ano. Dependência externa de 80%, com 97% do potássio importado e 40% vindo da Rússia. A reconfiguração geopolítica das cadeias de suprimento torna urgente a produção local.</p>
+      </div>
+      <div class="card-dark setor-card anim anim-3">
+        <div class="setor-number">US$ 12</div>
+        <div class="setor-label">Agroindustrial (/kg)</div>
+        <p class="setor-text">MATOPIBA produz 32 mi ton de grãos por safra com área plantada crescendo 8,3% ao ano. Grande parte exportada como commodity bruta. O caju que sai a US$ 2/kg pode ser exportado a US$ 12/kg processado.</p>
+      </div>
+      <div class="card-dark setor-card anim anim-4">
+        <div class="setor-number">40-60%</div>
+        <div class="setor-label">Serviços e Tecnologia</div>
+        <p class="setor-text">96% dos CEOs globais avaliam relocalização por proximidade. Com fuso GMT-3, custo operacional 40 a 60% abaixo de centros como Bangalore e Dublin, e liberdade cambial total, o Maranhão é a escolha natural.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 — PIPELINE -->
+  <div class="slide slide-dark-data" data-chapter="Setores e Oportunidade">
+    <h2 class="slide-title anim anim-1">A demanda cresce. A área é finita.</h2>
+    <div class="pipeline-indicators anim anim-2">
+      <div class="pipeline-indicator">
+        <div class="pi-number">[X]</div>
+        <div class="pi-label">Pré-projetos recebidos</div>
+      </div>
+      <div class="pipeline-indicator">
+        <div class="pi-number">[X]</div>
+        <div class="pi-label">Em análise técnica</div>
+      </div>
+      <div class="pipeline-indicator">
+        <div class="pi-number">[X]</div>
+        <div class="pi-label">Projetos aprovados</div>
+      </div>
+    </div>
+    <div class="anim anim-3">
+      <div class="planta-schema">
+        <div class="planta-block planta-blue"></div>
+        <div class="planta-block planta-blue" style="height:80%"></div>
+        <div class="planta-block planta-green"></div>
+        <div class="planta-block planta-green" style="height:75%"></div>
+        <div class="planta-block planta-blue" style="height:50%"></div>
+        <div class="planta-block planta-green" style="height:90%"></div>
+        <div class="planta-block planta-green" style="height:60%"></div>
+        <div class="planta-block planta-blue" style="height:45%"></div>
+      </div>
+      <div class="planta-legend">
+        <div class="planta-legend-item"><div class="planta-legend-sq blue"></div>Área em pré-reserva</div>
+        <div class="planta-legend-item"><div class="planta-legend-sq green"></div>Área disponível</div>
+      </div>
+    </div>
+    <p class="pipeline-closing anim anim-4">2.098 hectares. Projetos de diferentes setores já em avaliação.</p>
+  </div>
+
+  <!-- SLIDE 10 — COMO INSTALAR -->
+  <div class="slide slide-light" data-chapter="Próximos Passos">
+    <h2 class="slide-title anim anim-1">O caminho é claro.</h2>
+    <div class="instalar-layout anim anim-2">
+      <div>
+        <div class="fase-title">01</div>
+        <div class="fase-header">Fase 1</div>
+        <div class="fase-step">
+          <div class="fase-step-num">1</div>
+          <div class="fase-step-title">Manifestação Digital</div>
+          <div class="fase-step-desc">preenchimento do formulário Quero Investir para qualificação imediata</div>
+        </div>
+        <div class="fase-step">
+          <div class="fase-step-num">2</div>
+          <div class="fase-step-title">Pré-projeto ZPE</div>
+          <div class="fase-step-desc">elaboração do projeto preliminar com informações mínimas conforme requisitos legais</div>
+        </div>
+        <div class="fase-step">
+          <div class="fase-step-num">3</div>
+          <div class="fase-step-title">Pré-Reserva e Precificação</div>
+          <div class="fase-step-desc">reserva de área e definição inicial de cronograma e preços</div>
+        </div>
+      </div>
+      <div>
+        <div class="fase-title">02</div>
+        <div class="fase-header">Fase 2</div>
+        <div class="fase-step">
+          <div class="fase-step-num">4</div>
+          <div class="fase-step-title">Projeto Técnico ZPE</div>
+          <div class="fase-step-desc">análise detalhada do projeto para implantação na área</div>
+        </div>
+        <div class="fase-step">
+          <div class="fase-step-num">5</div>
+          <div class="fase-step-title">Aprovação CZPE</div>
+          <div class="fase-step-desc">aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação</div>
+        </div>
+        <div class="fase-step">
+          <div class="fase-step-num">6</div>
+          <div class="fase-step-title">Contrato ZPE</div>
+          <div class="fase-step-desc">celebração do Contrato de Cessão de Uso Onerosa da área</div>
+        </div>
+      </div>
+    </div>
+    <p class="text-foot anim anim-3" style="margin-top:24px">Cada projeto é analisado individualmente. Prazos variam conforme complexidade e documentação.</p>
+  </div>
+
+  <!-- SLIDE 11 — CTA -->
+  <div class="slide slide-cta" data-chapter="Próximos Passos">
+    <div class="cta-bg"><img src="bg_hero_blue_compressed.jpg" alt="" loading="lazy"></div>
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+      <h2 class="cta-title anim anim-1">Vamos analisar sua operação.</h2>
+      <p class="cta-text anim anim-2">A equipe técnica da ZPE Maranhão avalia a aderência do seu projeto ao regime e estima o impacto tributário e logístico para o seu setor.</p>
+      <div class="cta-contact anim anim-3">
+        contato@zpe.ma.gov.br<br>
+        zpe.ma.gov.br
+      </div>
+      <p class="cta-tagline anim anim-4">A conexão estratégica do Maranhão com o mundo.</p>
+      <div class="cta-logos anim anim-5">
+        <img src="logo-zpe.png" alt="ZPE Maranhão">
+        <img src="governo-ma-logo.png" alt="Governo do Maranhão">
+      </div>
+    </div>
+  </div>
+
+</div><!-- /slides-container -->
+
+<!-- HUD -->
+<div class="hud" id="hud">
+  <div class="hud-chapter" id="hudChapter"></div>
+  <div class="hud-dots" id="hudDots"></div>
+  <div class="hud-counter" id="hudCounter"></div>
+  <div class="hud-spacer"></div>
+  <button class="hud-fs-btn" onclick="toggleFullscreen()" aria-label="Tela cheia"><span></span></button>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- DETAIL OVERLAY -->
+<div class="detail-overlay" id="detailOverlay">
+  <button class="detail-close" onclick="closeDetailScreen()" aria-label="Fechar"></button>
+  <div class="detail-video-section">
+    <video id="detailVideo" muted loop playsinline>
+      <source src="animacao.mp4" type="video/mp4">
+    </video>
+    <div class="detail-video-label"><span>O PROJETO</span></div>
+    <button class="detail-video-fs" onclick="detailVideoFullscreen()">Ver em tela cheia</button>
+  </div>
+  <div class="detail-gallery-section">
+    <div class="detail-gallery-label">A ÁREA</div>
+    <div class="detail-gallery" id="detailGallery">
+      <img src="01.webp" alt="Área 1" onclick="openLightbox(0)">
+      <img src="02.webp" alt="Área 2" onclick="openLightbox(1)">
+      <img src="03.webp" alt="Área 3" onclick="openLightbox(2)">
+      <img src="04.webp" alt="Área 4" onclick="openLightbox(3)">
+      <img src="05.webp" alt="Área 5" onclick="openLightbox(4)">
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar"></button>
+  <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)" aria-label="Anterior"></button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)" aria-label="Próximo"></button>
+</div>
+
+<script>
+// ===== STATE =====
+const slides = document.querySelectorAll('.slide');
+const totalSlides = slides.length;
+let currentSlide = 0;
+let isTransitioning = false;
+const CHAPTERS = ['Capa','O Problema','O Problema','O Problema','O Impacto Financeiro','O Impacto Financeiro','A Infraestrutura','A Infraestrutura','Setores e Oportunidade','Setores e Oportunidade','Próximos Passos','Próximos Passos'];
+
+// ===== HUD SETUP =====
+const hud = document.getElementById('hud');
+const hudChapter = document.getElementById('hudChapter');
+const hudDots = document.getElementById('hudDots');
+const hudCounter = document.getElementById('hudCounter');
+const progressBar = document.getElementById('progressBar');
+let hudTimeout;
+
+// Build dots
+for (let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'hud-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => goToSlide(i);
+  hudDots.appendChild(dot);
+}
+
+function updateHUD() {
+  hudChapter.textContent = CHAPTERS[currentSlide] || '';
+  hudCounter.textContent = (currentSlide + 1) + ' / ' + totalSlides;
+  hudDots.querySelectorAll('.hud-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentSlide);
+  });
+  // Progress bar
+  if (currentSlide === 0) {
+    progressBar.style.width = '0';
+    progressBar.style.opacity = '0';
+  } else {
+    progressBar.style.opacity = '1';
+    progressBar.style.width = ((currentSlide / (totalSlides - 1)) * 100) + '%';
+  }
+}
+
+// HUD visibility
+function showHUD() {
+  hud.classList.add('visible');
+  clearTimeout(hudTimeout);
+  hudTimeout = setTimeout(() => hud.classList.remove('visible'), 3000);
+}
+document.addEventListener('mousemove', (e) => {
+  if (e.clientY > window.innerHeight - 80) showHUD();
+});
+
+// ===== NAVIGATION =====
+function goToSlide(n) {
+  if (n === currentSlide || isTransitioning || n < 0 || n >= totalSlides) return;
+  isTransitioning = true;
+
+  const oldSlide = slides[currentSlide];
+  const newSlide = slides[n];
+
+  // Reset animation classes on new slide
+  newSlide.querySelectorAll('.anim').forEach(el => {
+    el.style.animation = 'none';
+    el.offsetHeight; // reflow
+    el.style.animation = '';
+  });
+
+  oldSlide.classList.remove('active');
+  oldSlide.classList.add('slide-exit');
+
+  newSlide.classList.add('slide-enter');
+
+  setTimeout(() => {
+    oldSlide.classList.remove('slide-exit');
+    oldSlide.style.opacity = '0';
+    oldSlide.style.pointerEvents = 'none';
+  }, 350);
+
+  setTimeout(() => {
+    newSlide.classList.remove('slide-enter');
+    newSlide.classList.add('active');
+    currentSlide = n;
+    updateHUD();
+    showHUD();
+    animateCounters(newSlide);
+    isTransitioning = false;
+  }, 600);
+}
+
+function next() { goToSlide(currentSlide + 1); }
+function prev() { goToSlide(currentSlide - 1); }
+
+// ===== KEYBOARD =====
+document.addEventListener('keydown', (e) => {
+  if (document.getElementById('detailOverlay').classList.contains('open')) {
+    if (e.key === 'Escape') closeDetailScreen();
+    return;
+  }
+  if (document.getElementById('lightbox').classList.contains('open')) {
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lightboxNav(-1);
+    if (e.key === 'ArrowRight') lightboxNav(1);
+    return;
+  }
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); showHUD(); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); showHUD(); }
+  if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+});
+
+// ===== CLICK NAVIGATION =====
+document.getElementById('slidesContainer').addEventListener('click', (e) => {
+  // Don't navigate if clicking interactive elements
+  if (e.target.closest('button, a, .map-pin, .sol-card, .hud, .detail-overlay, .lightbox, .touch-arrow, .fs-btn-fixed')) return;
+  if (e.clientX > window.innerWidth / 2) next();
+  else prev();
+});
+
+// ===== TOUCH / SWIPE =====
+let touchStartX = 0;
+let touchStartY = 0;
+document.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].clientX;
+  touchStartY = e.changedTouches[0].clientY;
+}, { passive: true });
+document.addEventListener('touchend', (e) => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  const dy = e.changedTouches[0].clientY - touchStartY;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) {
+    if (dx < 0) next();
+    else prev();
+  }
+}, { passive: true });
+
+// ===== FULLSCREEN =====
+function toggleFullscreen() {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(() => {});
+  } else {
+    document.exitFullscreen().catch(() => {});
+  }
+}
+
+// ===== COUNTER ANIMATION =====
+function animateCounters(slide) {
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  slide.querySelectorAll('.counter-number').forEach(el => {
+    const target = parseInt(el.getAttribute('data-target'), 10);
+    if (isNaN(target)) return;
+    if (prefersReduced) { el.textContent = target.toLocaleString('pt-BR'); return; }
+    el.textContent = '0';
+    const duration = 1200;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      el.textContent = Math.round(eased * target).toLocaleString('pt-BR');
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+}
+
+// ===== DETAIL SCREEN =====
+function openDetailScreen() {
+  const overlay = document.getElementById('detailOverlay');
+  overlay.classList.add('open');
+  const video = document.getElementById('detailVideo');
+  video.play().catch(() => {});
+}
+function closeDetailScreen() {
+  const overlay = document.getElementById('detailOverlay');
+  overlay.classList.remove('open');
+  document.getElementById('detailVideo').pause();
+}
+function detailVideoFullscreen() {
+  const video = document.getElementById('detailVideo');
+  if (video.requestFullscreen) video.requestFullscreen();
+  else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+}
+
+// ===== LIGHTBOX =====
+const galleryImages = ['01.webp', '02.webp', '03.webp', '04.webp', '05.webp'];
+let lightboxIndex = 0;
+
+function openLightbox(i) {
+  lightboxIndex = i;
+  document.getElementById('lightboxImg').src = galleryImages[i];
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+function lightboxNav(dir) {
+  lightboxIndex = (lightboxIndex + dir + galleryImages.length) % galleryImages.length;
+  document.getElementById('lightboxImg').src = galleryImages[lightboxIndex];
+}
+
+// ===== INIT =====
+updateHUD();
+animateCounters(slides[0]);
+</script>
+</body>
+</html>
