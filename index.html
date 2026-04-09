@@ -978,122 +978,194 @@
       max-width: 800px;
     }
 
-    /* ===== SLIDE 7 — SEGURANÇA JURÍDICA (vertical timeline) ===== */
-    .timeline-v {
-      position: relative;
-      margin: clamp(16px, 2vw, 32px) 0;
-      padding-left: 40px;
-      max-width: 700px;
+    /* ===== SLIDE 7 — SEGURANÇA JURÍDICA (card grid timeline) ===== */
+    .s7-slide {
+      justify-content: flex-start;
     }
 
-    .timeline-v-line {
-      position: absolute;
-      left: 14px;
-      top: 6px;
-      bottom: 6px;
-      width: 2px;
-      background: var(--zpe-green);
-      transform-origin: top;
-      transform: scaleY(0);
-      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    .s7-top {
+      flex: 0 0 auto;
+      padding-top: clamp(8px, 2vh, 24px);
+      margin-bottom: clamp(24px, 3vh, 40px);
+      text-align: center;
+      align-self: center;
     }
 
-    .slide.active .timeline-v-line {
-      transform: scaleY(1);
+    .s7-title {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 800;
+      font-size: clamp(36px, 4vw, 60px);
+      color: hsl(220 55% 20%);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin: 0 0 10px 0;
+      text-align: center;
     }
 
-    .timeline-v-node {
+    .s7-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 15px;
+      color: hsl(220 20% 45%);
+      margin: 0;
+      text-align: center;
+    }
+
+    .s7-cards-zone {
+      flex: 1 1 auto;
       display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      margin-bottom: clamp(16px, 2vw, 28px);
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .s7-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
+
+    .s7-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px hsl(220 55% 32% / 0.1);
+      border: 1px solid hsl(220 20% 92%);
+      border-top: 3px solid hsl(220 55% 32% / 0.15);
+      padding: 32px 24px;
       position: relative;
       opacity: 0;
     }
 
-    .slide.active .timeline-v-node {
-      animation: fadeInUp 0.5s ease-out forwards;
+    .slide.active .s7-card-anim {
+      animation: fadeInUp 0.6s ease-out var(--card-delay, 100ms) forwards;
     }
 
-    .slide.active .timeline-v-node:nth-child(2) {
-      animation-delay: 100ms;
+    .slide.active .s7-card-highlight.s7-card-anim {
+      animation: fadeInUp 0.6s ease-out var(--card-delay, 500ms) forwards,
+                 s7CardPulse 0.8s ease-in-out 1000ms 1;
     }
 
-    .slide.active .timeline-v-node:nth-child(3) {
-      animation-delay: 200ms;
-    }
-
-    .slide.active .timeline-v-node:nth-child(4) {
-      animation-delay: 300ms;
-    }
-
-    .slide.active .timeline-v-node:nth-child(5) {
-      animation-delay: 400ms;
-    }
-
-    .slide.active .timeline-v-node:nth-child(6) {
-      animation-delay: 500ms;
-    }
-
-    .slide.active .timeline-v-node:nth-child(7) {
-      animation-delay: 600ms;
-    }
-
-    .timeline-v-dot {
-      position: absolute;
-      left: -33px;
-      top: 8px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: hsl(220, 20%, 75%);
-      border: 2px solid hsl(0, 0%, 97%);
-      z-index: 1;
-      flex-shrink: 0;
-    }
-
-    .timeline-v-node.highlight .timeline-v-dot {
-      width: 18px;
-      height: 18px;
-      left: -36px;
-      top: 5px;
-      background: var(--zpe-green);
-      border: none;
-      box-shadow: 0 0 16px hsl(120, 40%, 49%, 0.6);
-    }
-
-    .timeline-v-year {
+    .s7-year {
       font-family: 'Barlow', sans-serif;
       font-weight: 800;
-      font-size: clamp(18px, 2vw, 28px);
-      color: var(--zpe-blue);
-      min-width: 110px;
-      flex-shrink: 0;
+      font-size: clamp(28px, 3vw, 42px);
+      color: hsl(220 55% 32%);
+      line-height: 1.1;
     }
 
-    .timeline-v-node.highlight .timeline-v-year {
-      color: var(--zpe-green);
+    .s7-divider {
+      width: 32px;
+      height: 2px;
+      background: hsl(220 20% 88%);
+      margin: 12px 0;
     }
 
-    .timeline-v-text {
+    .s7-desc {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: clamp(14px, 1.4vw, 18px);
-      color: hsl(220, 20%, 50%);
+      font-size: clamp(12px, 1.1vw, 14px);
+      color: hsl(220 20% 45%);
       line-height: 1.5;
-      padding-top: 4px;
     }
 
-    .timeline-v-node.highlight .timeline-v-text {
+    .s7-card-highlight {
+      background: linear-gradient(135deg, hsl(220 55% 28%) 0%, hsl(220 55% 20%) 100%);
+      border: 1px solid hsl(120 40% 49% / 0.25);
+      border-top: 3px solid hsl(120 40% 49%);
+      box-shadow: 0 12px 40px hsl(220 55% 20% / 0.35), 0 0 0 1px hsl(120 40% 49% / 0.25);
+      padding: 32px 24px;
+    }
+
+    .s7-card-highlight .s7-year {
+      color: hsl(120 40% 49%);
+    }
+
+    .s7-card-highlight .s7-divider {
+      background: hsl(120 40% 49% / 0.4);
+    }
+
+    .s7-card-highlight .s7-desc {
       font-weight: 600;
-      color: var(--zpe-blue);
+      color: white;
     }
 
-    .juridica-closing {
-      font-size: 14px;
-      color: hsl(220, 30%, 45%);
-      max-width: 800px;
-      line-height: 1.65;
+    .s7-active-dot {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: hsl(120 40% 49%);
+      box-shadow: 0 0 12px hsl(120 40% 49% / 0.8), 0 0 24px hsl(120 40% 49% / 0.4);
+    }
+
+    .slide.active .s7-active-dot {
+      animation: s7DotPulse 2s ease-in-out 1s infinite;
+    }
+
+    @keyframes s7DotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px hsl(120 40% 49% / 0.8), 0 0 24px hsl(120 40% 49% / 0.4); }
+      50% { opacity: 0.7; transform: scale(1.5); box-shadow: 0 0 20px hsl(120 40% 49% / 1), 0 0 36px hsl(120 40% 49% / 0.5); }
+    }
+
+    @keyframes s7CardPulse {
+      0%   { box-shadow: 0 8px 32px hsl(220 55% 32% / 0.25), 0 0 0 1px hsl(120 40% 49% / 0.2); }
+      50%  { box-shadow: 0 8px 48px hsl(220 55% 32% / 0.45), 0 0 0 2px hsl(120 40% 49% / 0.5), 0 0 24px hsl(120 40% 49% / 0.2); }
+      100% { box-shadow: 0 8px 32px hsl(220 55% 32% / 0.25), 0 0 0 1px hsl(120 40% 49% / 0.2); }
+    }
+
+    .s7-closing {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(13px, 1.3vw, 16px);
+      color: hsl(220 20% 50%);
+      text-align: center;
+      margin-top: clamp(24px, 3vw, 40px);
+      opacity: 0;
+    }
+
+    .slide.active .s7-closing {
+      animation: fadeInUp 0.6s ease-out 750ms forwards;
+    }
+
+    .tl-underline {
+      position: relative;
+      white-space: nowrap;
+    }
+
+    .tl-underline::before {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(to right, hsl(220 55% 32%), hsl(220 55% 45%));
+      border-radius: 2px;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+
+    .tl-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: hsl(220 55% 32% / 0.3);
+      filter: blur(6px);
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+
+    .slide.active .tl-underline::before {
+      animation: underlineGrow 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+    }
+
+    .slide.active .tl-underline::after {
+      animation: underlineGrow 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.35s forwards;
     }
 
     /* ===== SLIDE 8 — SETORES ===== */
@@ -2172,107 +2244,106 @@
     </div>
 
     <!-- SLIDE 6 — INFRAESTRUTURA -->
-    <div class="slide slide-light" data-chapter="A Infraestrutura">
-      <h2 class="slide-title anim anim-1">Tudo conectado.<br>Pronto para receber sua operação.</h2>
-      <div class="anim anim-2" style="margin-bottom:24px">
-        <div class="display-number" style="color:var(--zpe-green);font-size:clamp(80px, 12vw, 160px)"><span
-            class="counter-number" data-target="2098">0</span></div>
-        <div class="label-cat">hectares nivelados</div>
+    <div class="slide slide-dark" data-chapter="A Infraestrutura" style="
+      background: hsl(220 55% 8%);
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+    ">
+      <video src="modais.mp4" autoplay loop muted playsinline class="slide-bg-video anim anim-1" style="
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: cover;
+        display: block;
+      "></video>
+    </div>
+
+    <!-- SLIDE CABO — ELLALINK TRANSITION -->
+    <div class="slide" data-chapter="A Infraestrutura" style="padding:0; overflow:hidden; background:hsl(220 55% 4%); position:relative;">
+      <video id="cabo-transition-video" src="transicao_modal_cabo.mp4" muted playsinline
+        style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;">
+      </video>
+      <div class="cabo-content" style="opacity:0; position:absolute; inset:0; z-index:2;
+        display:flex; flex-direction:column; justify-content:flex-end;
+        padding: clamp(48px, 6vw, 96px);
+        background: linear-gradient(to top, hsl(220 55% 4% / 0.92) 0%, hsl(220 55% 4% / 0.6) 40%, transparent 70%);">
+        <div style="display:inline-flex; align-items:center; gap:10px; background:hsl(120 40% 49% / 0.15);
+          border:1px solid hsl(120 40% 49% / 0.4); border-radius:8px; padding:8px 16px; margin-bottom:24px; width:fit-content;">
+          <div style="width:8px;height:8px;border-radius:50%;background:hsl(120 40% 49%);
+            box-shadow:0 0 8px hsl(120 40% 49% / 0.8);"></div>
+          <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;
+            text-transform:uppercase;letter-spacing:0.12em;color:hsl(120 40% 49%);">Cabo Submarino EllaLink — 2027</span>
+        </div>
+        <p style="font-family:'Barlow',sans-serif;font-weight:800;
+          font-size:clamp(28px,3.5vw,52px);color:hsl(0 0% 96%);
+          letter-spacing:-0.02em;line-height:1.2;max-width:800px;margin-bottom:20px;">
+          O Maranhão conectado à internet de alta capacidade global.
+        </p>
+        <p style="font-family:'Inter',sans-serif;font-weight:400;
+          font-size:clamp(15px,1.5vw,19px);color:hsl(0 0% 80%);
+          line-height:1.65;max-width:700px;margin-bottom:12px;">
+          Em 2027, o cabo submarino EllaLink vai conectar o Maranhão à internet de alta capacidade global — a mesma infraestrutura que move as maiores economias do planeta.
+        </p>
+        <p style="font-family:'Inter',sans-serif;font-weight:400;
+          font-size:clamp(14px,1.4vw,17px);color:hsl(194 20% 74%);
+          font-style:italic;line-height:1.6;max-width:700px;">
+          A ZPE de Bacabeira será um dos únicos territórios do Brasil com porto profundo, ferrovia, energia e conectividade submarina no mesmo endereço.
+        </p>
       </div>
-      <div class="infra-grid anim anim-3">
-        <div class="infra-item">
-          <div class="infra-bullet"></div>
-          <div>
-            <div class="infra-item-title">Porto do Itaqui</div>
-            <div class="infra-item-desc">60 km, calado 23m, 34 mi ton (2024)</div>
-          </div>
-        </div>
-        <div class="infra-item">
-          <div class="infra-bullet"></div>
-          <div>
-            <div class="infra-item-title">BR-135 e BR-402</div>
-            <div class="infra-item-desc">acesso direto, 0 km</div>
-          </div>
-        </div>
-        <div class="infra-item">
-          <div class="infra-bullet"></div>
-          <div>
-            <div class="infra-item-title">Ferrovia Carajás</div>
-            <div class="infra-item-desc">3 km, 120 mi ton/ano</div>
-          </div>
-        </div>
-        <div class="infra-item">
-          <div class="infra-bullet"></div>
-          <div>
-            <div class="infra-item-title">Ferrovia Transnordestina</div>
-            <div class="infra-item-desc">700 m</div>
-          </div>
-        </div>
-        <div class="infra-item">
-          <div class="infra-bullet"></div>
-          <div>
-            <div class="infra-item-title">Subestação 500 kV</div>
-            <div class="infra-item-desc">3 km</div>
-          </div>
-        </div>
-        <div class="infra-item">
-          <div class="infra-bullet"></div>
-          <div>
-            <div class="infra-item-title">Rio Itapecuru</div>
-            <div class="infra-item-desc">800 m</div>
-          </div>
-        </div>
-        <div class="infra-item">
-          <div class="infra-bullet"></div>
-          <div>
-            <div class="infra-item-title">Cabo submarino EllaLink</div>
-            <div class="infra-item-desc">conexão direta Europa, baixa latência</div>
-          </div>
-        </div>
-      </div>
-      <p class="infra-closing anim anim-4">Nenhuma outra ZPE brasileira reúne essa convergência de modais em um único
-        sítio.</p>
+    </div>
+
+    <!-- SLIDE CABO-ZPE — TRANSITION VIDEO -->
+    <div class="slide" data-chapter="A Infraestrutura" style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
+      <video id="cabo-zpe-video" src="transicao_cabo_zpe.mp4" muted playsinline preload="auto"
+        style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;">
+      </video>
     </div>
 
     <!-- SLIDE 7 — SEGURANÇA JURÍDICA -->
-    <div class="slide slide-light" data-chapter="A Infraestrutura">
-      <h2 class="slide-title anim anim-1">O projeto avança. Com atos formais.</h2>
-      <div class="timeline-v anim anim-2">
-        <div class="timeline-v-line"></div>
-        <div class="timeline-v-node">
-          <div class="timeline-v-dot"></div>
-          <div class="timeline-v-year">1988</div>
-          <div class="timeline-v-text">Criação do regime original das ZPEs no Brasil</div>
-        </div>
-        <div class="timeline-v-node">
-          <div class="timeline-v-dot"></div>
-          <div class="timeline-v-year">2007</div>
-          <div class="timeline-v-text">Modernização do regime — Lei 11.508</div>
-        </div>
-        <div class="timeline-v-node">
-          <div class="timeline-v-dot"></div>
-          <div class="timeline-v-year">2021</div>
-          <div class="timeline-v-text">Fim do compromisso de 80% de exportação, inclusão de serviços</div>
-        </div>
-        <div class="timeline-v-node">
-          <div class="timeline-v-dot"></div>
-          <div class="timeline-v-year">2024</div>
-          <div class="timeline-v-text">Criação da ZPE Maranhão — Decreto Federal 12.131</div>
-        </div>
-        <div class="timeline-v-node highlight">
-          <div class="timeline-v-dot"></div>
-          <div class="timeline-v-year">Dez/2025</div>
-          <div class="timeline-v-text">Licença Prévia emitida — LP 1085517/2025</div>
-        </div>
-        <div class="timeline-v-node highlight">
-          <div class="timeline-v-dot"></div>
-          <div class="timeline-v-year">Fev/2026</div>
-          <div class="timeline-v-text">Licença de Instalação emitida — LI 1009637/2026</div>
-        </div>
+    <div class="slide slide-light s7-slide" data-chapter="A Infraestrutura">
+      <img src="world_dotted.svg" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.06;filter:invert(1);pointer-events:none;z-index:0;">
+      <div class="s7-top anim anim-1" style="position:relative;z-index:1;">
+        <h2 class="s7-title">O <span class="tl-underline">projeto avança</span>. Com atos formais.</h2>
+        <p class="s7-subtitle">36 anos de evolução legislativa. Os dois últimos marcos são de 2025 e 2026.</p>
       </div>
-      <p class="juridica-closing anim anim-3">Benefícios garantidos por lei federal por 20 anos, prorrogáveis.
-        Fiscalização centralizada pela Receita Federal e pelo CZPE. Sem risco de interpretação divergente em nível
-        estadual.</p>
+      <div class="s7-cards-zone" style="position:relative;z-index:1;">
+        <div class="s7-cards-grid">
+          <div class="s7-card s7-card-anim" style="--card-delay: 100ms">
+            <div class="s7-year">1988</div>
+            <div class="s7-divider"></div>
+            <div class="s7-desc">Criação do regime original das ZPEs no Brasil</div>
+          </div>
+          <div class="s7-card s7-card-anim" style="--card-delay: 200ms">
+            <div class="s7-year">2007</div>
+            <div class="s7-divider"></div>
+            <div class="s7-desc">Modernização do regime — Lei 11.508</div>
+          </div>
+          <div class="s7-card s7-card-anim" style="--card-delay: 300ms">
+            <div class="s7-year">2021</div>
+            <div class="s7-divider"></div>
+            <div class="s7-desc">Fim do compromisso de 80% de exportação, inclusão de serviços</div>
+          </div>
+          <div class="s7-card s7-card-anim" style="--card-delay: 400ms">
+            <div class="s7-year">2024</div>
+            <div class="s7-divider"></div>
+            <div class="s7-desc">Criação da ZPE Maranhão — Decreto Federal 12.131</div>
+          </div>
+          <div class="s7-card s7-card-highlight s7-card-anim" style="--card-delay: 500ms">
+            <div class="s7-active-dot"></div>
+            <div class="s7-year">Dez/2025</div>
+            <div class="s7-divider"></div>
+            <div class="s7-desc">Licença Prévia emitida — LP 1085517/2025</div>
+          </div>
+          <div class="s7-card s7-card-highlight s7-card-anim" style="--card-delay: 600ms">
+            <div class="s7-active-dot"></div>
+            <div class="s7-year">Fev/2026</div>
+            <div class="s7-divider"></div>
+            <div class="s7-desc">Licença de Instalação emitida — LI 1009637/2026</div>
+          </div>
+        </div>
+        <p class="s7-closing">Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada pela Receita Federal e pelo CZPE.</p>
+      </div>
     </div>
 
     <!-- SLIDE 8 — SETORES -->
@@ -2461,7 +2532,7 @@
     const totalSlides = slides.length;
     let currentSlide = 0;
     let isTransitioning = false;
-    const CHAPTERS = ['Capa', 'O Problema', 'O Problema', 'O Problema', 'O Impacto Financeiro', 'O Impacto Financeiro', 'A Infraestrutura', 'A Infraestrutura', 'Setores e Oportunidade', 'Setores e Oportunidade', 'Próximos Passos', 'Próximos Passos'];
+    const CHAPTERS = ['Capa', 'O Problema', 'O Problema', 'O Problema', 'O Impacto Financeiro', 'O Impacto Financeiro', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'Setores e Oportunidade', 'Setores e Oportunidade', 'Próximos Passos', 'Próximos Passos'];
 
     // ===== HUD SETUP =====
     const hud = document.getElementById('hud');
@@ -2516,10 +2587,46 @@
       oldSlide.classList.remove('active');
       oldSlide.classList.add('slide-exit');
 
+      // Fade out modais.mp4 when leaving the infrastructure slide
+      const modaisVideo = oldSlide.querySelector('.slide-bg-video');
+      if (modaisVideo) {
+        modaisVideo.style.transition = 'opacity 300ms ease';
+        modaisVideo.style.opacity = '0';
+        setTimeout(() => {
+          modaisVideo.pause();
+          modaisVideo.style.opacity = '1';
+          modaisVideo.style.transition = '';
+        }, 350);
+      }
+
+      // Fade out and reset cabo-zpe video when leaving
+      const caboZpeVidOld = oldSlide.querySelector('#cabo-zpe-video');
+      if (caboZpeVidOld) {
+        caboZpeVidOld.style.transition = 'opacity 300ms ease';
+        caboZpeVidOld.style.opacity = '0';
+        setTimeout(() => {
+          caboZpeVidOld.pause();
+          caboZpeVidOld.currentTime = 0;
+          caboZpeVidOld.style.opacity = '0';
+          caboZpeVidOld.style.transition = 'opacity 600ms ease';
+        }, 350);
+      }
+
       setTimeout(() => {
         oldSlide.classList.remove('slide-exit');
         oldSlide.style.opacity = '0';
         oldSlide.style.pointerEvents = 'none';
+        // Reset cabo slide when leaving it
+        const caboVidOld = oldSlide.querySelector('#cabo-transition-video');
+        if (caboVidOld) {
+          caboVidOld.pause();
+          caboVidOld.currentTime = 0;
+          const caboContentOld = oldSlide.querySelector('.cabo-content');
+          if (caboContentOld) {
+            caboContentOld.style.transition = '';
+            caboContentOld.style.opacity = '0';
+          }
+        }
       }, 350);
 
       setTimeout(() => {
@@ -2551,6 +2658,36 @@
         document.querySelectorAll('.slide video.slide-bg-video').forEach(v => v.pause());
         const activeVideo = newSlide.querySelector('video.slide-bg-video');
         if (activeVideo) activeVideo.play();
+
+        // Cabo transition video logic
+        const caboVid = newSlide.querySelector('#cabo-transition-video');
+        if (caboVid) {
+          caboVid.style.opacity = '0';
+          caboVid.style.transition = 'opacity 600ms ease';
+          caboVid.play();
+          setTimeout(() => {
+            caboVid.style.opacity = '1';
+          }, 50);
+          caboVid.addEventListener('ended', function onCaboEnded() {
+            caboVid.removeEventListener('ended', onCaboEnded);
+            const caboContent = newSlide.querySelector('.cabo-content');
+            if (caboContent) {
+              caboContent.style.transition = 'opacity 800ms ease';
+              caboContent.style.opacity = '1';
+            }
+          });
+        }
+
+        // Cabo-ZPE transition video logic
+        const caboZpeVideo = newSlide.querySelector('#cabo-zpe-video');
+        if (caboZpeVideo) {
+          caboZpeVideo.style.opacity = '0';
+          caboZpeVideo.style.transition = 'opacity 600ms ease';
+          caboZpeVideo.play().catch(() => {});
+          setTimeout(() => {
+            caboZpeVideo.style.opacity = '1';
+          }, 50);
+        }
       }, 100);
     }
 
