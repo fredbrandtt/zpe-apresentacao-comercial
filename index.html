@@ -1005,7 +1005,7 @@
     .s7-subtitle {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: 15px;
+      font-size: clamp(14px, 1.4vw, 17px);
       color: hsl(220 20% 45%);
       margin: 0;
       text-align: center;
@@ -1031,7 +1031,7 @@
       box-shadow: 0 4px 24px hsl(220 55% 32% / 0.1);
       border: 1px solid hsl(220 20% 92%);
       border-top: 3px solid hsl(220 55% 32% / 0.15);
-      padding: 32px 24px;
+      padding: clamp(28px, 3vh, 40px) clamp(24px, 2.5vw, 32px);
       position: relative;
       opacity: 0;
     }
@@ -1048,7 +1048,7 @@
     .s7-year {
       font-family: 'Barlow', sans-serif;
       font-weight: 800;
-      font-size: clamp(28px, 3vw, 42px);
+      font-size: clamp(32px, 3.5vw, 48px);
       color: hsl(220 55% 32%);
       line-height: 1.1;
     }
@@ -1057,15 +1057,15 @@
       width: 32px;
       height: 2px;
       background: hsl(220 20% 88%);
-      margin: 12px 0;
+      margin: 16px 0;
     }
 
     .s7-desc {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: clamp(12px, 1.1vw, 14px);
+      font-size: clamp(14px, 1.4vw, 17px);
       color: hsl(220 20% 45%);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .s7-card-highlight {
@@ -1073,7 +1073,7 @@
       border: 1px solid hsl(120 40% 49% / 0.25);
       border-top: 3px solid hsl(120 40% 49%);
       box-shadow: 0 12px 40px hsl(220 55% 20% / 0.35), 0 0 0 1px hsl(120 40% 49% / 0.25);
-      padding: 32px 24px;
+      padding: clamp(28px, 3vh, 40px) clamp(24px, 2.5vw, 32px);
     }
 
     .s7-card-highlight .s7-year {
@@ -1086,6 +1086,7 @@
 
     .s7-card-highlight .s7-desc {
       font-weight: 600;
+      font-size: clamp(14px, 1.4vw, 17px);
       color: white;
     }
 
@@ -1118,7 +1119,7 @@
     .s7-closing {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: clamp(13px, 1.3vw, 16px);
+      font-size: clamp(14px, 1.4vw, 17px);
       color: hsl(220 20% 50%);
       text-align: center;
       margin-top: clamp(24px, 3vw, 40px);
