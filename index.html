@@ -1293,54 +1293,158 @@
     }
 
     /* ===== SLIDE 10 — COMO INSTALAR ===== */
-    .instalar-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 4vw, 64px);
-      max-width: 900px;
+    .slide-caminho {
+      padding: 0 !important;
+      flex-direction: row !important;
+      justify-content: stretch !important;
+      align-items: stretch !important;
     }
 
-    .fase-title {
+    .s10-half {
+      position: relative;
+      flex: 0 0 50%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(48px, 6vw, 80px);
+      overflow: hidden;
+    }
+
+    .s10-left  { background: hsl(220 55% 20%); }
+    .s10-right { background: hsl(0 0% 97%); }
+
+    .s10-world-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .s10-left  .s10-world-bg { opacity: 0.08; }
+    .s10-right .s10-world-bg { opacity: 0.05; }
+
+    .s10-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .s10-label {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .s10-left  .s10-label { color: hsl(120 40% 49%); }
+    .s10-right .s10-label { color: hsl(220 55% 32%); }
+
+    .s10-divider {
+      height: 1px;
+      margin: 16px 0 40px;
+    }
+
+    .s10-left  .s10-divider { background: hsl(0 0% 100% / 0.15); }
+    .s10-right .s10-divider { background: hsl(220 55% 32% / 0.15); }
+
+    .s10-steps {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(28px, 3.5vh, 44px);
+    }
+
+    .s10-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+    }
+
+    .s10-step-num {
       font-family: 'Barlow', sans-serif;
       font-weight: 800;
-      font-size: clamp(48px, 5vw, 72px);
-      color: hsl(120, 40%, 49%, 0.15);
+      font-size: clamp(28px, 2.5vw, 36px);
       line-height: 1;
-      margin-bottom: 16px;
+      flex: 0 0 48px;
+      width: 48px;
+      padding-right: 20px;
+      margin-right: 24px;
+      align-self: flex-start;
     }
 
-    .fase-header {
+    .s10-left  .s10-step-num {
+      color: hsl(120 40% 49%);
+      border-right: 2px solid hsl(120 40% 49% / 0.30);
+    }
+    .s10-right .s10-step-num {
+      color: hsl(220 55% 32%);
+      border-right: 2px solid hsl(220 55% 32% / 0.30);
+    }
+
+    .s10-step-body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .s10-step-title {
       font-family: 'Barlow', sans-serif;
       font-weight: 700;
-      font-size: 20px;
-      color: var(--zpe-blue);
-      margin-bottom: 24px;
+      font-size: clamp(20px, 2vw, 26px);
     }
 
-    .fase-step {
-      margin-bottom: 20px;
+    .s10-left  .s10-step-title { color: hsl(0 0% 100%); }
+    .s10-right .s10-step-title { color: hsl(220 55% 20%); }
+
+    .s10-step-desc {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(14px, 1.4vw, 16px);
+      line-height: 1.55;
+      margin-top: 6px;
     }
 
-    .fase-step-num {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: 14px;
-      color: var(--zpe-green);
-      margin-bottom: 2px;
+    .s10-left  .s10-step-desc { color: hsl(0 0% 100% / 0.65); }
+    .s10-right .s10-step-desc { color: hsl(220 20% 45%); }
+
+    .s10-footer {
+      position: absolute;
+      bottom: clamp(24px, 3vh, 40px);
+      left: clamp(48px, 6vw, 80px);
+      right: clamp(48px, 6vw, 80px);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      color: hsl(220 20% 55%);
+      z-index: 1;
     }
 
-    .fase-step-title {
-      font-family: 'Barlow', sans-serif;
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--zpe-blue);
-      margin-bottom: 4px;
+    .s10-connector {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      width: 48px;
+      height: 48px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px hsl(0 0% 0% / 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: hsl(120 40% 49%);
+      font-size: 32px;
+      line-height: 1;
+      pointer-events: none;
     }
 
-    .fase-step-desc {
-      font-size: 13px;
-      color: hsl(220, 30%, 45%);
-      line-height: 1.5;
+    /* S10 animation system */
+    .s10-anim { opacity: 0; }
+
+    .slide.active .s10-anim {
+      animation: fadeInUp 0.6s ease-out var(--s10-delay, 0ms) forwards;
     }
 
     /* ===== SLIDE 11 — CTA ===== */
@@ -2300,6 +2404,72 @@
       </video>
     </div>
 
+    <!-- SLIDE GPS-ZPE — TRANSITION VIDEO + CONTENT -->
+    <div class="slide" data-chapter="A Infraestrutura" style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
+      <video id="gps-zpe-video" src="transicao_gps_zpe.mp4" muted playsinline
+        style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; opacity:0; transition: opacity 600ms ease;">
+      </video>
+      <img id="gps-final-img" src="zpe_3d.jpg"
+        style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+        z-index:1; opacity:0; transition: opacity 800ms ease;">
+      <div id="gps-content" style="opacity:1; position:absolute; inset:0; z-index:2;
+        display:flex; flex-direction:column; justify-content:flex-end;
+        padding: clamp(48px, 6vw, 96px);
+        background: linear-gradient(to top,
+          hsl(220 55% 4% / 0.98) 0%,
+          hsl(220 55% 4% / 0.85) 30%,
+          hsl(220 55% 4% / 0.4) 55%,
+          transparent 75%);">
+        <div id="gps-badge" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
+          display:inline-flex; align-items:center; gap:8px;
+          background: hsl(120 40% 49% / 0.12); border: 1px solid hsl(120 40% 49% / 0.35);
+          border-radius: 8px; padding: 7px 14px; margin-bottom: 20px; width: fit-content;">
+          <div style="width:7px;height:7px;border-radius:50%;background:hsl(120 40% 49%);
+            box-shadow:0 0 8px hsl(120 40% 49%);animation:pulse 2s infinite;"></div>
+          <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:12px;
+            text-transform:uppercase;letter-spacing:0.14em;color:hsl(120 40% 49%);">Demanda ativa</span>
+        </div>
+        <h2 id="gps-title" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
+          font-family:'Barlow',sans-serif;font-weight:800;
+          font-size:clamp(52px,7vw,96px);color:hsl(0 0% 96%);
+          letter-spacing:-0.03em;line-height:1.0;margin-bottom:clamp(32px,4vh,48px);">
+          O momento é agora.
+        </h2>
+        <div id="gps-indicators" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
+          display:flex; align-items:center; gap:0; margin-bottom:0;">
+          <div style="display:flex;flex-direction:column;gap:6px;padding-right:48px;">
+            <span style="font-family:'Barlow',sans-serif;font-weight:800;
+              font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">+50%</span>
+            <span style="font-family:'Inter',sans-serif;font-weight:400;
+              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;">
+              da área já pré-reservada</span>
+          </div>
+          <div style="width:1px;height:80px;background:hsl(0 0% 100% / 0.12);margin-right:48px;flex-shrink:0;"></div>
+          <div style="display:flex;flex-direction:column;gap:6px;padding-right:48px;">
+            <span style="font-family:'Barlow',sans-serif;font-weight:800;
+              font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">8</span>
+            <span style="font-family:'Inter',sans-serif;font-weight:400;
+              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;">
+              projetos em processo de aprovação</span>
+          </div>
+          <div style="width:1px;height:80px;background:hsl(0 0% 100% / 0.12);margin-right:48px;flex-shrink:0;"></div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <span style="font-family:'Barlow',sans-serif;font-weight:800;
+              font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">3</span>
+            <span style="font-family:'Inter',sans-serif;font-weight:400;
+              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;">
+              projetos aprovados</span>
+          </div>
+        </div>
+        <p id="gps-closing" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
+          font-family:'Inter',sans-serif;font-weight:400;font-style:italic;
+          font-size:clamp(15px,1.5vw,19px);color:hsl(194 20% 74%);line-height:1.6;max-width:700px;
+          margin-top:clamp(24px,3vh,36px);">
+          2.098 hectares totalmente terraplanados e prontos para instalação imediata.
+        </p>
+      </div>
+    </div>
+
     <!-- SLIDE 7 — SEGURANÇA JURÍDICA -->
     <div class="slide slide-light s7-slide" data-chapter="A Infraestrutura">
       <img src="world_dotted.svg" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.06;filter:invert(1);pointer-events:none;z-index:0;">
@@ -2346,120 +2516,77 @@
       </div>
     </div>
 
-    <!-- SLIDE 8 — SETORES -->
-    <div class="slide slide-dark-data dot-grid" data-chapter="Setores e Oportunidade">
-      <h2 class="slide-title anim anim-1">O momento é agora.</h2>
-      <div class="setores-grid">
-        <div class="card-dark setor-card anim anim-2">
-          <div class="setor-number">44 mi</div>
-          <div class="setor-label">Fertilizantes (ton/ano)</div>
-          <p class="setor-text">Brasil importa 44 mi ton/ano. Dependência externa de 80%, com 97% do potássio importado
-            e 40% vindo da Rússia. A reconfiguração geopolítica das cadeias de suprimento torna urgente a produção
-            local.</p>
-        </div>
-        <div class="card-dark setor-card anim anim-3">
-          <div class="setor-number">US$ 12</div>
-          <div class="setor-label">Agroindustrial (/kg)</div>
-          <p class="setor-text">MATOPIBA produz 32 mi ton de grãos por safra com área plantada crescendo 8,3% ao ano.
-            Grande parte exportada como commodity bruta. O caju que sai a US$ 2/kg pode ser exportado a US$ 12/kg
-            processado.</p>
-        </div>
-        <div class="card-dark setor-card anim anim-4">
-          <div class="setor-number">40-60%</div>
-          <div class="setor-label">Serviços e Tecnologia</div>
-          <p class="setor-text">96% dos CEOs globais avaliam relocalização por proximidade. Com fuso GMT-3, custo
-            operacional 40 a 60% abaixo de centros como Bangalore e Dublin, e liberdade cambial total, o Maranhão é a
-            escolha natural.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SLIDE 9 — PIPELINE -->
-    <div class="slide slide-dark-data" data-chapter="Setores e Oportunidade">
-      <h2 class="slide-title anim anim-1">A demanda cresce. A área é finita.</h2>
-      <div class="pipeline-indicators anim anim-2">
-        <div class="pipeline-indicator">
-          <div class="pi-number">[X]</div>
-          <div class="pi-label">Pré-projetos recebidos</div>
-        </div>
-        <div class="pipeline-indicator">
-          <div class="pi-number">[X]</div>
-          <div class="pi-label">Em análise técnica</div>
-        </div>
-        <div class="pipeline-indicator">
-          <div class="pi-number">[X]</div>
-          <div class="pi-label">Projetos aprovados</div>
-        </div>
-      </div>
-      <div class="anim anim-3">
-        <div class="planta-schema">
-          <div class="planta-block planta-blue"></div>
-          <div class="planta-block planta-blue" style="height:80%"></div>
-          <div class="planta-block planta-green"></div>
-          <div class="planta-block planta-green" style="height:75%"></div>
-          <div class="planta-block planta-blue" style="height:50%"></div>
-          <div class="planta-block planta-green" style="height:90%"></div>
-          <div class="planta-block planta-green" style="height:60%"></div>
-          <div class="planta-block planta-blue" style="height:45%"></div>
-        </div>
-        <div class="planta-legend">
-          <div class="planta-legend-item">
-            <div class="planta-legend-sq blue"></div>Área em pré-reserva
-          </div>
-          <div class="planta-legend-item">
-            <div class="planta-legend-sq green"></div>Área disponível
-          </div>
-        </div>
-      </div>
-      <p class="pipeline-closing anim anim-4">2.098 hectares. Projetos de diferentes setores já em avaliação.</p>
-    </div>
-
     <!-- SLIDE 10 — COMO INSTALAR -->
-    <div class="slide slide-light" data-chapter="Próximos Passos">
-      <h2 class="slide-title anim anim-1">O caminho é claro.</h2>
-      <div class="instalar-layout anim anim-2">
-        <div>
-          <div class="fase-title">01</div>
-          <div class="fase-header">Fase 1</div>
-          <div class="fase-step">
-            <div class="fase-step-num">1</div>
-            <div class="fase-step-title">Manifestação Digital</div>
-            <div class="fase-step-desc">preenchimento do formulário Quero Investir para qualificação imediata</div>
-          </div>
-          <div class="fase-step">
-            <div class="fase-step-num">2</div>
-            <div class="fase-step-title">Pré-projeto ZPE</div>
-            <div class="fase-step-desc">elaboração do projeto preliminar com informações mínimas conforme requisitos
-              legais</div>
-          </div>
-          <div class="fase-step">
-            <div class="fase-step-num">3</div>
-            <div class="fase-step-title">Pré-Reserva e Precificação</div>
-            <div class="fase-step-desc">reserva de área e definição inicial de cronograma e preços</div>
-          </div>
-        </div>
-        <div>
-          <div class="fase-title">02</div>
-          <div class="fase-header">Fase 2</div>
-          <div class="fase-step">
-            <div class="fase-step-num">4</div>
-            <div class="fase-step-title">Projeto Técnico ZPE</div>
-            <div class="fase-step-desc">análise detalhada do projeto para implantação na área</div>
-          </div>
-          <div class="fase-step">
-            <div class="fase-step-num">5</div>
-            <div class="fase-step-title">Aprovação CZPE</div>
-            <div class="fase-step-desc">aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação</div>
-          </div>
-          <div class="fase-step">
-            <div class="fase-step-num">6</div>
-            <div class="fase-step-title">Contrato ZPE</div>
-            <div class="fase-step-desc">celebração do Contrato de Cessão de Uso Onerosa da área</div>
+    <div class="slide slide-caminho" data-chapter="Próximos Passos">
+
+      <!-- Metade esquerda — Fase 1 -->
+      <div class="s10-half s10-left">
+        <img src="world_dotted.svg" class="s10-world-bg" alt="">
+        <div class="s10-content">
+          <div class="s10-label s10-anim" style="--s10-delay: 0ms">FASE 1</div>
+          <div class="s10-divider s10-anim" style="--s10-delay: 0ms"></div>
+          <div class="s10-steps">
+            <div class="s10-step s10-anim" style="--s10-delay: 100ms">
+              <div class="s10-step-num">1</div>
+              <div class="s10-step-body">
+                <div class="s10-step-title">Manifestação Digital</div>
+                <div class="s10-step-desc">preenchimento do formulário Quero Investir para qualificação imediata</div>
+              </div>
+            </div>
+            <div class="s10-step s10-anim" style="--s10-delay: 200ms">
+              <div class="s10-step-num">2</div>
+              <div class="s10-step-body">
+                <div class="s10-step-title">Pré-projeto ZPE</div>
+                <div class="s10-step-desc">elaboração do projeto preliminar com informações mínimas conforme requisitos legais</div>
+              </div>
+            </div>
+            <div class="s10-step s10-anim" style="--s10-delay: 300ms">
+              <div class="s10-step-num">3</div>
+              <div class="s10-step-body">
+                <div class="s10-step-title">Pré-Reserva e Precificação</div>
+                <div class="s10-step-desc">reserva de área e definição inicial de cronograma e preços</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <p class="text-foot anim anim-3" style="margin-top:24px">Cada projeto é analisado individualmente. Prazos variam
-        conforme complexidade e documentação.</p>
+
+      <!-- Metade direita — Fase 2 -->
+      <div class="s10-half s10-right">
+        <img src="world_dotted.svg" class="s10-world-bg" alt="">
+        <div class="s10-content">
+          <div class="s10-label s10-anim" style="--s10-delay: 200ms">FASE 2</div>
+          <div class="s10-divider s10-anim" style="--s10-delay: 200ms"></div>
+          <div class="s10-steps">
+            <div class="s10-step s10-anim" style="--s10-delay: 350ms">
+              <div class="s10-step-num">4</div>
+              <div class="s10-step-body">
+                <div class="s10-step-title">Projeto Técnico ZPE</div>
+                <div class="s10-step-desc">análise detalhada do projeto para implantação na área</div>
+              </div>
+            </div>
+            <div class="s10-step s10-anim" style="--s10-delay: 450ms">
+              <div class="s10-step-num">5</div>
+              <div class="s10-step-body">
+                <div class="s10-step-title">Aprovação CZPE</div>
+                <div class="s10-step-desc">aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação</div>
+              </div>
+            </div>
+            <div class="s10-step s10-anim" style="--s10-delay: 550ms">
+              <div class="s10-step-num">6</div>
+              <div class="s10-step-body">
+                <div class="s10-step-title">Contrato ZPE</div>
+                <div class="s10-step-desc">celebração do Contrato de Cessão de Uso Onerosa da área</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="s10-footer s10-anim" style="--s10-delay: 600ms">Cada projeto é analisado individualmente. Prazos variam conforme complexidade e documentação.</div>
+      </div>
+
+      <!-- Conector visual entre as metades -->
+      <div class="s10-connector">›</div>
+
     </div>
 
     <!-- SLIDE 11 — CTA -->
@@ -2532,7 +2659,7 @@
     const totalSlides = slides.length;
     let currentSlide = 0;
     let isTransitioning = false;
-    const CHAPTERS = ['Capa', 'O Problema', 'O Problema', 'O Problema', 'O Impacto Financeiro', 'O Impacto Financeiro', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'Setores e Oportunidade', 'Setores e Oportunidade', 'Próximos Passos', 'Próximos Passos'];
+    const CHAPTERS = ['Capa', 'O Problema', 'O Problema', 'O Problema', 'O Impacto Financeiro', 'O Impacto Financeiro', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'Próximos Passos', 'Próximos Passos'];
 
     // ===== HUD SETUP =====
     const hud = document.getElementById('hud');
@@ -2612,6 +2739,27 @@
         }, 350);
       }
 
+      // Fade out and reset gps-zpe video when leaving
+      const gpsZpeVidOld = oldSlide.querySelector('#gps-zpe-video');
+      if (gpsZpeVidOld) {
+        gpsZpeVidOld.style.transition = 'opacity 300ms ease';
+        gpsZpeVidOld.style.opacity = '0';
+        // Reset final image
+        const gpsFinalImg = document.getElementById('gps-final-img');
+        if (gpsFinalImg) gpsFinalImg.style.opacity = '0';
+        // Reset stagger elements
+        ['gps-badge','gps-title','gps-indicators','gps-closing'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; }
+        });
+        setTimeout(() => {
+          gpsZpeVidOld.pause();
+          gpsZpeVidOld.currentTime = 0;
+          gpsZpeVidOld.style.opacity = '1';
+          gpsZpeVidOld.style.transition = 'opacity 600ms ease';
+        }, 350);
+      }
+
       setTimeout(() => {
         oldSlide.classList.remove('slide-exit');
         oldSlide.style.opacity = '0';
@@ -2631,7 +2779,7 @@
 
       setTimeout(() => {
         // Reset all animations before reactivating
-        newSlide.querySelectorAll('.anim, .anim-1, .anim-2, .anim-3, .anim-4, .anim-5, .anim-6, .anim-7, .anim-8, .anim-foot, .capa-logo, .capa-slogan, .capa-line, .capa-footer-logos, .timeline-v-node, .route-line, .route-card, .route-chip').forEach(el => {
+        newSlide.querySelectorAll('.anim, .anim-1, .anim-2, .anim-3, .anim-4, .anim-5, .anim-6, .anim-7, .anim-8, .anim-foot, .capa-logo, .capa-slogan, .capa-line, .capa-footer-logos, .timeline-v-node, .route-line, .route-card, .route-chip, .s10-anim').forEach(el => {
           el.style.animation = 'none';
           el.offsetHeight; // force reflow
           el.style.animation = '';
@@ -2687,6 +2835,29 @@
           setTimeout(() => {
             caboZpeVideo.style.opacity = '1';
           }, 50);
+        }
+
+        // GPS-ZPE transition video logic
+        const gpsVideo = newSlide.querySelector('#gps-zpe-video');
+        if (gpsVideo) {
+          gpsVideo.currentTime = 0;
+          gpsVideo.style.opacity = '0';
+          gpsVideo.play().catch(() => {});
+          setTimeout(() => { gpsVideo.style.opacity = '1'; }, 50);
+          gpsVideo.addEventListener('ended', function onEnded() {
+            gpsVideo.removeEventListener('ended', onEnded);
+            // Swap to high-quality final frame
+            document.getElementById('gps-final-img').style.opacity = '1';
+            // Stagger content elements in
+            const badge = document.getElementById('gps-badge');
+            const title = document.getElementById('gps-title');
+            const indicators = document.getElementById('gps-indicators');
+            const closing = document.getElementById('gps-closing');
+            setTimeout(() => { badge.style.opacity = '1'; badge.style.transform = 'translateY(0)'; }, 0);
+            setTimeout(() => { title.style.opacity = '1'; title.style.transform = 'translateY(0)'; }, 150);
+            setTimeout(() => { indicators.style.opacity = '1'; indicators.style.transform = 'translateY(0)'; }, 350);
+            setTimeout(() => { closing.style.opacity = '1'; closing.style.transform = 'translateY(0)'; }, 600);
+          });
         }
       }, 100);
     }
