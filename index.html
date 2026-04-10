@@ -74,7 +74,8 @@
       transition: none;
     }
 
-    @media (max-width: 1200px), (max-height: 768px) {
+    @media (max-width: 1200px),
+    (max-height: 768px) {
       .slide {
         overflow-y: auto;
         overflow-x: hidden;
@@ -570,29 +571,58 @@
     }
 
     /* ===== SLIDE 3 — A SOLUÇÃO ===== */
-    .solucao-layout {
-      display: flex;
-      gap: clamp(32px, 4vw, 64px);
-      align-items: stretch;
-      flex: 1;
-      min-height: 0;
+
+    /* Container principal: grade duas colunas, altura fixa = 100vh */
+    .slide-solucao {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-template-rows: 1fr !important;
+      gap: clamp(24px, 3vw, 56px) !important;
+      padding: clamp(32px, 5vh, 64px) clamp(40px, 5vw, 80px) !important;
+      align-items: stretch !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+      justify-content: unset !important;
+      flex-direction: unset !important;
     }
 
-    .solucao-left {
-      flex: 0 0 50%;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* Coluna esquerda: título + subtítulo + mapa em coluna */
+    .slide-solucao .solucao-left {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      gap: clamp(12px, 2vh, 24px) !important;
+      min-height: 0 !important;
+      overflow: hidden !important;
+      flex: unset !important;
+      position: static !important;
+      align-items: unset !important;
     }
 
-    .solucao-right {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr;
-      gap: clamp(12px, 1.5vw, 20px);
-      align-content: center;
+    .slide-solucao .slide-title {
+      font-size: clamp(2rem, 4.5vh, 4.5rem) !important;
+      line-height: 1.05 !important;
+      font-weight: 800 !important;
+      margin-bottom: 0 !important;
+      flex-shrink: 0 !important;
+    }
+
+    .slide-solucao .solucao-subtitle {
+      font-size: clamp(0.85rem, 1.6vh, 1rem) !important;
+      margin: 0 !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Mapa ocupa o espaço restante da coluna esquerda */
+    .slide-solucao .solucao-map-container {
+      flex: 1 !important;
+      min-height: 0 !important;
+      max-width: unset !important;
+      width: 100% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      position: relative !important;
     }
 
     .solucao-subtitle {
@@ -600,14 +630,6 @@
       font-weight: 700;
       font-size: 16px;
       color: var(--zpe-green);
-      margin-top: -0.5em;
-      margin-bottom: 1.5em;
-    }
-
-    .solucao-map-container {
-      position: relative;
-      width: 100%;
-      max-width: 450px;
     }
 
     .solucao-world-bg {
@@ -622,14 +644,31 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
+      filter: grayscale(100%) brightness(1.5) opacity(0.3);
+      mix-blend-mode: normal;
     }
 
-    .solucao-map-img {
-      width: 100%;
+    .slide-solucao .solucao-map-img {
+      max-height: 100% !important;
+      max-width: 100% !important;
+      width: auto !important;
+      height: auto !important;
+      object-fit: contain !important;
       border-radius: 16px;
       position: relative;
       z-index: 1;
       mix-blend-mode: multiply;
+    }
+
+    .solucao-map-container {
+      background: white !important;
+      border-radius: 16px;
+    }
+
+    :fullscreen .solucao-map-container,
+    :-webkit-full-screen .solucao-map-container,
+    :-moz-full-screen .solucao-map-container {
+      background: white !important;
     }
 
     /* Pin pulsante */
@@ -730,7 +769,19 @@
       line-height: 1.3;
     }
 
-    /* Solution cards */
+    /* Coluna direita: grade 2×3 de cards */
+    .slide-solucao .solucao-right {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-rows: repeat(3, 1fr) !important;
+      gap: clamp(10px, 1.5vh, 16px) !important;
+      height: 100% !important;
+      min-height: 0 !important;
+      align-content: stretch !important;
+      flex: unset !important;
+    }
+
+    /* Solution cards — base */
     .sol-card {
       display: flex;
       flex-direction: column;
@@ -762,6 +813,67 @@
       font-size: clamp(14px, 1.3vw, 16px);
       line-height: 1.6;
       color: hsl(220, 20%, 40%);
+    }
+
+    /* Solution cards — overrides dentro do slide-solucao */
+    .slide-solucao .sol-card {
+      padding: clamp(18px, 2.5vh, 30px) clamp(18px, 2vw, 26px) !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      gap: clamp(6px, 1vh, 10px) !important;
+      overflow: hidden !important;
+      min-height: 0 !important;
+    }
+
+    .slide-solucao .sol-card .sol-icon {
+      width: clamp(28px, 3.2vh, 38px) !important;
+      height: clamp(28px, 3.2vh, 38px) !important;
+      flex-shrink: 0 !important;
+      margin-bottom: 4px !important;
+    }
+
+    .slide-solucao .sol-card h3 {
+      font-size: clamp(1.3rem, 2.5vh, 1.7rem) !important;
+      font-weight: 700 !important;
+      line-height: 1.2 !important;
+      margin: 0 0 6px 0 !important;
+    }
+
+    .slide-solucao .sol-card p {
+      font-size: clamp(0.95rem, 1.7vh, 1.15rem) !important;
+      line-height: 1.55 !important;
+      margin: 0 !important;
+    }
+
+    /* Tablet (iPad Air — até 1024px) */
+    @media (max-width: 1024px) {
+      .slide-solucao {
+        grid-template-columns: 1fr 1fr !important;
+        padding: 24px 28px !important;
+        gap: 20px !important;
+      }
+
+      .slide-solucao .slide-title {
+        font-size: clamp(1.6rem, 3.5vh, 2.8rem) !important;
+      }
+
+      .slide-solucao .solucao-right {
+        gap: 8px !important;
+      }
+
+      .slide-solucao .sol-card {
+        padding: 14px 14px !important;
+        gap: 6px !important;
+        justify-content: center !important;
+      }
+
+      .slide-solucao .sol-card h3 {
+        font-size: clamp(1.05rem, 2vh, 1.35rem) !important;
+      }
+
+      .slide-solucao .sol-card p {
+        font-size: clamp(0.88rem, 1.5vh, 1.05rem) !important;
+      }
     }
 
     /* ===== SLIDE 4 — IMPACTO TRIBUTÁRIO ===== */
@@ -1055,7 +1167,7 @@
 
     .slide.active .s7-card-highlight.s7-card-anim {
       animation: fadeInUp 0.6s ease-out var(--card-delay, 500ms) forwards,
-                 s7CardPulse 0.8s ease-in-out 1000ms 1;
+        s7CardPulse 0.8s ease-in-out 1000ms 1;
     }
 
     .s7-year {
@@ -1119,14 +1231,33 @@
     }
 
     @keyframes s7DotPulse {
-      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 12px hsl(120 40% 49% / 0.8), 0 0 24px hsl(120 40% 49% / 0.4); }
-      50% { opacity: 0.7; transform: scale(1.5); box-shadow: 0 0 20px hsl(120 40% 49% / 1), 0 0 36px hsl(120 40% 49% / 0.5); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+        box-shadow: 0 0 12px hsl(120 40% 49% / 0.8), 0 0 24px hsl(120 40% 49% / 0.4);
+      }
+
+      50% {
+        opacity: 0.7;
+        transform: scale(1.5);
+        box-shadow: 0 0 20px hsl(120 40% 49% / 1), 0 0 36px hsl(120 40% 49% / 0.5);
+      }
     }
 
     @keyframes s7CardPulse {
-      0%   { box-shadow: 0 8px 32px hsl(220 55% 32% / 0.25), 0 0 0 1px hsl(120 40% 49% / 0.2); }
-      50%  { box-shadow: 0 8px 48px hsl(220 55% 32% / 0.45), 0 0 0 2px hsl(120 40% 49% / 0.5), 0 0 24px hsl(120 40% 49% / 0.2); }
-      100% { box-shadow: 0 8px 32px hsl(220 55% 32% / 0.25), 0 0 0 1px hsl(120 40% 49% / 0.2); }
+      0% {
+        box-shadow: 0 8px 32px hsl(220 55% 32% / 0.25), 0 0 0 1px hsl(120 40% 49% / 0.2);
+      }
+
+      50% {
+        box-shadow: 0 8px 48px hsl(220 55% 32% / 0.45), 0 0 0 2px hsl(120 40% 49% / 0.5), 0 0 24px hsl(120 40% 49% / 0.2);
+      }
+
+      100% {
+        box-shadow: 0 8px 32px hsl(220 55% 32% / 0.25), 0 0 0 1px hsl(120 40% 49% / 0.2);
+      }
     }
 
     .s7-closing {
@@ -1325,8 +1456,13 @@
       overflow: hidden;
     }
 
-    .s10-left  { background: hsl(220 55% 20%); }
-    .s10-right { background: hsl(0 0% 97%); }
+    .s10-left {
+      background: hsl(220 55% 20%);
+    }
+
+    .s10-right {
+      background: hsl(0 0% 97%);
+    }
 
     .s10-world-bg {
       position: absolute;
@@ -1337,8 +1473,13 @@
       pointer-events: none;
     }
 
-    .s10-left  .s10-world-bg { opacity: 0.08; }
-    .s10-right .s10-world-bg { opacity: 0.05; }
+    .s10-left .s10-world-bg {
+      opacity: 0.08;
+    }
+
+    .s10-right .s10-world-bg {
+      opacity: 0.05;
+    }
 
     .s10-content {
       position: relative;
@@ -1353,16 +1494,26 @@
       letter-spacing: 0.2em;
     }
 
-    .s10-left  .s10-label { color: hsl(120 40% 49%); }
-    .s10-right .s10-label { color: hsl(220 55% 32%); }
+    .s10-left .s10-label {
+      color: hsl(120 40% 49%);
+    }
+
+    .s10-right .s10-label {
+      color: hsl(220 55% 32%);
+    }
 
     .s10-divider {
       height: 1px;
       margin: 16px 0 40px;
     }
 
-    .s10-left  .s10-divider { background: hsl(0 0% 100% / 0.15); }
-    .s10-right .s10-divider { background: hsl(220 55% 32% / 0.15); }
+    .s10-left .s10-divider {
+      background: hsl(0 0% 100% / 0.15);
+    }
+
+    .s10-right .s10-divider {
+      background: hsl(220 55% 32% / 0.15);
+    }
 
     .s10-steps {
       display: flex;
@@ -1401,8 +1552,13 @@
       transform-origin: top;
     }
 
-    .s10-left  .s10-conn-line { background: hsl(120 40% 49% / 0.4); }
-    .s10-right .s10-conn-line { background: hsl(220 55% 32% / 0.25); }
+    .s10-left .s10-conn-line {
+      background: hsl(120 40% 49% / 0.4);
+    }
+
+    .s10-right .s10-conn-line {
+      background: hsl(220 55% 32% / 0.25);
+    }
 
     .s10-conn-line.line-animate {
       transition: transform 400ms ease-out;
@@ -1418,8 +1574,13 @@
       width: 48px;
     }
 
-    .s10-left  .s10-step-num { color: hsl(120 40% 49%); }
-    .s10-right .s10-step-num { color: hsl(220 55% 32%); }
+    .s10-left .s10-step-num {
+      color: hsl(120 40% 49%);
+    }
+
+    .s10-right .s10-step-num {
+      color: hsl(220 55% 32%);
+    }
 
     .s10-step-body {
       display: flex;
@@ -1433,8 +1594,13 @@
       font-size: clamp(18px, 1.8vw, 24px);
     }
 
-    .s10-left  .s10-step-title { color: hsl(0 0% 100%); }
-    .s10-right .s10-step-title { color: hsl(220 55% 20%); }
+    .s10-left .s10-step-title {
+      color: hsl(0 0% 100%);
+    }
+
+    .s10-right .s10-step-title {
+      color: hsl(220 55% 20%);
+    }
 
     .s10-step-desc {
       font-family: 'Inter', sans-serif;
@@ -1443,8 +1609,13 @@
       line-height: 1.6;
     }
 
-    .s10-left  .s10-step-desc { color: hsl(0 0% 100% / 0.65); }
-    .s10-right .s10-step-desc { color: hsl(220 20% 45%); }
+    .s10-left .s10-step-desc {
+      color: hsl(0 0% 100% / 0.65);
+    }
+
+    .s10-right .s10-step-desc {
+      color: hsl(220 20% 45%);
+    }
 
     .s10-footer {
       position: absolute;
@@ -1479,7 +1650,9 @@
     }
 
     /* S10 animation system */
-    .s10-anim { opacity: 0; }
+    .s10-anim {
+      opacity: 0;
+    }
 
     .slide.active .s10-anim {
       animation: fadeInUp 0.6s ease-out var(--s10-delay, 0ms) forwards;
@@ -2096,12 +2269,60 @@
         animation: none;
       }
     }
+
+    /* ===== FULLSCREEN — slide-solucao ===== */
+    :fullscreen .slide-solucao,
+    :-webkit-full-screen .slide-solucao,
+    :-moz-full-screen .slide-solucao {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      grid-template-rows: 1fr !important;
+      gap: clamp(24px, 3vw, 56px) !important;
+      padding: clamp(32px, 5vh, 64px) clamp(40px, 5vw, 80px) !important;
+      align-items: stretch !important;
+      overflow: hidden !important;
+    }
+
+    :fullscreen .slide-solucao .solucao-left,
+    :-webkit-full-screen .slide-solucao .solucao-left,
+    :-moz-full-screen .slide-solucao .solucao-left {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      gap: clamp(12px, 2vh, 24px) !important;
+      min-height: 0 !important;
+      height: 100% !important;
+      overflow: hidden !important;
+    }
+
+    :fullscreen .slide-solucao .solucao-right,
+    :-webkit-full-screen .slide-solucao .solucao-right,
+    :-moz-full-screen .slide-solucao .solucao-right {
+      display: grid !important;
+      grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+      gap: clamp(10px, 1.5vh, 18px) !important;
+      min-height: 0 !important;
+      height: 100% !important;
+      overflow: hidden !important;
+    }
+
+    :fullscreen .slide-solucao.active *,
+    :-webkit-full-screen .slide-solucao.active * {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    :fullscreen .slide-solucao.active .pin-pulse,
+    :-webkit-full-screen .slide-solucao.active .pin-pulse {
+      animation: pinPulse 2s ease-out infinite !important;
+    }
   </style>
 </head>
 
 <body>
 
-<div id="app-loader" style="
+  <div id="app-loader" style="
   position: fixed; inset: 0; z-index: 99999;
   background: hsl(220 55% 8%);
   display: flex; flex-direction: column;
@@ -2109,18 +2330,18 @@
   gap: 32px;
   transition: opacity 600ms ease, visibility 600ms ease;">
 
-  <img src="zpe_white.png" style="height: 64px; opacity: 0.9;">
+    <img src="zpe_white.png" style="height: 64px; opacity: 0.9;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
-    <div style="width: 240px; height: 2px; background: hsl(0 0% 100% / 0.1); border-radius: 2px; overflow: hidden;">
-      <div id="loader-bar" style="height: 100%; width: 0%; background: hsl(120 40% 49%);
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <div style="width: 240px; height: 2px; background: hsl(0 0% 100% / 0.1); border-radius: 2px; overflow: hidden;">
+        <div id="loader-bar" style="height: 100%; width: 0%; background: hsl(120 40% 49%);
         transition: width 300ms ease; border-radius: 2px;"></div>
-    </div>
-    <span id="loader-label" style="font-family:'Inter',sans-serif; font-weight:400;
+      </div>
+      <span id="loader-label" style="font-family:'Inter',sans-serif; font-weight:400;
       font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em;
       color: hsl(0 0% 100% / 0.4);">Carregando apresentação...</span>
+    </div>
   </div>
-</div>
 
   <!-- FULLSCREEN BUTTON (always visible) -->
   <button class="fs-btn-fixed" onclick="toggleFullscreen()" aria-label="Tela cheia"><span></span></button>
@@ -2210,85 +2431,82 @@
     </div>
 
     <!-- SLIDE 3 — A SOLUÇÃO -->
-    <div class="slide slide-light" data-chapter="O Problema">
-      <h2 class="slide-title anim anim-1">Existe um regime que <span class="underline-anim">resolve tudo isso.</span>
-      </h2>
-      <p class="solucao-subtitle anim anim-2">Garantido por lei federal.</p>
-      <div class="solucao-layout">
-        <div class="solucao-left anim anim-3">
-          <div class="solucao-map-container">
-            <div class="solucao-world-bg"><img src="world_dotted.svg" alt=""></div>
-            <img class="solucao-map-img" src="maranhao_stylized.jpg" alt="Maranhão">
-            <div class="map-pin" onclick="openDetailScreen()">
-              <div class="pin-dot">
-                <div class="pin-pulse"></div>
-              </div>
-              <div class="pin-tooltip">
-                <div class="pin-tooltip-title">ZPE MARANHÃO</div>
-                <div class="pin-tooltip-sub">BACABEIRA</div>
-              </div>
+    <div class="slide slide-light slide-solucao" data-chapter="O Problema">
+      <div class="solucao-left anim anim-1">
+        <h2 class="slide-title">Existe um regime que <span class="underline-anim">resolve tudo isso.</span></h2>
+        <p class="solucao-subtitle">Garantido por lei federal.</p>
+        <div class="solucao-map-container">
+          <div class="solucao-world-bg"><img src="world_dotted.svg" alt=""></div>
+          <img class="solucao-map-img" src="maranhao_stylized.jpg" alt="Maranhão">
+          <div class="map-pin" onclick="openDetailScreen()">
+            <div class="pin-dot">
+              <div class="pin-pulse"></div>
             </div>
-            <div class="badge-20anos">
-              <div class="badge-number">20 ANOS</div>
-              <div class="badge-label">DE SEGURANÇA JURÍDICA</div>
+            <div class="pin-tooltip">
+              <div class="pin-tooltip-title">ZPE MARANHÃO</div>
+              <div class="pin-tooltip-sub">BACABEIRA</div>
             </div>
+          </div>
+          <div class="badge-20anos">
+            <div class="badge-number">20 ANOS</div>
+            <div class="badge-label">DE SEGURANÇA JURÍDICA</div>
           </div>
         </div>
-        <div class="solucao-right anim anim-4">
-          <div class="card-light sol-card">
-            <div class="sol-icon"><svg viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="14" /><text x="18" y="23" text-anchor="middle" font-size="16"
-                  font-weight="700" fill="hsl(120,40%,49%)" stroke="none" font-family="Barlow">$</text>
-              </svg></div>
-            <h3>Suspensão de Impostos</h3>
-            <p>II, IPI, PIS/COFINS e AFRMM na importação de insumos e equipamentos.</p>
-          </div>
-          <div class="card-light sol-card">
-            <div class="sol-icon"><svg viewBox="0 0 36 36">
-                <polyline points="4 28 12 16 20 22 32 8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></div>
-            <h3>Isenção de ICMS</h3>
-            <p>Garantida pelo Convênio ICMS 99/1998, reduzindo custos de operação.</p>
-          </div>
-          <div class="card-light sol-card">
-            <div class="sol-icon"><svg viewBox="0 0 36 36">
-                <circle cx="18" cy="18" r="14" />
-                <ellipse cx="18" cy="18" rx="14" ry="6" />
-                <ellipse cx="18" cy="18" rx="6" ry="14" />
-              </svg></div>
-            <h3>Liberdade Cambial</h3>
-            <p>Mantenha 100% das divisas obtidas com exportação no exterior.</p>
-          </div>
-          <div class="card-light sol-card">
-            <div class="sol-icon"><svg viewBox="0 0 36 36">
-                <path d="M18 4c0 0-12 10-12 18a12 12 0 0 0 24 0C30 14 18 4 18 4z" />
-                <circle cx="18" cy="22" r="3" fill="none" />
-              </svg></div>
-            <h3>Local Estratégico</h3>
-            <p>Instalada na Região Metropolitana de São Luís.</p>
-          </div>
-          <div class="card-light sol-card">
-            <div class="sol-icon"><svg viewBox="0 0 36 36">
-                <rect x="4" y="4" width="12" height="12" rx="2" />
-                <rect x="20" y="4" width="12" height="12" rx="2" />
-                <rect x="4" y="20" width="12" height="12" rx="2" />
-                <rect x="20" y="20" width="12" height="12" rx="2" />
-              </svg></div>
-            <h3>Logística Premium</h3>
-            <p>A 60km do Porto do Itaqui, o 4º maior porto público do Brasil.</p>
-          </div>
-          <div class="card-light sol-card">
-            <div class="sol-icon"><svg viewBox="0 0 36 36">
-                <polyline points="18 4 18 18" stroke-linecap="round" />
-                <polyline points="18 18 28 28" stroke-linecap="round" />
-                <polyline points="18 18 8 28" stroke-linecap="round" />
-                <circle cx="18" cy="4" r="2" fill="hsl(120,40%,49%)" stroke="none" />
-                <circle cx="28" cy="28" r="2" fill="hsl(120,40%,49%)" stroke="none" />
-                <circle cx="8" cy="28" r="2" fill="hsl(120,40%,49%)" stroke="none" />
-              </svg></div>
-            <h3>Multimodalidade</h3>
-            <p>Única ZPE no NE com infraestrutura multimodal completa.</p>
-          </div>
+      </div>
+      <div class="solucao-right anim anim-2">
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36">
+              <circle cx="18" cy="18" r="14" /><text x="18" y="23" text-anchor="middle" font-size="16" font-weight="700"
+                fill="hsl(120,40%,49%)" stroke="none" font-family="Barlow">$</text>
+            </svg></div>
+          <h3>Suspensão de Impostos</h3>
+          <p>II, IPI, PIS/COFINS e AFRMM na importação de insumos e equipamentos.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36">
+              <polyline points="4 28 12 16 20 22 32 8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg></div>
+          <h3>Isenção de ICMS</h3>
+          <p>Garantida pelo Convênio ICMS 99/1998, reduzindo custos de operação.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36">
+              <circle cx="18" cy="18" r="14" />
+              <ellipse cx="18" cy="18" rx="14" ry="6" />
+              <ellipse cx="18" cy="18" rx="6" ry="14" />
+            </svg></div>
+          <h3>Liberdade Cambial</h3>
+          <p>Mantenha 100% das divisas obtidas com exportação no exterior.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36">
+              <path d="M18 4c0 0-12 10-12 18a12 12 0 0 0 24 0C30 14 18 4 18 4z" />
+              <circle cx="18" cy="22" r="3" fill="none" />
+            </svg></div>
+          <h3>Local Estratégico</h3>
+          <p>Instalada na Região Metropolitana de São Luís.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36">
+              <rect x="4" y="4" width="12" height="12" rx="2" />
+              <rect x="20" y="4" width="12" height="12" rx="2" />
+              <rect x="4" y="20" width="12" height="12" rx="2" />
+              <rect x="20" y="20" width="12" height="12" rx="2" />
+            </svg></div>
+          <h3>Logística Premium</h3>
+          <p>A 60km do Porto do Itaqui, o 4º maior porto público do Brasil.</p>
+        </div>
+        <div class="card-light sol-card">
+          <div class="sol-icon"><svg viewBox="0 0 36 36">
+              <polyline points="18 4 18 18" stroke-linecap="round" />
+              <polyline points="18 18 28 28" stroke-linecap="round" />
+              <polyline points="18 18 8 28" stroke-linecap="round" />
+              <circle cx="18" cy="4" r="2" fill="hsl(120,40%,49%)" stroke="none" />
+              <circle cx="28" cy="28" r="2" fill="hsl(120,40%,49%)" stroke="none" />
+              <circle cx="8" cy="28" r="2" fill="hsl(120,40%,49%)" stroke="none" />
+            </svg></div>
+          <h3>Multimodalidade</h3>
+          <p>Única ZPE no NE com infraestrutura multimodal completa.</p>
         </div>
       </div>
     </div>
@@ -2370,17 +2588,23 @@
         style="position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to bottom, hsl(220 55% 8% / 0.7) 0%, transparent 30%)">
       </div>
       <!-- Route chips -->
-      <div class="route-chip" style="position:absolute;z-index:2;top:12%;left:38%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:800ms">
+      <div class="route-chip"
+        style="position:absolute;z-index:2;top:12%;left:38%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:800ms">
         <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff">Europa</span>
-        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;5 dias</span>
+        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;5
+          dias</span>
       </div>
-      <div class="route-chip" style="position:absolute;z-index:2;top:28%;left:14%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:1000ms">
+      <div class="route-chip"
+        style="position:absolute;z-index:2;top:28%;left:14%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:1000ms">
         <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff">Costa Leste EUA</span>
-        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;6 dias</span>
+        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;6
+          dias</span>
       </div>
-      <div class="route-chip" style="position:absolute;z-index:2;top:44%;left:5%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:1200ms">
+      <div class="route-chip"
+        style="position:absolute;z-index:2;top:44%;left:5%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:1200ms">
         <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff">Ásia via Panamá</span>
-        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;7 dias</span>
+        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;7
+          dias</span>
       </div>
       <!-- Slide content -->
       <div style="position:absolute;z-index:2;right:4%;top:50%;transform:translateY(-50%);width:40%">
@@ -2423,7 +2647,8 @@
     </div>
 
     <!-- SLIDE CABO — ELLALINK TRANSITION -->
-    <div class="slide" data-chapter="A Infraestrutura" data-video-slide style="padding:0; overflow:hidden; background:hsl(220 55% 4%); position:relative;">
+    <div class="slide" data-chapter="A Infraestrutura" data-video-slide
+      style="padding:0; overflow:hidden; background:hsl(220 55% 4%); position:relative;">
       <video id="cabo-transition-video" src="transicao_modal_cabo.mp4" muted playsinline
         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;">
       </video>
@@ -2431,12 +2656,14 @@
         display:flex; flex-direction:column; justify-content:flex-end;
         padding: clamp(48px, 6vw, 96px);
         background: linear-gradient(to top, hsl(220 55% 4% / 0.92) 0%, hsl(220 55% 4% / 0.6) 40%, transparent 70%);">
-        <div style="display:inline-flex; align-items:center; gap:10px; background:hsl(120 40% 49% / 0.15);
+        <div
+          style="display:inline-flex; align-items:center; gap:10px; background:hsl(120 40% 49% / 0.15);
           border:1px solid hsl(120 40% 49% / 0.4); border-radius:8px; padding:8px 16px; margin-bottom:24px; width:fit-content;">
           <div style="width:8px;height:8px;border-radius:50%;background:hsl(120 40% 49%);
             box-shadow:0 0 8px hsl(120 40% 49% / 0.8);"></div>
           <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;
-            text-transform:uppercase;letter-spacing:0.12em;color:hsl(120 40% 49%);">Cabo Submarino EllaLink — 2027</span>
+            text-transform:uppercase;letter-spacing:0.12em;color:hsl(120 40% 49%);">Cabo Submarino EllaLink —
+            2027</span>
         </div>
         <p style="font-family:'Barlow',sans-serif;font-weight:800;
           font-size:clamp(28px,3.5vw,52px);color:hsl(0 0% 96%);
@@ -2446,30 +2673,33 @@
         <p style="font-family:'Inter',sans-serif;font-weight:400;
           font-size:clamp(15px,1.5vw,19px);color:hsl(0 0% 80%);
           line-height:1.65;max-width:700px;margin-bottom:12px;">
-          Em 2027, o cabo submarino EllaLink vai conectar o Maranhão à internet de alta capacidade global — a mesma infraestrutura que move as maiores economias do planeta.
+          Em 2027, o cabo submarino EllaLink vai conectar o Maranhão à internet de alta capacidade global — a mesma
+          infraestrutura que move as maiores economias do planeta.
         </p>
         <p style="font-family:'Inter',sans-serif;font-weight:400;
           font-size:clamp(14px,1.4vw,17px);color:hsl(194 20% 74%);
           font-style:italic;line-height:1.6;max-width:700px;">
-          A ZPE de Bacabeira será um dos únicos territórios do Brasil com porto profundo, ferrovia, energia e conectividade submarina no mesmo endereço.
+          A ZPE de Bacabeira será um dos únicos territórios do Brasil com porto profundo, ferrovia, energia e
+          conectividade submarina no mesmo endereço.
         </p>
       </div>
     </div>
 
     <!-- SLIDE CABO-ZPE — TRANSITION VIDEO -->
-    <div class="slide" data-chapter="A Infraestrutura" data-video-slide style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
+    <div class="slide" data-chapter="A Infraestrutura" data-video-slide
+      style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
       <video id="cabo-zpe-video" src="transicao_cabo_zpe.mp4" muted playsinline preload="auto"
         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;">
       </video>
     </div>
 
     <!-- SLIDE GPS-ZPE — TRANSITION VIDEO + CONTENT -->
-    <div class="slide" data-chapter="A Infraestrutura" data-video-slide style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
+    <div class="slide" data-chapter="A Infraestrutura" data-video-slide
+      style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
       <video id="gps-zpe-video" src="transicao_gps_zpe.mp4" muted playsinline
         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; opacity:0; transition: opacity 600ms ease;">
       </video>
-      <img id="gps-final-img" src="zpe_3d.jpg"
-        style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+      <img id="gps-final-img" src="zpe_3d.jpg" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
         z-index:1; opacity:0; transition: opacity 800ms ease;">
       <div id="gps-content" style="opacity:1; position:absolute; inset:0; z-index:2;
         display:flex; flex-direction:column; justify-content:flex-end;
@@ -2531,7 +2761,8 @@
 
     <!-- SLIDE 7 — SEGURANÇA JURÍDICA -->
     <div class="slide slide-light s7-slide" data-chapter="A Infraestrutura">
-      <img src="world_dotted.svg" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.06;filter:invert(1);pointer-events:none;z-index:0;">
+      <img src="world_dotted.svg" aria-hidden="true"
+        style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.06;filter:invert(1);pointer-events:none;z-index:0;">
       <div class="s7-top anim anim-1" style="position:relative;z-index:1;">
         <h2 class="s7-title">O <span class="tl-underline">projeto avança</span>. Com atos formais.</h2>
         <p class="s7-subtitle">36 anos de evolução legislativa. Os dois últimos marcos são de 2025 e 2026.</p>
@@ -2571,7 +2802,8 @@
             <div class="s7-desc">Licença de Instalação emitida — LI 1009637/2026</div>
           </div>
         </div>
-        <p class="s7-closing">Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada pela Receita Federal e pelo CZPE.</p>
+        <p class="s7-closing">Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada
+          pela Receita Federal e pelo CZPE.</p>
       </div>
     </div>
 
@@ -2597,7 +2829,8 @@
               <div class="s10-step-num">2</div>
               <div class="s10-step-body">
                 <div class="s10-step-title">Pré-projeto ZPE</div>
-                <div class="s10-step-desc">elaboração do projeto preliminar com informações mínimas conforme requisitos legais</div>
+                <div class="s10-step-desc">elaboração do projeto preliminar com informações mínimas conforme requisitos
+                  legais</div>
               </div>
             </div>
             <div class="s10-conn-line" data-conn-delay="600"></div>
@@ -2631,7 +2864,8 @@
               <div class="s10-step-num">5</div>
               <div class="s10-step-body">
                 <div class="s10-step-title">Aprovação CZPE</div>
-                <div class="s10-step-desc">aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação</div>
+                <div class="s10-step-desc">aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação
+                </div>
               </div>
             </div>
             <div class="s10-conn-line" data-conn-delay="800"></div>
@@ -2644,7 +2878,8 @@
             </div>
           </div>
         </div>
-        <div class="s10-footer s10-anim" style="--s10-delay: 600ms">Cada projeto é analisado individualmente. Prazos variam conforme complexidade e documentação.</div>
+        <div class="s10-footer s10-anim" style="--s10-delay: 600ms">Cada projeto é analisado individualmente. Prazos
+          variam conforme complexidade e documentação.</div>
       </div>
 
       <!-- Conector visual entre as metades -->
@@ -2718,7 +2953,7 @@
 
   <script>
     // ===== LOADER =====
-    (function() {
+    (function () {
       const assets = [
         // Vídeos
         'video_ships.mp4',
@@ -2878,7 +3113,7 @@
         const gpsFinalImg = document.getElementById('gps-final-img');
         if (gpsFinalImg) gpsFinalImg.style.opacity = '0';
         // Reset stagger elements
-        ['gps-badge','gps-title','gps-indicators','gps-closing'].forEach(id => {
+        ['gps-badge', 'gps-title', 'gps-indicators', 'gps-closing'].forEach(id => {
           const el = document.getElementById(id);
           if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; }
         });
@@ -2977,7 +3212,7 @@
         if (caboZpeVideo) {
           caboZpeVideo.style.opacity = '0';
           caboZpeVideo.style.transition = 'opacity 600ms ease';
-          caboZpeVideo.play().catch(() => {});
+          caboZpeVideo.play().catch(() => { });
           setTimeout(() => {
             caboZpeVideo.style.opacity = '1';
           }, 50);
@@ -2988,7 +3223,7 @@
         if (gpsVideo) {
           gpsVideo.currentTime = 0;
           gpsVideo.style.opacity = '0';
-          gpsVideo.play().catch(() => {});
+          gpsVideo.play().catch(() => { });
           setTimeout(() => { gpsVideo.style.opacity = '1'; }, 50);
           gpsVideo.addEventListener('ended', function onEnded() {
             gpsVideo.removeEventListener('ended', onEnded);

@@ -3,7 +3,8 @@
     "allow": [
       "Bash(python3 -c ':*)",
       "Bash(ls \"c:/Users/INFORMATICA/Documents/apresentacoes/ZPE Comercial/\"*.mp4)",
-      "Bash(ls -la \"c:/Users/INFORMATICA/Documents/apresentacoes/ZPE Comercial/\"*.mp4)"
+      "Bash(ls -la \"c:/Users/INFORMATICA/Documents/apresentacoes/ZPE Comercial/\"*.mp4)",
+      "Bash(python3 -)"
     ]
   }
 }
