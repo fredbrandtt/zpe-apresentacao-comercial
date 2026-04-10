@@ -2416,11 +2416,17 @@
   </div>
 
   <!-- FULLSCREEN BUTTON (always visible) -->
-  <button class="fs-btn-fixed" onclick="toggleFullscreen()" aria-label="Tela cheia"><span></span></button>
+  <button class="fs-btn-fixed" onclick="toggleFullscreen()" aria-label="Tela cheia" data-aria-pt="Tela cheia" data-aria-en="Full screen"><span></span></button>
+
+  <!-- LANGUAGE TOGGLE BUTTON -->
+  <button id="lang-btn" onclick="toggleLang()" aria-label="Switch language"
+    style="position: fixed; top: 24px; right: 72px; z-index: 1000; height: 40px; padding: 0 14px; background: hsl(0 0% 0% / 0.3); backdrop-filter: blur(8px); border: 1px solid hsl(0 0% 100% / 0.15); border-radius: 8px; cursor: pointer; font-family: 'Barlow', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.1em; color: hsl(0 0% 100% / 0.7); display: flex; align-items: center; gap: 6px;">
+    <span id="lang-label">EN</span>
+  </button>
 
   <!-- TOUCH ARROWS -->
-  <button class="touch-arrow touch-prev" onclick="prev()" aria-label="Anterior"></button>
-  <button class="touch-arrow touch-next" onclick="next()" aria-label="Próximo"></button>
+  <button class="touch-arrow touch-prev" onclick="prev()" aria-label="Anterior" data-aria-pt="Anterior" data-aria-en="Previous"></button>
+  <button class="touch-arrow touch-next" onclick="next()" aria-label="Próximo" data-aria-pt="Próximo" data-aria-en="Next"></button>
 
   <!-- SLIDES -->
   <div class="slides-container" id="slidesContainer">
@@ -2434,7 +2440,7 @@
       <img class="capa-world-map" src="world_dotted.svg" alt="">
       <div class="capa-content">
         <div class="capa-logo"><img src="zpe_white.png" alt="ZPE Maranhão"></div>
-        <p class="capa-slogan">A conexão estratégica do Maranhão com o mundo.</p>
+        <p class="capa-slogan" data-pt="A conexão estratégica do Maranhão com o mundo." data-en="Maranhão's strategic connection to the world.">A conexão estratégica do Maranhão com o mundo.</p>
         <div class="capa-line">
           <div class="green-line"></div>
         </div>
@@ -2447,7 +2453,7 @@
 
     <!-- SLIDE 1 — O PROBLEMA -->
     <div class="slide slide-dark dot-grid" data-chapter="O Problema">
-      <h2 class="slide-title anim anim-1">Exportar no Brasil custa <span class="title-underline">caro demais.</span>
+      <h2 class="slide-title anim anim-1"><span data-pt="Exportar no Brasil custa " data-en="Exporting from Brazil costs ">Exportar no Brasil custa </span><span class="title-underline" data-pt="caro demais." data-en="too much.">caro demais.</span>
       </h2>
       <div class="problem-grid">
         <div class="card-dark problem-card anim anim-2">
@@ -2457,8 +2463,8 @@
               <line x1="18" y1="22" x2="30" y2="22" />
               <line x1="18" y1="28" x2="26" y2="28" />
             </svg></div>
-          <h3>Carga Tributária</h3>
-          <p>Impostos em cascata sobre importação de insumos e equipamentos encarecem cada etapa da operação.</p>
+          <h3 data-pt="Carga Tributária" data-en="Tax Burden">Carga Tributária</h3>
+          <p data-pt="Impostos em cascata sobre importação de insumos e equipamentos encarecem cada etapa da operação." data-en="Cascading taxes on imported inputs and equipment raise costs at every stage of operations.">Impostos em cascata sobre importação de insumos e equipamentos encarecem cada etapa da operação.</p>
         </div>
         <div class="card-dark problem-card anim anim-3">
           <div class="card-icon"><svg viewBox="0 0 48 48">
@@ -2467,8 +2473,8 @@
               <polyline points="28 20 24 24 20 20" />
               <polyline points="20 28 24 24 28 28" />
             </svg></div>
-          <h3>Conversão de Divisas</h3>
-          <p>Empresas são obrigadas a converter divisas ao repatriar receitas de exportação, corroendo a margem cambial.
+          <h3 data-pt="Conversão de Divisas" data-en="Currency Conversion">Conversão de Divisas</h3>
+          <p data-pt="Empresas são obrigadas a converter divisas ao repatriar receitas de exportação, corroendo a margem cambial." data-en="Companies are required to convert foreign currency when repatriating export revenues, eroding exchange margins.">Empresas são obrigadas a converter divisas ao repatriar receitas de exportação, corroendo a margem cambial.
           </p>
         </div>
         <div class="card-dark problem-card anim anim-4">
@@ -2476,8 +2482,8 @@
               <circle cx="24" cy="24" r="16" />
               <polyline points="24 16 24 24 30 28" />
             </svg></div>
-          <h3>Burocracia Aduaneira</h3>
-          <p>Processos lentos e fragmentados atrasam operações e elevam custos administrativos e de armazenagem.</p>
+          <h3 data-pt="Burocracia Aduaneira" data-en="Customs Bureaucracy">Burocracia Aduaneira</h3>
+          <p data-pt="Processos lentos e fragmentados atrasam operações e elevam custos administrativos e de armazenagem." data-en="Slow and fragmented processes delay operations and increase administrative and storage costs.">Processos lentos e fragmentados atrasam operações e elevam custos administrativos e de armazenagem.</p>
         </div>
         <div class="card-dark problem-card anim anim-5">
           <div class="card-icon"><svg viewBox="0 0 48 48">
@@ -2485,8 +2491,8 @@
               <circle cx="24" cy="24" r="16" />
               <circle cx="24" cy="18" r="3" fill="none" />
             </svg></div>
-          <h3>Infraestrutura Cara</h3>
-          <p>Logística fragmentada e distante dos grandes mercados globais aumenta o custo por tonelada exportada.</p>
+          <h3 data-pt="Infraestrutura Cara" data-en="Costly Infrastructure">Infraestrutura Cara</h3>
+          <p data-pt="Logística fragmentada e distante dos grandes mercados globais aumenta o custo por tonelada exportada." data-en="Fragmented logistics far from major global markets increases the cost per exported ton.">Logística fragmentada e distante dos grandes mercados globais aumenta o custo por tonelada exportada.</p>
         </div>
       </div>
     </div>
@@ -2494,9 +2500,9 @@
     <!-- SLIDE 2 — IMPACTO -->
     <div class="slide slide-dark slide-impacto dot-grid" data-chapter="O Problema">
       <div class="impacto-content">
-        <p class="impacto-l1 anim anim-1">O peso do Custo Brasil não se resume a burocracia ou taxas:</p>
-        <p class="impacto-l2 anim anim-2">ele corrói irreversivelmente</p>
-        <p class="impacto-l3 anim anim-3"><span class="green">a sua margem de lucro </span><span class="white">no
+        <p class="impacto-l1 anim anim-1" data-pt="O peso do Custo Brasil não se resume a burocracia ou taxas:" data-en="The Brazil Cost goes beyond bureaucracy and taxes:">O peso do Custo Brasil não se resume a burocracia ou taxas:</p>
+        <p class="impacto-l2 anim anim-2" data-pt="ele corrói irreversivelmente" data-en="it irreversibly erodes">ele corrói irreversivelmente</p>
+        <p class="impacto-l3 anim anim-3"><span class="green" data-pt="a sua margem de lucro " data-en="your profit margin ">a sua margem de lucro </span><span class="white" data-pt="no mercado exterior." data-en="in global markets.">no
             mercado exterior.</span></p>
         <div class="impacto-line anim anim-4"></div>
       </div>
@@ -2505,8 +2511,8 @@
     <!-- SLIDE 3 — A SOLUÇÃO -->
     <div class="slide slide-light slide-solucao" data-chapter="O Problema">
       <div class="solucao-left anim anim-1">
-        <h2 class="slide-title">Existe um regime que <span class="underline-anim">resolve tudo isso.</span></h2>
-        <p class="solucao-subtitle">Garantido por lei federal.</p>
+        <h2 class="slide-title"><span data-pt="Existe um regime que " data-en="There is a special regime that ">Existe um regime que </span><span class="underline-anim" data-pt="resolve tudo isso." data-en="solves all of this.">resolve tudo isso.</span></h2>
+        <p class="solucao-subtitle" data-pt="Garantido por lei federal." data-en="Guaranteed by federal law.">Garantido por lei federal.</p>
         <div class="solucao-map-container">
           <div class="solucao-world-bg"><img src="world_dotted.svg" alt=""></div>
           <img class="solucao-map-img" src="maranhao_stylized.jpg" alt="Maranhão">
@@ -2520,8 +2526,8 @@
             </div>
           </div>
           <div class="badge-20anos">
-            <div class="badge-number">20 ANOS</div>
-            <div class="badge-label">DE SEGURANÇA JURÍDICA</div>
+            <div class="badge-number" data-pt="20 ANOS" data-en="20 YEARS">20 ANOS</div>
+            <div class="badge-label" data-pt="DE SEGURANÇA JURÍDICA" data-en="OF LEGAL CERTAINTY">DE SEGURANÇA JURÍDICA</div>
           </div>
         </div>
       </div>
@@ -2531,15 +2537,15 @@
               <circle cx="18" cy="18" r="14" /><text x="18" y="23" text-anchor="middle" font-size="16" font-weight="700"
                 fill="hsl(120,40%,49%)" stroke="none" font-family="Barlow">$</text>
             </svg></div>
-          <h3>Suspensão de Impostos</h3>
-          <p>II, IPI, PIS/COFINS e AFRMM na importação de insumos e equipamentos.</p>
+          <h3 data-pt="Suspensão de Impostos" data-en="Tax Suspension">Suspensão de Impostos</h3>
+          <p data-pt="II, IPI, PIS/COFINS e AFRMM na importação de insumos e equipamentos." data-en="II, IPI, PIS/COFINS and AFRMM suspended on imported inputs and equipment.">II, IPI, PIS/COFINS e AFRMM na importação de insumos e equipamentos.</p>
         </div>
         <div class="card-light sol-card">
           <div class="sol-icon"><svg viewBox="0 0 36 36">
               <polyline points="4 28 12 16 20 22 32 8" stroke-linecap="round" stroke-linejoin="round" />
             </svg></div>
-          <h3>Isenção de ICMS</h3>
-          <p>Garantida pelo Convênio ICMS 99/1998, reduzindo custos de operação.</p>
+          <h3 data-pt="Isenção de ICMS" data-en="ICMS Exemption">Isenção de ICMS</h3>
+          <p data-pt="Garantida pelo Convênio ICMS 99/1998, reduzindo custos de operação." data-en="Guaranteed by ICMS Agreement 99/1998, reducing operating costs.">Garantida pelo Convênio ICMS 99/1998, reduzindo custos de operação.</p>
         </div>
         <div class="card-light sol-card">
           <div class="sol-icon"><svg viewBox="0 0 36 36">
@@ -2547,16 +2553,16 @@
               <ellipse cx="18" cy="18" rx="14" ry="6" />
               <ellipse cx="18" cy="18" rx="6" ry="14" />
             </svg></div>
-          <h3>Liberdade Cambial</h3>
-          <p>Mantenha 100% das divisas obtidas com exportação no exterior.</p>
+          <h3 data-pt="Liberdade Cambial" data-en="Foreign Exchange Freedom">Liberdade Cambial</h3>
+          <p data-pt="Mantenha 100% das divisas obtidas com exportação no exterior." data-en="Retain 100% of foreign currency earned from exports abroad.">Mantenha 100% das divisas obtidas com exportação no exterior.</p>
         </div>
         <div class="card-light sol-card">
           <div class="sol-icon"><svg viewBox="0 0 36 36">
               <path d="M18 4c0 0-12 10-12 18a12 12 0 0 0 24 0C30 14 18 4 18 4z" />
               <circle cx="18" cy="22" r="3" fill="none" />
             </svg></div>
-          <h3>Local Estratégico</h3>
-          <p>Instalada na Região Metropolitana de São Luís.</p>
+          <h3 data-pt="Local Estratégico" data-en="Strategic Location">Local Estratégico</h3>
+          <p data-pt="Instalada na Região Metropolitana de São Luís." data-en="Located in the Metropolitan Region of São Luís.">Instalada na Região Metropolitana de São Luís.</p>
         </div>
         <div class="card-light sol-card">
           <div class="sol-icon"><svg viewBox="0 0 36 36">
@@ -2565,8 +2571,8 @@
               <rect x="4" y="20" width="12" height="12" rx="2" />
               <rect x="20" y="20" width="12" height="12" rx="2" />
             </svg></div>
-          <h3>Logística Premium</h3>
-          <p>A 60km do Porto do Itaqui, o 4º maior porto público do Brasil.</p>
+          <h3 data-pt="Logística Premium" data-en="Premium Logistics">Logística Premium</h3>
+          <p data-pt="A 60km do Porto do Itaqui, o 4º maior porto público do Brasil." data-en="60km from the Port of Itaqui, Brazil's 4th largest public port.">A 60km do Porto do Itaqui, o 4º maior porto público do Brasil.</p>
         </div>
         <div class="card-light sol-card">
           <div class="sol-icon"><svg viewBox="0 0 36 36">
@@ -2577,8 +2583,8 @@
               <circle cx="28" cy="28" r="2" fill="hsl(120,40%,49%)" stroke="none" />
               <circle cx="8" cy="28" r="2" fill="hsl(120,40%,49%)" stroke="none" />
             </svg></div>
-          <h3>Multimodalidade</h3>
-          <p>Única ZPE no NE com infraestrutura multimodal completa.</p>
+          <h3 data-pt="Multimodalidade" data-en="Multimodal Access">Multimodalidade</h3>
+          <p data-pt="Única ZPE no NE com infraestrutura multimodal completa." data-en="The only EPZ in Northeast Brazil with full multimodal infrastructure.">Única ZPE no NE com infraestrutura multimodal completa.</p>
         </div>
       </div>
     </div>
@@ -2586,49 +2592,51 @@
     <!-- SLIDE 4 — IMPACTO TRIBUTÁRIO -->
     <div class="slide slide-dark-data dot-grid" data-chapter="O Impacto Financeiro">
       <div class="tributario-hero anim anim-1">
-        <div class="label-cat">ECONOMIA TRIBUTÁRIA ESTIMADA</div>
+        <div class="label-cat" data-pt="ECONOMIA TRIBUTÁRIA ESTIMADA" data-en="ESTIMATED TAX SAVINGS">ECONOMIA TRIBUTÁRIA ESTIMADA</div>
         <div class="display-number" style="margin:8px 0;font-size:clamp(80px, 11vw, 150px)">US$ <span
-            class="counter-number" data-target="7">0</span> milhões</div>
-        <p class="tributario-context">para operações que importam US$ 15 mi em insumos e equipamentos por ano</p>
+            class="counter-number" data-target="7">0</span> <span data-pt="milhões" data-en="million">milhões</span></div>
+        <p class="tributario-context" data-pt="para operações que importam US$ 15 mi em insumos e equipamentos por ano" data-en="for operations importing US$ 15M in inputs and equipment per year">para operações que importam US$ 15 mi em insumos e equipamentos por ano</p>
       </div>
       <table class="tributario-table anim anim-2">
         <thead>
           <tr>
-            <th>Tributo</th>
-            <th>Operação Convencional</th>
-            <th>ZPE Maranhão</th>
+            <th data-pt="Tributo" data-en="Tax">Tributo</th>
+            <th data-pt="Operação Convencional" data-en="Standard Operation">Operação Convencional</th>
+            <th data-pt="ZPE Maranhão" data-en="ZPE Maranhão">ZPE Maranhão</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>II</td>
-            <td>Alíquota cheia conforme TEC</td>
-            <td class="zpe-col">Suspenso</td>
+            <td data-pt="Alíquota cheia conforme TEC" data-en="Full rate per TEC">Alíquota cheia conforme TEC</td>
+            <td class="zpe-col" data-pt="Suspenso" data-en="Suspended">Suspenso</td>
           </tr>
           <tr>
             <td>IPI</td>
-            <td>Alíquota cheia conforme TIPI</td>
-            <td class="zpe-col">Suspenso</td>
+            <td data-pt="Alíquota cheia conforme TIPI" data-en="Full rate per TIPI">Alíquota cheia conforme TIPI</td>
+            <td class="zpe-col" data-pt="Suspenso" data-en="Suspended">Suspenso</td>
           </tr>
           <tr>
             <td>PIS/COFINS</td>
-            <td>Alíquota cheia</td>
-            <td class="zpe-col">Suspenso</td>
+            <td data-pt="Alíquota cheia" data-en="Full rate">Alíquota cheia</td>
+            <td class="zpe-col" data-pt="Suspenso" data-en="Suspended">Suspenso</td>
           </tr>
           <tr>
             <td>AFRMM</td>
-            <td>25% sobre o frete marítimo</td>
-            <td class="zpe-col">Suspenso</td>
+            <td data-pt="25% sobre o frete marítimo" data-en="25% on maritime freight">25% sobre o frete marítimo</td>
+            <td class="zpe-col" data-pt="Suspenso" data-en="Suspended">Suspenso</td>
           </tr>
           <tr>
             <td>ICMS</td>
-            <td>Variável conforme estado e operação</td>
-            <td class="zpe-col">Isento via Convênio ICMS 99/1998</td>
+            <td data-pt="Variável conforme estado e operação" data-en="Variable by state and operation">Variável conforme estado e operação</td>
+            <td class="zpe-col" data-pt="Isento via Convênio ICMS 99/1998" data-en="Exempt via ICMS Agreement 99/1998">Isento via Convênio ICMS 99/1998</td>
           </tr>
         </tbody>
       </table>
       <p class="text-foot anim anim-3"
-        style="text-align:center;margin-top:24px;max-width:min(900px,85vw);margin-left:auto;margin-right:auto">
+        style="text-align:center;margin-top:24px;max-width:min(900px,85vw);margin-left:auto;margin-right:auto"
+        data-pt="Baseado no Estudo Tributário Comparado da CZPE, com 11.760 simulações em 20 estados e 147 mercadorias. Valores variam conforme NCM e regime de apuração."
+        data-en="Based on CZPE's Comparative Tax Study, with 11,760 simulations across 20 states and 147 commodities. Values vary by NCM code and tax regime.">
         Baseado no Estudo Tributário Comparado da CZPE, com 11.760 simulações em 20 estados e 147 mercadorias. Valores
         variam conforme NCM e regime de apuração.
       </p>
@@ -2662,39 +2670,43 @@
       <!-- Route chips -->
       <div class="route-chip"
         style="position:absolute;z-index:2;top:12%;left:38%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:800ms">
-        <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff">Europa</span>
-        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;5
+        <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff" data-pt="Europa" data-en="Europe">Europa</span>
+        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)" data-pt="−5 dias" data-en="−5 days">&#8722;5
           dias</span>
       </div>
       <div class="route-chip"
         style="position:absolute;z-index:2;top:28%;left:14%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:1000ms">
-        <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff">Costa Leste EUA</span>
-        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;6
+        <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff" data-pt="Costa Leste EUA" data-en="US East Coast">Costa Leste EUA</span>
+        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)" data-pt="−6 dias" data-en="−6 days">&#8722;6
           dias</span>
       </div>
       <div class="route-chip"
         style="position:absolute;z-index:2;top:44%;left:5%;background:hsl(220 55% 12% / 0.85);backdrop-filter:blur(12px);border:1px solid hsl(0 0% 100% / 0.12);border-radius:10px;padding:8px 16px;display:flex;flex-direction:column;gap:2px;animation:fadeIn 0.5s ease both;animation-delay:1200ms">
-        <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff">Ásia via Panamá</span>
-        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)">&#8722;7
+        <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;color:#fff" data-pt="Ásia via Panamá" data-en="Asia via Panama">Ásia via Panamá</span>
+        <span style="font-family:'Barlow',sans-serif;font-weight:800;font-size:15px;color:hsl(120 40% 49%)" data-pt="−7 dias" data-en="−7 days">&#8722;7
           dias</span>
       </div>
       <!-- Slide content -->
       <div style="position:absolute;z-index:2;right:4%;top:50%;transform:translateY(-50%);width:40%">
         <h2 class="slide-title anim anim-1"
-          style="font-size:clamp(28px,3.5vw,48px);text-align:left;margin-bottom:clamp(24px,3vh,48px)">Menos dias de
-          navegação.<br>Mais margem para sua operação.</h2>
+          style="font-size:clamp(28px,3.5vw,48px);text-align:left;margin-bottom:clamp(24px,3vh,48px)"><span data-pt="Menos dias de navegação." data-en="Fewer days at sea.">Menos dias de
+          navegação.</span><br><span data-pt="Mais margem para sua operação." data-en="More margin for your operation.">Mais margem para sua operação.</span></h2>
         <div>
           <div class="anim anim-2">
-            <div class="label-cat">VANTAGEM LOGÍSTICA ANUAL ESTIMADA</div>
+            <div class="label-cat" data-pt="VANTAGEM LOGÍSTICA ANUAL ESTIMADA" data-en="ESTIMATED ANNUAL LOGISTICS ADVANTAGE">VANTAGEM LOGÍSTICA ANUAL ESTIMADA</div>
             <div class="display-number" style="font-size:clamp(48px,7vw,96px);margin:8px 0">US$ <span
-                class="counter-number" data-target="30">0</span> milhões</div>
+                class="counter-number" data-target="30">0</span> <span data-pt="milhões" data-en="million">milhões</span></div>
             <p class="text-body"
-              style="font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(15px, 1.5vw, 20px);color:hsl(0,0%,100%,0.75)">
+              style="font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(15px, 1.5vw, 20px);color:hsl(0,0%,100%,0.75)"
+              data-pt="Vantagem logística anual estimada para operações de 100 mil TEUs/ano. Cada dia a menos de navegação representa até US$ 30.000 em economia por navio."
+              data-en="Estimated annual logistics advantage for operations of 100,000 TEUs/year. Each day less at sea represents up to US$ 30,000 in savings per vessel.">
               Vantagem logística anual estimada para operações de 100 mil TEUs/ano. Cada dia a menos de navegação
               representa até US$ 30.000 em economia por navio.</p>
           </div>
           <p class="anim anim-3"
-            style="margin-top:24px;font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(13px, 1.3vw, 16px);color:hsl(0,0%,100%,0.5)">
+            style="margin-top:24px;font-family:'Inter',sans-serif;font-weight:400;font-size:clamp(13px, 1.3vw, 16px);color:hsl(0,0%,100%,0.5)"
+            data-pt="Porto do Itaqui: calado de 23 metros, o maior do Norte e Nordeste. Comporta navios Capesize e Neo-Panamax. 4º maior porto público do Brasil."
+            data-en="Port of Itaqui: 23-meter draft, the deepest in North and Northeast Brazil. Accommodates Capesize and Neo-Panamax vessels. Brazil's 4th largest public port.">
             Porto do Itaqui: calado de 23 metros, o maior do Norte e Nordeste. Comporta navios Capesize e Neo-Panamax.
             4º maior porto público do Brasil.
           </p>
@@ -2734,23 +2746,30 @@
           <div style="width:8px;height:8px;border-radius:50%;background:hsl(120 40% 49%);
             box-shadow:0 0 8px hsl(120 40% 49% / 0.8);"></div>
           <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:13px;
-            text-transform:uppercase;letter-spacing:0.12em;color:hsl(120 40% 49%);">Cabo Submarino EllaLink —
+            text-transform:uppercase;letter-spacing:0.12em;color:hsl(120 40% 49%);"
+            data-pt="Cabo Submarino EllaLink — 2027" data-en="EllaLink Submarine Cable — 2027">Cabo Submarino EllaLink —
             2027</span>
         </div>
         <p style="font-family:'Barlow',sans-serif;font-weight:800;
           font-size:clamp(28px,3.5vw,52px);color:hsl(0 0% 96%);
-          letter-spacing:-0.02em;line-height:1.2;max-width:800px;margin-bottom:20px;">
+          letter-spacing:-0.02em;line-height:1.2;max-width:800px;margin-bottom:20px;"
+          data-pt="O Maranhão conectado à internet de alta capacidade global."
+          data-en="Maranhão connected to high-capacity global internet.">
           O Maranhão conectado à internet de alta capacidade global.
         </p>
         <p style="font-family:'Inter',sans-serif;font-weight:400;
           font-size:clamp(15px,1.5vw,19px);color:hsl(0 0% 80%);
-          line-height:1.65;max-width:700px;margin-bottom:12px;">
+          line-height:1.65;max-width:700px;margin-bottom:12px;"
+          data-pt="Em 2027, o cabo submarino EllaLink vai conectar o Maranhão à internet de alta capacidade global — a mesma infraestrutura que move as maiores economias do planeta."
+          data-en="In 2027, the EllaLink submarine cable will connect Maranhão to high-capacity global internet infrastructure — the same backbone powering the world's largest economies.">
           Em 2027, o cabo submarino EllaLink vai conectar o Maranhão à internet de alta capacidade global — a mesma
           infraestrutura que move as maiores economias do planeta.
         </p>
         <p style="font-family:'Inter',sans-serif;font-weight:400;
           font-size:clamp(14px,1.4vw,17px);color:hsl(194 20% 74%);
-          font-style:italic;line-height:1.6;max-width:700px;">
+          font-style:italic;line-height:1.6;max-width:700px;"
+          data-pt="A ZPE de Bacabeira será um dos únicos territórios do Brasil com porto profundo, ferrovia, energia e conectividade submarina no mesmo endereço."
+          data-en="ZPE Bacabeira will be one of the only territories in Brazil with a deep-water port, railway, energy, and submarine connectivity at the same address.">
           A ZPE de Bacabeira será um dos únicos territórios do Brasil com porto profundo, ferrovia, energia e
           conectividade submarina no mesmo endereço.
         </p>
@@ -2788,12 +2807,14 @@
           <div style="width:7px;height:7px;border-radius:50%;background:hsl(120 40% 49%);
             box-shadow:0 0 8px hsl(120 40% 49%);animation:pulse 2s infinite;"></div>
           <span style="font-family:'Barlow',sans-serif;font-weight:700;font-size:12px;
-            text-transform:uppercase;letter-spacing:0.14em;color:hsl(120 40% 49%);">Demanda ativa</span>
+            text-transform:uppercase;letter-spacing:0.14em;color:hsl(120 40% 49%);"
+            data-pt="Demanda ativa" data-en="Active demand">Demanda ativa</span>
         </div>
         <h2 id="gps-title" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
           font-family:'Barlow',sans-serif;font-weight:800;
           font-size:clamp(52px,7vw,96px);color:hsl(0 0% 96%);
-          letter-spacing:-0.03em;line-height:1.0;margin-bottom:clamp(32px,4vh,48px);">
+          letter-spacing:-0.03em;line-height:1.0;margin-bottom:clamp(32px,4vh,48px);"
+          data-pt="O momento é agora." data-en="The time is now.">
           O momento é agora.
         </h2>
         <div id="gps-indicators" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
@@ -2802,7 +2823,8 @@
             <span style="font-family:'Barlow',sans-serif;font-weight:800;
               font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">+50%</span>
             <span style="font-family:'Inter',sans-serif;font-weight:400;
-              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;">
+              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;"
+              data-pt="da área já pré-reservada" data-en="of the area already pre-reserved">
               da área já pré-reservada</span>
           </div>
           <div style="width:1px;height:80px;background:hsl(0 0% 100% / 0.12);margin-right:48px;flex-shrink:0;"></div>
@@ -2810,7 +2832,8 @@
             <span style="font-family:'Barlow',sans-serif;font-weight:800;
               font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">8</span>
             <span style="font-family:'Inter',sans-serif;font-weight:400;
-              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;">
+              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;"
+              data-pt="projetos em processo de aprovação" data-en="projects under approval">
               projetos em processo de aprovação</span>
           </div>
           <div style="width:1px;height:80px;background:hsl(0 0% 100% / 0.12);margin-right:48px;flex-shrink:0;"></div>
@@ -2818,14 +2841,17 @@
             <span style="font-family:'Barlow',sans-serif;font-weight:800;
               font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">3</span>
             <span style="font-family:'Inter',sans-serif;font-weight:400;
-              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;">
+              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;"
+              data-pt="projetos aprovados" data-en="approved projects">
               projetos aprovados</span>
           </div>
         </div>
         <p id="gps-closing" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
           font-family:'Inter',sans-serif;font-weight:400;font-style:italic;
           font-size:clamp(15px,1.5vw,19px);color:hsl(194 20% 74%);line-height:1.6;max-width:700px;
-          margin-top:clamp(24px,3vh,36px);">
+          margin-top:clamp(24px,3vh,36px);"
+          data-pt="2.098 hectares totalmente terraplanados e prontos para instalação imediata."
+          data-en="2,098 hectares fully graded and ready for immediate installation.">
           2.098 hectares totalmente terraplanados e prontos para instalação imediata.
         </p>
       </div>
@@ -2836,45 +2862,45 @@
       <img src="world_dotted.svg" aria-hidden="true"
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.06;filter:invert(1);pointer-events:none;z-index:0;">
       <div class="s7-top anim anim-1" style="position:relative;z-index:1;">
-        <h2 class="s7-title">O <span class="tl-underline">projeto avança</span>. Com atos formais.</h2>
-        <p class="s7-subtitle">36 anos de evolução legislativa. Os dois últimos marcos são de 2025 e 2026.</p>
+        <h2 class="s7-title"><span data-pt="O " data-en="The ">O </span><span class="tl-underline" data-pt="projeto avança" data-en="project advances">projeto avança</span><span data-pt=". Com atos formais." data-en=". With formal milestones.">. Com atos formais.</span></h2>
+        <p class="s7-subtitle" data-pt="36 anos de evolução legislativa. Os dois últimos marcos são de 2025 e 2026." data-en="36 years of legislative evolution. The last two milestones are from 2025 and 2026.">36 anos de evolução legislativa. Os dois últimos marcos são de 2025 e 2026.</p>
       </div>
       <div class="s7-cards-zone" style="position:relative;z-index:1;">
         <div class="s7-cards-grid">
           <div class="s7-card s7-card-anim" style="--card-delay: 100ms">
             <div class="s7-year">1988</div>
             <div class="s7-divider"></div>
-            <div class="s7-desc">Criação do regime original das ZPEs no Brasil</div>
+            <div class="s7-desc" data-pt="Criação do regime original das ZPEs no Brasil" data-en="Creation of Brazil's original EPZ regime">Criação do regime original das ZPEs no Brasil</div>
           </div>
           <div class="s7-card s7-card-anim" style="--card-delay: 200ms">
             <div class="s7-year">2007</div>
             <div class="s7-divider"></div>
-            <div class="s7-desc">Modernização do regime — Lei 11.508</div>
+            <div class="s7-desc" data-pt="Modernização do regime — Lei 11.508" data-en="Regime modernization — Law 11,508">Modernização do regime — Lei 11.508</div>
           </div>
           <div class="s7-card s7-card-anim" style="--card-delay: 300ms">
             <div class="s7-year">2021</div>
             <div class="s7-divider"></div>
-            <div class="s7-desc">Fim do compromisso de 80% de exportação, inclusão de serviços</div>
+            <div class="s7-desc" data-pt="Fim do compromisso de 80% de exportação, inclusão de serviços" data-en="End of the 80% export requirement, inclusion of services">Fim do compromisso de 80% de exportação, inclusão de serviços</div>
           </div>
           <div class="s7-card s7-card-anim" style="--card-delay: 400ms">
             <div class="s7-year">2024</div>
             <div class="s7-divider"></div>
-            <div class="s7-desc">Criação da ZPE Maranhão — Decreto Federal 12.131</div>
+            <div class="s7-desc" data-pt="Criação da ZPE Maranhão — Decreto Federal 12.131" data-en="Creation of ZPE Maranhão — Federal Decree 12,131">Criação da ZPE Maranhão — Decreto Federal 12.131</div>
           </div>
           <div class="s7-card s7-card-highlight s7-card-anim" style="--card-delay: 500ms">
             <div class="s7-active-dot"></div>
             <div class="s7-year">Dez/2025</div>
             <div class="s7-divider"></div>
-            <div class="s7-desc">Licença Prévia emitida — LP 1085517/2025</div>
+            <div class="s7-desc" data-pt="Licença Prévia emitida — LP 1085517/2025" data-en="Prior License issued — LP 1085517/2025">Licença Prévia emitida — LP 1085517/2025</div>
           </div>
           <div class="s7-card s7-card-highlight s7-card-anim" style="--card-delay: 600ms">
             <div class="s7-active-dot"></div>
             <div class="s7-year">Fev/2026</div>
             <div class="s7-divider"></div>
-            <div class="s7-desc">Licença de Instalação emitida — LI 1009637/2026</div>
+            <div class="s7-desc" data-pt="Licença de Instalação emitida — LI 1009637/2026" data-en="Installation License issued — LI 1009637/2026">Licença de Instalação emitida — LI 1009637/2026</div>
           </div>
         </div>
-        <p class="s7-closing">Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada
+        <p class="s7-closing" data-pt="Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada pela Receita Federal e pelo CZPE." data-en="Benefits guaranteed by federal law for 20 years, renewable. Oversight centralized by the Federal Revenue Service and CZPE.">Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada
           pela Receita Federal e pelo CZPE.</p>
       </div>
     </div>
@@ -2886,22 +2912,22 @@
       <div class="s10-half s10-left">
         <img src="world_dotted.svg" class="s10-world-bg" alt="">
         <div class="s10-content">
-          <div class="s10-label s10-anim" style="--s10-delay: 0ms">FASE 1</div>
+          <div class="s10-label s10-anim" style="--s10-delay: 0ms" data-pt="FASE 1" data-en="PHASE 1">FASE 1</div>
           <div class="s10-divider s10-anim" style="--s10-delay: 0ms"></div>
           <div class="s10-steps">
             <div class="s10-card s10-anim" style="--s10-delay: 100ms">
               <div class="s10-step-num">1</div>
               <div class="s10-step-body">
-                <div class="s10-step-title">Manifestação Digital</div>
-                <div class="s10-step-desc">preenchimento do formulário Quero Investir para qualificação imediata</div>
+                <div class="s10-step-title" data-pt="Manifestação Digital" data-en="Digital Expression of Interest">Manifestação Digital</div>
+                <div class="s10-step-desc" data-pt="preenchimento do formulário Quero Investir para qualificação imediata" data-en="completion of the Quero Investir form for immediate qualification">preenchimento do formulário Quero Investir para qualificação imediata</div>
               </div>
             </div>
             <div class="s10-conn-line" data-conn-delay="300"></div>
             <div class="s10-card s10-anim" style="--s10-delay: 250ms">
               <div class="s10-step-num">2</div>
               <div class="s10-step-body">
-                <div class="s10-step-title">Pré-projeto ZPE</div>
-                <div class="s10-step-desc">elaboração do projeto preliminar com informações mínimas conforme requisitos
+                <div class="s10-step-title" data-pt="Pré-projeto ZPE" data-en="ZPE Pre-Project">Pré-projeto ZPE</div>
+                <div class="s10-step-desc" data-pt="elaboração do projeto preliminar com informações mínimas conforme requisitos legais" data-en="preparation of the preliminary project with minimum information per legal requirements">elaboração do projeto preliminar com informações mínimas conforme requisitos
                   legais</div>
               </div>
             </div>
@@ -2909,8 +2935,8 @@
             <div class="s10-card s10-anim" style="--s10-delay: 450ms">
               <div class="s10-step-num">3</div>
               <div class="s10-step-body">
-                <div class="s10-step-title">Pré-Reserva e Precificação</div>
-                <div class="s10-step-desc">reserva de área e definição inicial de cronograma e preços</div>
+                <div class="s10-step-title" data-pt="Pré-Reserva e Precificação" data-en="Pre-Reservation and Pricing">Pré-Reserva e Precificação</div>
+                <div class="s10-step-desc" data-pt="reserva de área e definição inicial de cronograma e preços" data-en="area reservation and initial definition of timeline and pricing">reserva de área e definição inicial de cronograma e preços</div>
               </div>
             </div>
           </div>
@@ -2921,22 +2947,22 @@
       <div class="s10-half s10-right">
         <img src="world_dotted.svg" class="s10-world-bg" alt="">
         <div class="s10-content">
-          <div class="s10-label s10-anim" style="--s10-delay: 200ms">FASE 2</div>
+          <div class="s10-label s10-anim" style="--s10-delay: 200ms" data-pt="FASE 2" data-en="PHASE 2">FASE 2</div>
           <div class="s10-divider s10-anim" style="--s10-delay: 200ms"></div>
           <div class="s10-steps">
             <div class="s10-card s10-anim" style="--s10-delay: 300ms">
               <div class="s10-step-num">4</div>
               <div class="s10-step-body">
-                <div class="s10-step-title">Projeto Técnico ZPE</div>
-                <div class="s10-step-desc">análise detalhada do projeto para implantação na área</div>
+                <div class="s10-step-title" data-pt="Projeto Técnico ZPE" data-en="ZPE Technical Project">Projeto Técnico ZPE</div>
+                <div class="s10-step-desc" data-pt="análise detalhada do projeto para implantação na área" data-en="detailed project analysis for area implementation">análise detalhada do projeto para implantação na área</div>
               </div>
             </div>
             <div class="s10-conn-line" data-conn-delay="500"></div>
             <div class="s10-card s10-anim" style="--s10-delay: 450ms">
               <div class="s10-step-num">5</div>
               <div class="s10-step-body">
-                <div class="s10-step-title">Aprovação CZPE</div>
-                <div class="s10-step-desc">aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação
+                <div class="s10-step-title" data-pt="Aprovação CZPE" data-en="CZPE Approval">Aprovação CZPE</div>
+                <div class="s10-step-desc" data-pt="aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação" data-en="approval by the National Council of Export Processing Zones">aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação
                 </div>
               </div>
             </div>
@@ -2944,13 +2970,13 @@
             <div class="s10-card s10-anim" style="--s10-delay: 650ms">
               <div class="s10-step-num">6</div>
               <div class="s10-step-body">
-                <div class="s10-step-title">Contrato ZPE</div>
-                <div class="s10-step-desc">celebração do Contrato de Cessão de Uso Onerosa da área</div>
+                <div class="s10-step-title" data-pt="Contrato ZPE" data-en="ZPE Agreement">Contrato ZPE</div>
+                <div class="s10-step-desc" data-pt="celebração do Contrato de Cessão de Uso Onerosa da área" data-en="execution of the Onerous Area Use Assignment Agreement">celebração do Contrato de Cessão de Uso Onerosa da área</div>
               </div>
             </div>
           </div>
         </div>
-        <div class="s10-footer s10-anim" style="--s10-delay: 600ms">Cada projeto é analisado individualmente. Prazos
+        <div class="s10-footer s10-anim" style="--s10-delay: 600ms" data-pt="Cada projeto é analisado individualmente. Prazos variam conforme complexidade e documentação." data-en="Each project is analyzed individually. Timelines vary according to complexity and documentation.">Cada projeto é analisado individualmente. Prazos
           variam conforme complexidade e documentação.</div>
       </div>
 
@@ -2964,14 +2990,14 @@
       <div class="cta-bg"><img src="bg_hero_blue_compressed.jpg" alt="" loading="lazy"></div>
       <div class="cta-overlay"></div>
       <div class="cta-content">
-        <h2 class="cta-title anim anim-1">Vamos analisar sua operação.</h2>
-        <p class="cta-text anim anim-2">A equipe técnica da ZPE Maranhão avalia a aderência do seu projeto ao regime e
+        <h2 class="cta-title anim anim-1" data-pt="Vamos analisar sua operação." data-en="Let's assess your operation.">Vamos analisar sua operação.</h2>
+        <p class="cta-text anim anim-2" data-pt="A equipe técnica da ZPE Maranhão avalia a aderência do seu projeto ao regime e estima o impacto tributário e logístico para o seu setor." data-en="The ZPE Maranhão technical team evaluates your project's fit with the regime and estimates the tax and logistics impact for your sector.">A equipe técnica da ZPE Maranhão avalia a aderência do seu projeto ao regime e
           estima o impacto tributário e logístico para o seu setor.</p>
         <div class="cta-contact anim anim-3">
           contato@zpe.ma.gov.br<br>
           zpe.ma.gov.br
         </div>
-        <p class="cta-tagline anim anim-4">A conexão estratégica do Maranhão com o mundo.</p>
+        <p class="cta-tagline anim anim-4" data-pt="A conexão estratégica do Maranhão com o mundo." data-en="Maranhão's strategic connection to the world.">A conexão estratégica do Maranhão com o mundo.</p>
         <div class="cta-logos anim anim-5">
           <img src="logo-zpe.png" alt="ZPE Maranhão">
           <img src="governo-ma-logo.png" alt="Governo do Maranhão">
@@ -2987,7 +3013,7 @@
     <div class="hud-dots" id="hudDots"></div>
     <div class="hud-counter" id="hudCounter"></div>
     <div class="hud-spacer"></div>
-    <button class="hud-fs-btn" onclick="toggleFullscreen()" aria-label="Tela cheia"><span></span></button>
+    <button class="hud-fs-btn" onclick="toggleFullscreen()" aria-label="Tela cheia" data-aria-pt="Tela cheia" data-aria-en="Full screen"><span></span></button>
   </div>
 
   <!-- PROGRESS BAR -->
@@ -2995,16 +3021,16 @@
 
   <!-- DETAIL OVERLAY -->
   <div class="detail-overlay" id="detailOverlay">
-    <button class="detail-close" onclick="closeDetailScreen()" aria-label="Fechar"></button>
+    <button class="detail-close" onclick="closeDetailScreen()" aria-label="Fechar" data-aria-pt="Fechar" data-aria-en="Close"></button>
     <div class="detail-video-section">
       <video id="detailVideo" muted loop playsinline>
         <source src="animacao.mp4" type="video/mp4">
       </video>
-      <div class="detail-video-label"><span>O PROJETO</span></div>
-      <button class="detail-video-fs" onclick="detailVideoFullscreen()">Ver em tela cheia</button>
+      <div class="detail-video-label"><span data-pt="O PROJETO" data-en="THE PROJECT">O PROJETO</span></div>
+      <button class="detail-video-fs" onclick="detailVideoFullscreen()" data-pt="Ver em tela cheia" data-en="View fullscreen">Ver em tela cheia</button>
     </div>
     <div class="detail-gallery-section">
-      <div class="detail-gallery-label">A ÁREA</div>
+      <div class="detail-gallery-label" data-pt="A ÁREA" data-en="THE AREA">A ÁREA</div>
       <div class="detail-gallery" id="detailGallery">
         <img src="01.webp" alt="Área 1" onclick="openLightbox(0)">
         <img src="02.webp" alt="Área 2" onclick="openLightbox(1)">
@@ -3017,10 +3043,10 @@
 
   <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar"></button>
-    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)" aria-label="Anterior"></button>
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar" data-aria-pt="Fechar" data-aria-en="Close"></button>
+    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)" aria-label="Anterior" data-aria-pt="Anterior" data-aria-en="Previous"></button>
     <img id="lightboxImg" src="" alt="">
-    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)" aria-label="Próximo"></button>
+    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)" aria-label="Próximo" data-aria-pt="Próximo" data-aria-en="Next"></button>
   </div>
 
   <script>
@@ -3097,6 +3123,35 @@
     let currentSlide = 0;
     let isTransitioning = false;
     const CHAPTERS = ['Capa', 'O Problema', 'O Problema', 'O Problema', 'O Impacto Financeiro', 'O Impacto Financeiro', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'Próximos Passos', 'Próximos Passos'];
+    const CHAPTERS_EN = ['Cover', 'The Problem', 'The Problem', 'The Problem', 'Financial Impact', 'Financial Impact', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'Next Steps', 'Next Steps'];
+
+    // ===== LANGUAGE TOGGLE =====
+    let currentLang = 'pt';
+    window.ACTIVE_CHAPTERS = CHAPTERS;
+
+    function toggleLang() {
+      currentLang = currentLang === 'pt' ? 'en' : 'pt';
+      const label = document.getElementById('lang-label');
+      if (label) label.textContent = currentLang === 'pt' ? 'EN' : 'PT';
+
+      // Swap textContent for all elements with data-pt / data-en
+      document.querySelectorAll('[data-pt]').forEach(el => {
+        const val = currentLang === 'pt' ? el.getAttribute('data-pt') : el.getAttribute('data-en');
+        if (val !== null) el.textContent = val;
+      });
+
+      // Swap aria-label for all elements with data-aria-pt / data-aria-en
+      document.querySelectorAll('[data-aria-pt]').forEach(el => {
+        const val = currentLang === 'pt' ? el.getAttribute('data-aria-pt') : el.getAttribute('data-aria-en');
+        if (val !== null) el.setAttribute('aria-label', val);
+      });
+
+      // Swap HUD chapter label
+      window.ACTIVE_CHAPTERS = currentLang === 'pt' ? CHAPTERS : CHAPTERS_EN;
+      if (typeof hudChapter !== 'undefined' && hudChapter) {
+        hudChapter.textContent = window.ACTIVE_CHAPTERS[currentSlide] || '';
+      }
+    }
 
     // ===== HUD SETUP =====
     const hud = document.getElementById('hud');
@@ -3115,7 +3170,7 @@
     }
 
     function updateHUD() {
-      hudChapter.textContent = CHAPTERS[currentSlide] || '';
+      hudChapter.textContent = (window.ACTIVE_CHAPTERS || CHAPTERS)[currentSlide] || '';
       hudCounter.textContent = (currentSlide + 1) + ' / ' + totalSlides;
       hudDots.querySelectorAll('.hud-dot').forEach((d, i) => {
         d.classList.toggle('active', i === currentSlide);
