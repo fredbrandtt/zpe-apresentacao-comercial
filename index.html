@@ -74,6 +74,19 @@
       transition: none;
     }
 
+    @media (max-width: 1200px), (max-height: 768px) {
+      .slide {
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+      }
+    }
+
+    .slide-capa,
+    .slide[data-video-slide] {
+      overflow: hidden !important;
+    }
+
     .slide.active {
       opacity: 1;
       pointer-events: auto;
@@ -1354,45 +1367,70 @@
     .s10-steps {
       display: flex;
       flex-direction: column;
-      gap: clamp(28px, 3.5vh, 44px);
+      gap: 0;
     }
 
-    .s10-step {
+    /* Card structure */
+    .s10-card {
       display: flex;
       align-items: flex-start;
-      gap: 0;
+      gap: 20px;
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    .s10-left .s10-card {
+      background: hsl(220 55% 26%);
+      border: 1px solid hsl(0 0% 100% / 0.1);
+      border-left: 3px solid hsl(120 40% 49%);
+    }
+
+    .s10-right .s10-card {
+      background: #ffffff;
+      border: 1px solid hsl(220 20% 88%);
+      border-left: 3px solid hsl(220 55% 32%);
+      box-shadow: 0 2px 12px hsl(220 55% 32% / 0.06);
+    }
+
+    /* Connector line between cards */
+    .s10-conn-line {
+      width: 2px;
+      height: clamp(20px, 2.5vh, 32px);
+      margin-left: 36px;
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+
+    .s10-left  .s10-conn-line { background: hsl(120 40% 49% / 0.4); }
+    .s10-right .s10-conn-line { background: hsl(220 55% 32% / 0.25); }
+
+    .s10-conn-line.line-animate {
+      transition: transform 400ms ease-out;
+      transform: scaleY(1);
     }
 
     .s10-step-num {
       font-family: 'Barlow', sans-serif;
       font-weight: 800;
-      font-size: clamp(28px, 2.5vw, 36px);
+      font-size: clamp(32px, 3vw, 44px);
       line-height: 1;
       flex: 0 0 48px;
       width: 48px;
-      padding-right: 20px;
-      margin-right: 24px;
-      align-self: flex-start;
     }
 
-    .s10-left  .s10-step-num {
-      color: hsl(120 40% 49%);
-      border-right: 2px solid hsl(120 40% 49% / 0.30);
-    }
-    .s10-right .s10-step-num {
-      color: hsl(220 55% 32%);
-      border-right: 2px solid hsl(220 55% 32% / 0.30);
-    }
+    .s10-left  .s10-step-num { color: hsl(120 40% 49%); }
+    .s10-right .s10-step-num { color: hsl(220 55% 32%); }
 
     .s10-step-body {
       display: flex;
       flex-direction: column;
+      gap: 6px;
     }
 
     .s10-step-title {
       font-family: 'Barlow', sans-serif;
       font-weight: 700;
-      font-size: clamp(20px, 2vw, 26px);
+      font-size: clamp(18px, 1.8vw, 24px);
     }
 
     .s10-left  .s10-step-title { color: hsl(0 0% 100%); }
@@ -1401,9 +1439,8 @@
     .s10-step-desc {
       font-family: 'Inter', sans-serif;
       font-weight: 400;
-      font-size: clamp(14px, 1.4vw, 16px);
-      line-height: 1.55;
-      margin-top: 6px;
+      font-size: clamp(13px, 1.3vw, 16px);
+      line-height: 1.6;
     }
 
     .s10-left  .s10-step-desc { color: hsl(0 0% 100% / 0.65); }
@@ -2064,6 +2101,27 @@
 
 <body>
 
+<div id="app-loader" style="
+  position: fixed; inset: 0; z-index: 99999;
+  background: hsl(220 55% 8%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 32px;
+  transition: opacity 600ms ease, visibility 600ms ease;">
+
+  <img src="zpe_white.png" style="height: 64px; opacity: 0.9;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
+    <div style="width: 240px; height: 2px; background: hsl(0 0% 100% / 0.1); border-radius: 2px; overflow: hidden;">
+      <div id="loader-bar" style="height: 100%; width: 0%; background: hsl(120 40% 49%);
+        transition: width 300ms ease; border-radius: 2px;"></div>
+    </div>
+    <span id="loader-label" style="font-family:'Inter',sans-serif; font-weight:400;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.15em;
+      color: hsl(0 0% 100% / 0.4);">Carregando apresentação...</span>
+  </div>
+</div>
+
   <!-- FULLSCREEN BUTTON (always visible) -->
   <button class="fs-btn-fixed" onclick="toggleFullscreen()" aria-label="Tela cheia"><span></span></button>
 
@@ -2287,7 +2345,7 @@
     </div>
 
     <!-- SLIDE 5 — LOGÍSTICA -->
-    <div class="slide slide-dark" data-chapter="O Impacto Financeiro">
+    <div class="slide slide-dark" data-chapter="O Impacto Financeiro" data-video-slide>
       <!-- Video background anchored left -->
       <video class="slide-bg-video" autoplay loop muted playsinline
         style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:20% center;z-index:0">
@@ -2349,7 +2407,7 @@
     </div>
 
     <!-- SLIDE 6 — INFRAESTRUTURA -->
-    <div class="slide slide-dark" data-chapter="A Infraestrutura" style="
+    <div class="slide slide-dark" data-chapter="A Infraestrutura" data-video-slide style="
       background: hsl(220 55% 8%);
       display: flex;
       flex-direction: column;
@@ -2365,7 +2423,7 @@
     </div>
 
     <!-- SLIDE CABO — ELLALINK TRANSITION -->
-    <div class="slide" data-chapter="A Infraestrutura" style="padding:0; overflow:hidden; background:hsl(220 55% 4%); position:relative;">
+    <div class="slide" data-chapter="A Infraestrutura" data-video-slide style="padding:0; overflow:hidden; background:hsl(220 55% 4%); position:relative;">
       <video id="cabo-transition-video" src="transicao_modal_cabo.mp4" muted playsinline
         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;">
       </video>
@@ -2399,14 +2457,14 @@
     </div>
 
     <!-- SLIDE CABO-ZPE — TRANSITION VIDEO -->
-    <div class="slide" data-chapter="A Infraestrutura" style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
+    <div class="slide" data-chapter="A Infraestrutura" data-video-slide style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
       <video id="cabo-zpe-video" src="transicao_cabo_zpe.mp4" muted playsinline preload="auto"
         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;">
       </video>
     </div>
 
     <!-- SLIDE GPS-ZPE — TRANSITION VIDEO + CONTENT -->
-    <div class="slide" data-chapter="A Infraestrutura" style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
+    <div class="slide" data-chapter="A Infraestrutura" data-video-slide style="padding:0; overflow:hidden; background:hsl(220 55% 4%);">
       <video id="gps-zpe-video" src="transicao_gps_zpe.mp4" muted playsinline
         style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; opacity:0; transition: opacity 600ms ease;">
       </video>
@@ -2527,21 +2585,23 @@
           <div class="s10-label s10-anim" style="--s10-delay: 0ms">FASE 1</div>
           <div class="s10-divider s10-anim" style="--s10-delay: 0ms"></div>
           <div class="s10-steps">
-            <div class="s10-step s10-anim" style="--s10-delay: 100ms">
+            <div class="s10-card s10-anim" style="--s10-delay: 100ms">
               <div class="s10-step-num">1</div>
               <div class="s10-step-body">
                 <div class="s10-step-title">Manifestação Digital</div>
                 <div class="s10-step-desc">preenchimento do formulário Quero Investir para qualificação imediata</div>
               </div>
             </div>
-            <div class="s10-step s10-anim" style="--s10-delay: 200ms">
+            <div class="s10-conn-line" data-conn-delay="300"></div>
+            <div class="s10-card s10-anim" style="--s10-delay: 250ms">
               <div class="s10-step-num">2</div>
               <div class="s10-step-body">
                 <div class="s10-step-title">Pré-projeto ZPE</div>
                 <div class="s10-step-desc">elaboração do projeto preliminar com informações mínimas conforme requisitos legais</div>
               </div>
             </div>
-            <div class="s10-step s10-anim" style="--s10-delay: 300ms">
+            <div class="s10-conn-line" data-conn-delay="600"></div>
+            <div class="s10-card s10-anim" style="--s10-delay: 450ms">
               <div class="s10-step-num">3</div>
               <div class="s10-step-body">
                 <div class="s10-step-title">Pré-Reserva e Precificação</div>
@@ -2559,21 +2619,23 @@
           <div class="s10-label s10-anim" style="--s10-delay: 200ms">FASE 2</div>
           <div class="s10-divider s10-anim" style="--s10-delay: 200ms"></div>
           <div class="s10-steps">
-            <div class="s10-step s10-anim" style="--s10-delay: 350ms">
+            <div class="s10-card s10-anim" style="--s10-delay: 300ms">
               <div class="s10-step-num">4</div>
               <div class="s10-step-body">
                 <div class="s10-step-title">Projeto Técnico ZPE</div>
                 <div class="s10-step-desc">análise detalhada do projeto para implantação na área</div>
               </div>
             </div>
-            <div class="s10-step s10-anim" style="--s10-delay: 450ms">
+            <div class="s10-conn-line" data-conn-delay="500"></div>
+            <div class="s10-card s10-anim" style="--s10-delay: 450ms">
               <div class="s10-step-num">5</div>
               <div class="s10-step-body">
                 <div class="s10-step-title">Aprovação CZPE</div>
                 <div class="s10-step-desc">aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação</div>
               </div>
             </div>
-            <div class="s10-step s10-anim" style="--s10-delay: 550ms">
+            <div class="s10-conn-line" data-conn-delay="800"></div>
+            <div class="s10-card s10-anim" style="--s10-delay: 650ms">
               <div class="s10-step-num">6</div>
               <div class="s10-step-body">
                 <div class="s10-step-title">Contrato ZPE</div>
@@ -2655,6 +2717,73 @@
   </div>
 
   <script>
+    // ===== LOADER =====
+    (function() {
+      const assets = [
+        // Vídeos
+        'video_ships.mp4',
+        'modais.mp4',
+        'transicao_modal_cabo.mp4',
+        'transicao_cabo_zpe.mp4',
+        'transicao_gps_zpe.mp4',
+        'animacao.mp4',
+        // Imagens
+        'bg_hero_blue_compressed.jpg',
+        'logo-zpe.png',
+        'zpe_white.png',
+        'investe-ma-logo.png',
+        'governo-ma-logo.png',
+        'maranhao_stylized.jpg',
+        'world_dotted.svg',
+        'zpe_3d.jpg',
+        '01.webp', '02.webp', '03.webp', '04.webp', '05.webp'
+      ];
+
+      const total = assets.length;
+      let loaded = 0;
+
+      const bar = document.getElementById('loader-bar');
+      const label = document.getElementById('loader-label');
+      const loader = document.getElementById('app-loader');
+
+      function onProgress() {
+        loaded++;
+        const pct = Math.round((loaded / total) * 100);
+        bar.style.width = pct + '%';
+        label.innerText = `Carregando... ${pct}%`;
+        if (loaded >= total) finish();
+      }
+
+      function finish() {
+        label.innerText = 'Pronto.';
+        bar.style.width = '100%';
+        setTimeout(() => {
+          loader.style.opacity = '0';
+          loader.style.visibility = 'hidden';
+        }, 400);
+      }
+
+      assets.forEach(src => {
+        const ext = src.split('.').pop().toLowerCase();
+        if (['mp4', 'webm'].includes(ext)) {
+          const v = document.createElement('video');
+          v.preload = 'auto';
+          v.src = src;
+          v.addEventListener('canplaythrough', onProgress, { once: true });
+          v.addEventListener('error', onProgress, { once: true });
+          v.load();
+        } else {
+          const img = new Image();
+          img.onload = onProgress;
+          img.onerror = onProgress;
+          img.src = src;
+        }
+      });
+
+      // Fallback: força finish após 12 segundos independente do carregamento
+      setTimeout(finish, 12000);
+    })();
+
     // ===== STATE =====
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
@@ -2799,6 +2928,22 @@
         newSlide.classList.add('active');
         currentSlide = n;
         updateHUD();
+
+        // Animate connector lines in slide-caminho
+        if (newSlide.classList.contains('slide-caminho')) {
+          newSlide.querySelectorAll('.s10-conn-line').forEach(line => {
+            line.classList.remove('line-animate');
+            line.style.transition = 'none';
+            line.style.transform = 'scaleY(0)';
+          });
+          newSlide.querySelectorAll('.s10-conn-line').forEach(line => {
+            const delay = parseInt(line.dataset.connDelay || '300', 10);
+            setTimeout(() => {
+              line.style.transition = 'transform 400ms ease-out';
+              line.style.transform = 'scaleY(1)';
+            }, delay);
+          });
+        }
         showHUD();
         animateCounters(newSlide);
         isTransitioning = false;
