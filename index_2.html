@@ -1,0 +1,2994 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ZPE Maranhão — Apresentação Institucional</title>
+
+  <!-- =====================================================================
+       CONFIG · MARCA DO GOVERNO  (liga / desliga)
+       ---------------------------------------------------------------------
+       Período eleitoral: para OCULTAR a marca "Governo do Maranhão" em toda a
+       apresentação (capa + slide final), troque a linha abaixo para  false.
+
+       Sem editar o código: abra a apresentação com  ?governo=off  na URL
+       (ex.: pitch.zpema.com.br/?governo=off).  Use  ?governo=on  para forçar
+       a exibição. A URL, quando presente, tem prioridade sobre a linha abaixo.
+       ===================================================================== -->
+  <script>
+    const MOSTRAR_MARCA_GOVERNO = false; // ← troque para  false  no período eleitoral
+
+    (function () {
+      var mostrar = MOSTRAR_MARCA_GOVERNO;
+      var q = new URLSearchParams(location.search).get('governo');
+      if (q !== null) {
+        mostrar = !['0', 'off', 'nao', 'não', 'no', 'false'].includes(q.toLowerCase());
+      }
+      document.documentElement.classList.toggle('hide-gov', !mostrar);
+    })();
+  </script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300&family=Inter:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+    /* ============================================================
+       ZPE MARANHÃO · DESIGN TOKENS
+       Espelho de design_system/tokens/*.css — fonte da verdade.
+       Azul institucional domina (~70%), verde é acento cirúrgico (~10%),
+       canvas claro é a base (~20%). A proporção é a identidade.
+       ============================================================ */
+    :root {
+      /* Azul institucional (estrutura, autoridade) */
+      --blue: #244582;
+      --blue-deep: #1a3160;
+      --blue-darkest: #0f1d3a;
+      --blue-pressed: #142849;
+      --blue-soft: #dbe4f5;
+      --blue-pale: #eef2fb;
+      --navy: #070d1c;
+      /* letterbox / palco */
+
+      /* Verde de ação (acento, nunca dominante) */
+      --green: #4cac4b;
+      --green-deep: #3d9a3c;
+      --green-pressed: #2f7a2e;
+      --green-soft: #5fb55e;
+
+      /* Neutro / texto */
+      --ink: #1a2942;
+      --ink-soft: #4a5a78;
+      --ink-mute: #7a87a0;
+
+      /* Canvas */
+      --canvas: #ffffff;
+      --canvas-soft: #f9f9ff;
+      --canvas-blue: #f0f3ff;
+
+      /* Bordas */
+      --line: #e6eaf2;
+      --line-soft: #eef1f7;
+      --line-strong: #cdd5e4;
+
+      /* Gradients de profundidade (azul) */
+      --grad-abyss: linear-gradient(180deg, #0f1d3a 0%, #244582 100%);
+      --grad-ocean-floor: linear-gradient(160deg, #0a1428 0%, #1a3160 45%, #2a5094 100%);
+      --grad-deep-horizon: linear-gradient(180deg, #0f1d3a 0%, #1a3160 40%, #244582 70%, #3a6ab5 100%);
+      --grad-night-glow: radial-gradient(ellipse 50% 50% at 70% 20%, rgba(42, 80, 148, 0.6) 0%, transparent 70%), linear-gradient(180deg, #0f1d3a 0%, #142849 100%);
+      --grad-aurora-blue: linear-gradient(160deg, #1a3160 0%, #244582 40%, #1a3160 72%, #0f1d3a 100%);
+      --grad-aurora-deep: linear-gradient(180deg, #0f1d3a 0%, #18305a 52%, #244582 100%);
+
+      /* Gradients de superfície clara */
+      --grad-mist: linear-gradient(180deg, #f0f3ff 0%, #ffffff 100%);
+      --grad-frost: linear-gradient(180deg, #ffffff 0%, #f0f3ff 50%, #eef2fb 100%);
+
+      /* Acento */
+      --grad-accent-line: linear-gradient(90deg, #4cac4b 0%, #3d9a3c 100%);
+
+      /* Textura de grão (overlay de ruído SVG) */
+      --grain: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      --grain-dark: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+
+      /* Elevação (sombras com tint azulado) */
+      --shadow-sm: 0 1px 3px rgba(26, 41, 66, .06), 0 1px 2px rgba(26, 41, 66, .04);
+      --shadow-md: 0 8px 24px -10px rgba(26, 41, 66, .16);
+      --shadow-lg: 0 24px 56px -18px rgba(26, 41, 66, .24);
+      --shadow-card-dark: 0 24px 60px -20px rgba(5, 10, 24, .7);
+      --shadow-glow-accent: 0 4px 24px -4px rgba(76, 172, 75, .3);
+
+      /* Tipografia */
+      --display: 'Barlow', system-ui, sans-serif;
+      --body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --mono: 'JetBrains Mono', 'SF Mono', ui-monospace, monospace;
+
+      /* Motion */
+      --ease: cubic-bezier(.2, 0, 0, 1);
+      --ease-out: cubic-bezier(.16, 1, .3, 1);
+
+      /* Layout do palco (1920×1080) */
+      --pad: 112px;
+    }
+
+    /* Marca do Governo ocultada quando <html class="hide-gov"> */
+    html.hide-gov .gov-brand {
+      display: none !important;
+    }
+
+    /* ===== RESET ===== */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    body {
+      font-family: var(--body);
+      font-weight: 400;
+      color: #fff;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ============================================================
+       PALCO FIXO 16:9 — 1920×1080 escalado uniformemente (cinema).
+       ============================================================ */
+    .deck-viewport {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background: var(--navy);
+    }
+
+    /* Vinheta sutil do letterbox — dá profundidade às barras */
+    .deck-viewport::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 60;
+      background: radial-gradient(ellipse 90% 90% at 50% 50%, transparent 60%, rgba(0, 0, 0, .55) 100%);
+    }
+
+    .deck-stage {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      transform-origin: 0 0;
+      background: var(--blue-darkest);
+      box-shadow: 0 40px 120px -30px rgba(0, 0, 0, .8);
+    }
+
+    /* ===== BASE SLIDE ===== */
+    .slide {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      padding: var(--pad);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      will-change: transform, opacity, filter;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      z-index: 1;
+    }
+
+    /* Fallback sem GSAP: garante que o slide ativo apareça e a revelação não fique presa */
+    html.no-gsap .slide {
+      transition: opacity .5s var(--ease);
+    }
+
+    html.no-gsap .rv {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* ===== SUPERFÍCIES / GRÃO ===== */
+    .surface-dark {
+      background: var(--grad-aurora-deep);
+      color: #fff;
+    }
+
+    .surface-quote {
+      background: var(--grad-ocean-floor);
+      color: #fff;
+    }
+
+    .surface-data {
+      background: var(--grad-aurora-blue);
+      color: #fff;
+    }
+
+    .surface-light {
+      background: var(--grad-mist);
+      color: var(--ink);
+    }
+
+    .surface-frost {
+      background: var(--grad-frost);
+      color: var(--ink);
+    }
+
+    .grain-d::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grain-dark) repeat;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .grain-l::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grain) repeat;
+      mix-blend-mode: multiply;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slide>* {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== MOTIVOS DA MARCA ===== */
+    /* RippleField — anéis concêntricos verdes irradiando de um canto */
+    .ripple {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background: repeating-radial-gradient(circle at var(--rx, 100%) var(--ry, 12%),
+          transparent 0 118px, rgba(95, 181, 94, .07) 118px 120px);
+      -webkit-mask-image: radial-gradient(circle at var(--rx, 100%) var(--ry, 12%), #000 0%, transparent 62%);
+      mask-image: radial-gradient(circle at var(--rx, 100%) var(--ry, 12%), #000 0%, transparent 62%);
+    }
+
+    .ripple.light {
+      background: repeating-radial-gradient(circle at var(--rx, 100%) var(--ry, 12%),
+          transparent 0 118px, rgba(36, 69, 130, .06) 118px 120px);
+    }
+
+    /* Seta da marca — elemento gráfico proprietário, decorativo */
+    .brand-arrow {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      opacity: .14;
+    }
+
+    /* World dotted — conectividade global */
+    .world-dot {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ===== TIPOGRAFIA UTIL ===== */
+    /* Eyebrow — JetBrains Mono, uppercase, verde */
+    .eyebrow {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+    }
+
+    .surface-dark .eyebrow,
+    .surface-quote .eyebrow,
+    .surface-data .eyebrow {
+      color: var(--green-soft);
+    }
+
+    .eyebrow-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(76, 172, 75, .35);
+      border-radius: 9999px;
+      padding: 9px 20px;
+    }
+
+    .eyebrow-pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px rgba(76, 172, 75, .8);
+    }
+
+    /* Título de seção — Barlow 300 elegante, 600 no termo de valor (assinatura DS) */
+    .h-title {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: 88px;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+
+    .surface-light .h-title,
+    .surface-frost .h-title {
+      color: var(--blue);
+    }
+
+    .h-title .em {
+      font-weight: 600;
+      color: inherit;
+    }
+
+    /* Sublinhado verde animado (via GSAP scaleX ou CSS fallback) */
+    .em-underline {
+      position: relative;
+      white-space: nowrap;
+      font-weight: 600;
+    }
+
+    .em-underline::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -.08em;
+      height: 6px;
+      width: 100%;
+      background: var(--grad-accent-line);
+      border-radius: 3px;
+      transform: scaleX(var(--ul, 0));
+      transform-origin: left;
+    }
+
+    html.no-gsap .em-underline::after {
+      --ul: 1;
+    }
+
+    /* Barra de acento */
+    .accent-bar {
+      width: 68px;
+      height: 4px;
+      background: var(--grad-accent-line);
+      border-radius: 2px;
+    }
+
+    /* Número de impacto — branco sobre escuro, unidade verde (regra de contraste DS) */
+    .stat-num {
+      font-family: var(--display);
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.025em;
+      line-height: 0.92;
+      color: #fff;
+    }
+
+    .stat-num .u {
+      color: var(--green-soft);
+      font-weight: 600;
+    }
+
+    /* Corpo */
+    .body-txt {
+      font-family: var(--body);
+      font-weight: 400;
+      line-height: 1.62;
+    }
+
+    .surface-dark .body-txt,
+    .surface-quote .body-txt,
+    .surface-data .body-txt {
+      color: rgba(255, 255, 255, .72);
+    }
+
+    .surface-light .body-txt,
+    .surface-frost .body-txt {
+      color: var(--ink-soft);
+    }
+
+    /* Rodapé do slide — logo + numeração mono */
+    .slide-foot {
+      position: absolute;
+      bottom: 54px;
+      left: var(--pad);
+      right: var(--pad);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 3;
+    }
+
+    .slide-foot .fl {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .slide-foot img {
+      height: 30px;
+      width: auto;
+    }
+
+    .slide-foot .pg {
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      color: var(--ink-mute);
+    }
+
+    .surface-dark .slide-foot .pg,
+    .surface-quote .slide-foot .pg,
+    .surface-data .slide-foot .pg {
+      color: rgba(255, 255, 255, .4);
+    }
+
+    /* ===== SLIDE 0 — CAPA ===== */
+    .s-capa {
+      padding: 0;
+      align-items: stretch;
+      flex-direction: row;
+      background: var(--blue-darkest);
+    }
+
+    .capa-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .capa-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.06);
+    }
+
+    .capa-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(9, 16, 33, .94) 0%, rgba(9, 16, 33, .72) 42%, rgba(9, 16, 33, .35) 100%),
+        linear-gradient(0deg, rgba(9, 16, 33, .8) 0%, transparent 46%);
+    }
+
+    .capa-content {
+      position: relative;
+      z-index: 3;
+      width: 58%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-left: 150px;
+      padding-right: 40px;
+    }
+
+    .capa-logo img {
+      height: 128px;
+      width: auto;
+    }
+
+    .capa-slogan {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: 74px;
+      color: #fff;
+      margin-top: 40px;
+      line-height: 1.06;
+      letter-spacing: -0.02em;
+      max-width: 15ch;
+    }
+
+    .capa-slogan .em {
+      font-weight: 600;
+    }
+
+    .capa-line {
+      margin-top: 40px;
+    }
+
+    .capa-footer-logos {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      margin-top: 56px;
+    }
+
+    .capa-footer-logos img {
+      height: 40px;
+      width: auto;
+    }
+
+    .capa-footer-logos .investe-logo {
+      filter: brightness(0) invert(1) opacity(0.85);
+    }
+
+    .capa-side {
+      position: absolute;
+      right: 96px;
+      bottom: 54px;
+      z-index: 3;
+      font-family: var(--mono);
+      font-size: 14px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .45);
+      writing-mode: vertical-rl;
+    }
+
+    /* ===== SLIDE 1 — O PROBLEMA ===== */
+    .s-problema {
+      justify-content: center;
+    }
+
+    .problem-head {
+      max-width: 1200px;
+      margin-bottom: 52px;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      max-width: 1280px;
+    }
+
+    .p-card {
+      background: rgba(255, 255, 255, .035);
+      border: 1px solid rgba(255, 255, 255, .09);
+      border-radius: 16px;
+      padding: 38px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .p-card .p-ico {
+      width: 46px;
+      height: 46px;
+      color: var(--green);
+    }
+
+    .p-card .p-ico svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--green);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .p-card h3 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 30px;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .p-card p {
+      font-family: var(--body);
+      font-size: 18px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, .68);
+    }
+
+    /* ===== SLIDE 2 — IMPACTO (citação) ===== */
+    .s-impacto {
+      align-items: flex-start;
+      justify-content: center;
+    }
+
+    .impacto-mark {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: 200px;
+      line-height: 0.5;
+      color: var(--green-soft);
+      opacity: .8;
+      margin-bottom: 8px;
+    }
+
+    .impacto-l1 {
+      font-family: var(--display);
+      font-weight: 300;
+      font-style: italic;
+      font-size: 38px;
+      color: rgba(255, 255, 255, .68);
+      margin-bottom: 14px;
+      max-width: 26ch;
+    }
+
+    .impacto-l2 {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: 84px;
+      color: #fff;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+    }
+
+    .impacto-l3 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 84px;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+
+    .impacto-l3 .green {
+      color: var(--green-soft);
+    }
+
+    .impacto-l3 .white {
+      color: #fff;
+    }
+
+    /* ===== SLIDE 3 — A SOLUÇÃO ===== */
+    .s-solucao {
+      flex-direction: row;
+      align-items: stretch;
+      gap: 64px;
+      padding: 96px 112px;
+    }
+
+    .sol-left {
+      flex: 0 0 46%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sol-left .h-title {
+      font-size: 66px;
+    }
+
+    .sol-sub {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 22px;
+      color: var(--green-deep);
+      margin-top: 14px;
+    }
+
+    .sol-map {
+      position: relative;
+      flex: 1;
+      margin-top: 30px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sol-map .world-bg {
+      position: absolute;
+      inset: -6%;
+      width: 112%;
+      height: 112%;
+      object-fit: contain;
+      opacity: .1;
+      filter: grayscale(1);
+      pointer-events: none;
+    }
+
+    .sol-map .map-img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+      position: relative;
+      z-index: 1;
+    }
+
+    .map-pin {
+      position: absolute;
+      top: 27%;
+      left: 55%;
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .pin-dot {
+      width: 18px;
+      height: 18px;
+      background: var(--green);
+      border-radius: 50%;
+      position: relative;
+      box-shadow: 0 0 16px rgba(76, 172, 75, .7);
+    }
+
+    .pin-pulse {
+      position: absolute;
+      inset: -10px;
+      border-radius: 50%;
+      border: 2px solid var(--green);
+      animation: pinPulse 2s ease-out infinite;
+    }
+
+    @keyframes pinPulse {
+      0% {
+        transform: scale(.7);
+        opacity: 1;
+      }
+
+      100% {
+        transform: scale(2.3);
+        opacity: 0;
+      }
+    }
+
+    .pin-tooltip {
+      position: absolute;
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(15, 29, 58, .94);
+      border: 1px solid rgba(76, 172, 75, .4);
+      border-radius: 14px;
+      padding: 18px 26px;
+      white-space: nowrap;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pin-tooltip .t {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 22px;
+      color: #fff;
+    }
+
+    .pin-tooltip .s {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--green-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-top: 2px;
+    }
+
+    .badge-20 {
+      position: absolute;
+      bottom: 18px;
+      left: 18px;
+      z-index: 10;
+      background: var(--grad-abyss);
+      border: 1px solid rgba(76, 172, 75, .3);
+      border-radius: 14px;
+      padding: 14px 20px;
+      overflow: hidden;
+    }
+
+    .badge-20 .n {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 30px;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .badge-20 .l {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 10px;
+      color: var(--green-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    .sol-right {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .sol-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 28px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: var(--shadow-sm);
+      transition: border-color .25s var(--ease), box-shadow .25s var(--ease), transform .25s var(--ease);
+    }
+
+    .sol-card:hover {
+      border-color: var(--green);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .sol-card .sol-ico {
+      width: 36px;
+      height: 36px;
+      color: var(--green);
+    }
+
+    .sol-card .sol-ico svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--green);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .sol-card h3 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 23px;
+      color: var(--blue);
+      letter-spacing: -0.01em;
+    }
+
+    .sol-card p {
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--ink-soft);
+    }
+
+    /* ===== SLIDE 4 — IMPACTO TRIBUTÁRIO ===== */
+    .s-trib {
+      align-items: center;
+      text-align: center;
+    }
+
+    .trib-hero {
+      margin-bottom: 40px;
+    }
+
+    .trib-num {
+      font-size: 168px;
+      margin: 14px 0 10px;
+    }
+
+    .trib-num .u {
+      font-size: 62px;
+    }
+
+    .trib-table {
+      max-width: 940px;
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+
+    .trib-table th {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, .14);
+      color: rgba(255, 255, 255, .5);
+    }
+
+    .trib-table td {
+      padding: 16px 20px;
+      font-family: var(--body);
+      font-size: 19px;
+      border-bottom: 1px solid rgba(255, 255, 255, .07);
+      color: rgba(255, 255, 255, .74);
+      text-align: left;
+    }
+
+    .trib-table td:first-child {
+      font-family: var(--display);
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .trib-table .zpe {
+      color: var(--green-soft);
+      font-weight: 600;
+    }
+
+    /* ===== VÍDEO — camadas comuns ===== */
+    .slide-bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .v-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .v-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== SLIDE 5 — LOGÍSTICA ===== */
+    .route-chip {
+      position: absolute;
+      z-index: 2;
+      background: rgba(15, 29, 58, .82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 12px;
+      padding: 12px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .route-chip .r {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .route-chip .d {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--green-soft);
+    }
+
+    /* ===== SLIDE cabo / gps — conteúdo sobre vídeo ===== */
+    .flow-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ===== SLIDE 7 — TIMELINE (Segurança jurídica) ===== */
+    .s-timeline {
+      justify-content: flex-start;
+      padding-top: 96px;
+    }
+
+    .tl-head {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .tl-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 20px;
+    }
+
+    .tl-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-top: 3px solid rgba(36, 69, 130, .18);
+      border-radius: 16px;
+      box-shadow: var(--shadow-sm);
+      padding: 34px 26px;
+      position: relative;
+    }
+
+    .tl-card .y {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 40px;
+      color: var(--blue);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+
+    .tl-card .div {
+      width: 34px;
+      height: 2px;
+      background: var(--line-strong);
+      margin: 16px 0;
+    }
+
+    .tl-card .d {
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+    }
+
+    .tl-card.hl {
+      background: var(--grad-abyss);
+      border: 1px solid rgba(76, 172, 75, .28);
+      border-top: 3px solid var(--green);
+      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(76, 172, 75, .18);
+      overflow: hidden;
+    }
+
+    .tl-card.hl .y {
+      color: var(--green-soft);
+    }
+
+    .tl-card.hl .div {
+      background: rgba(76, 172, 75, .45);
+    }
+
+    .tl-card.hl .d {
+      color: rgba(255, 255, 255, .92);
+      font-weight: 500;
+    }
+
+    .tl-card .live {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(76, 172, 75, .9);
+      animation: livePulse 2s ease-in-out infinite;
+    }
+
+    @keyframes livePulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.4);
+        opacity: .65;
+      }
+    }
+
+    .tl-closing {
+      text-align: center;
+      font-family: var(--body);
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin-top: 44px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== SLIDE 11 — COMO INSTALAR (split) ===== */
+    .s-caminho {
+      padding: 0;
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .cm-half {
+      position: relative;
+      flex: 0 0 50%;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 96px 88px;
+      overflow: hidden;
+    }
+
+    .cm-left {
+      background: var(--grad-abyss);
+      color: #fff;
+    }
+
+    .cm-right {
+      background: var(--grad-frost);
+      color: var(--ink);
+    }
+
+    .cm-label {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .cm-left .cm-label {
+      color: var(--green-soft);
+    }
+
+    .cm-right .cm-label {
+      color: var(--green-deep);
+    }
+
+    .cm-divider {
+      height: 1px;
+      margin: 18px 0 40px;
+    }
+
+    .cm-left .cm-divider {
+      background: rgba(255, 255, 255, .16);
+    }
+
+    .cm-right .cm-divider {
+      background: rgba(36, 69, 130, .16);
+    }
+
+    .cm-steps {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cm-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+      border-radius: 14px;
+      padding: 22px 26px;
+    }
+
+    .cm-left .cm-card {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid rgba(255, 255, 255, .12);
+    }
+
+    .cm-right .cm-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cm-conn {
+      width: 2px;
+      height: 26px;
+      margin-left: 42px;
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+
+    .cm-left .cm-conn {
+      background: rgba(76, 172, 75, .45);
+    }
+
+    .cm-right .cm-conn {
+      background: rgba(36, 69, 130, .28);
+    }
+
+    .cm-num {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 1;
+      flex: 0 0 52px;
+      width: 52px;
+    }
+
+    .cm-left .cm-num {
+      color: var(--green-soft);
+    }
+
+    .cm-right .cm-num {
+      color: var(--blue);
+    }
+
+    .cm-ct {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .cm-left .cm-ct {
+      color: #fff;
+    }
+
+    .cm-right .cm-ct {
+      color: var(--blue);
+    }
+
+    .cm-cd {
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .cm-left .cm-cd {
+      color: rgba(255, 255, 255, .66);
+    }
+
+    .cm-right .cm-cd {
+      color: var(--ink-soft);
+    }
+
+    .cm-foot {
+      position: absolute;
+      bottom: 44px;
+      left: 88px;
+      right: 88px;
+      font-family: var(--body);
+      font-size: 14px;
+      color: var(--ink-mute);
+      z-index: 2;
+    }
+
+    .cm-connector {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      width: 56px;
+      height: 56px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-family: var(--display);
+      font-size: 34px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    /* ===== SLIDE 12 — CTA ===== */
+    .s-cta {
+      align-items: center;
+      text-align: center;
+      background: var(--blue-darkest);
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .cta-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: radial-gradient(ellipse 80% 80% at 50% 40%, rgba(15, 29, 58, .82) 0%, rgba(9, 16, 33, .96) 100%);
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 3;
+      max-width: 980px;
+    }
+
+    .cta-title {
+      font-family: var(--display);
+      font-weight: 300;
+      font-size: 86px;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+    }
+
+    .cta-title .em {
+      font-weight: 600;
+    }
+
+    .cta-text {
+      font-family: var(--body);
+      font-size: 23px;
+      color: rgba(255, 255, 255, .85);
+      line-height: 1.55;
+      max-width: 720px;
+      margin: 28px auto 32px;
+    }
+
+    .cta-contact {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 34px;
+      color: var(--green-soft);
+      line-height: 1.5;
+    }
+
+    .cta-tagline {
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 20px;
+      color: rgba(255, 255, 255, .6);
+      margin-top: 36px;
+    }
+
+    .cta-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 44px;
+      margin-top: 34px;
+    }
+
+    .cta-logos img {
+      height: 44px;
+      width: auto;
+    }
+
+    /* ============================================================
+       CHROME — HUD, progresso, botões, overlays (fora do palco)
+       ============================================================ */
+    /* Veil cinematográfico — cortina de transição entre capítulos */
+    .veil {
+      position: absolute;
+      top: -6%;
+      left: -18%;
+      width: 136%;
+      height: 112%;
+      z-index: 40;
+      background: var(--grad-abyss);
+      transform: skewX(-9deg) translateX(-130%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .veil::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grain-dark) repeat;
+      mix-blend-mode: overlay;
+    }
+
+    .veil img {
+      width: 420px;
+      opacity: .16;
+      transform: skewX(9deg);
+    }
+
+    /* Botões fixos */
+    .fs-btn,
+    .lang-btn {
+      position: fixed;
+      top: 26px;
+      z-index: 1000;
+      height: 42px;
+      background: rgba(7, 13, 28, .4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, .15);
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s var(--ease), border-color .2s var(--ease);
+    }
+
+    .fs-btn:hover,
+    .lang-btn:hover {
+      background: rgba(7, 13, 28, .7);
+      border-color: rgba(76, 172, 75, .5);
+    }
+
+    .fs-btn {
+      right: 26px;
+      width: 42px;
+    }
+
+    .fs-btn span,
+    .fs-btn::before,
+    .fs-btn::after,
+    .fs-btn span::before,
+    .fs-btn span::after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-color: rgba(255, 255, 255, .7);
+      border-style: solid;
+    }
+
+    .fs-btn::before {
+      top: 9px;
+      left: 9px;
+      border-width: 2px 0 0 2px;
+    }
+
+    .fs-btn::after {
+      top: 9px;
+      right: 9px;
+      border-width: 2px 2px 0 0;
+    }
+
+    .fs-btn span::before {
+      bottom: 9px;
+      left: 9px;
+      border-width: 0 0 2px 2px;
+    }
+
+    .fs-btn span::after {
+      bottom: 9px;
+      right: 9px;
+      border-width: 0 2px 2px 0;
+    }
+
+    .lang-btn {
+      right: 78px;
+      padding: 0 16px;
+      font-family: var(--mono);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, .75);
+    }
+
+    /* HUD */
+    .hud {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 56px;
+      background: rgba(7, 13, 28, .78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      padding: 0 28px;
+      gap: 26px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s var(--ease);
+    }
+
+    .hud.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hud-chapter {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 12px;
+      color: var(--green-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      white-space: nowrap;
+    }
+
+    .hud-dots {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+    }
+
+    .hud-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .2);
+      transition: background .3s var(--ease), transform .3s var(--ease);
+      cursor: pointer;
+    }
+
+    .hud-dot.active {
+      background: var(--green);
+      transform: scale(1.35);
+    }
+
+    .hud-counter {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .5);
+      white-space: nowrap;
+    }
+
+    .hud-spacer {
+      flex: 1;
+    }
+
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      width: 100%;
+      background: var(--grad-accent-line);
+      z-index: 101;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .5s var(--ease);
+      box-shadow: 0 0 12px rgba(76, 172, 75, .5);
+    }
+
+    /* Touch arrows */
+    .touch-arrow {
+      display: none;
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px;
+      height: 46px;
+      background: rgba(7, 13, 28, .4);
+      border: 1px solid rgba(255, 255, 255, .12);
+      border-radius: 50%;
+      z-index: 100;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .touch-arrow::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid rgba(255, 255, 255, .7);
+      border-bottom: 2px solid rgba(255, 255, 255, .7);
+    }
+
+    .touch-prev {
+      left: 14px;
+    }
+
+    .touch-prev::after {
+      transform: rotate(135deg);
+    }
+
+    .touch-next {
+      right: 14px;
+    }
+
+    .touch-next::after {
+      transform: rotate(-45deg);
+    }
+
+    @media (pointer: coarse) {
+      .touch-arrow {
+        display: flex;
+      }
+    }
+
+    /* ===== DETAIL OVERLAY ===== */
+    .detail-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(9, 16, 33, .97);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      transform: scale(.98);
+      pointer-events: none;
+      transition: opacity .4s var(--ease), transform .4s var(--ease);
+    }
+
+    .detail-overlay.open {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .detail-close,
+    .lightbox-close {
+      position: absolute;
+      top: 22px;
+      right: 26px;
+      z-index: 10;
+      width: 46px;
+      height: 46px;
+      background: rgba(255, 255, 255, .1);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .detail-close::before,
+    .detail-close::after,
+    .lightbox-close::before,
+    .lightbox-close::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 2px;
+      background: #fff;
+      border-radius: 1px;
+    }
+
+    .detail-close::before,
+    .lightbox-close::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .detail-close::after,
+    .lightbox-close::after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .detail-video-section {
+      flex: 0 0 62vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .detail-video-section video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      -webkit-mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+    }
+
+    .detail-video-label {
+      position: absolute;
+      bottom: 26px;
+      left: 40px;
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--green-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .detail-video-fs {
+      position: absolute;
+      bottom: 24px;
+      left: 160px;
+      background: rgba(255, 255, 255, .1);
+      border: 1px solid rgba(255, 255, 255, .15);
+      color: #fff;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-family: var(--body);
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .detail-gallery-section {
+      flex: 1;
+      padding: 22px 40px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .detail-gallery-label {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 13px;
+      color: var(--green-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 16px;
+    }
+
+    .detail-gallery {
+      display: flex;
+      gap: 18px;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+    }
+
+    .detail-gallery img {
+      flex: 1 1 0;
+      min-width: 0;
+      height: 88%;
+      border-radius: 12px;
+      cursor: pointer;
+      object-fit: cover;
+      transition: transform .3s var(--ease);
+    }
+
+    .detail-gallery img:hover {
+      transform: scale(1.03);
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0, 0, 0, .93);
+      backdrop-filter: blur(20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s var(--ease);
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(255, 255, 255, .1);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-nav::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      border-right: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    .lightbox-prev {
+      left: 26px;
+    }
+
+    .lightbox-prev::after {
+      transform: rotate(135deg);
+    }
+
+    .lightbox-next {
+      right: 26px;
+    }
+
+    .lightbox-next::after {
+      transform: rotate(-45deg);
+    }
+
+    /* ===== LOADER ===== */
+    #app-loader {
+      position: fixed;
+      inset: 0;
+      z-index: 100000;
+      background: var(--grad-aurora-deep);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 34px;
+      transition: opacity .6s var(--ease), visibility .6s var(--ease);
+    }
+
+    #app-loader::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--grain-dark) repeat;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    #app-loader img {
+      height: 66px;
+      opacity: .95;
+      position: relative;
+      z-index: 1;
+    }
+
+    .loader-track {
+      width: 260px;
+      height: 2px;
+      background: rgba(255, 255, 255, .12);
+      border-radius: 2px;
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+
+    #loader-bar {
+      height: 100%;
+      width: 100%;
+      background: var(--grad-accent-line);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .3s var(--ease);
+    }
+
+    #loader-label {
+      font-family: var(--mono);
+      font-weight: 500;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255, 255, 255, .45);
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===== REDUCED MOTION ===== */
+    @media (prefers-reduced-motion: reduce) {
+
+      .capa-bg img {
+        transform: none;
+      }
+
+      .pin-pulse,
+      .tl-card .live {
+        animation: none;
+      }
+
+      .rv {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .em-underline::after {
+        --ul: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== LOADER ===== -->
+  <div id="app-loader">
+    <img src="assets/logos/zpe_white.png" alt="ZPE Maranhão">
+    <div class="loader-track">
+      <div id="loader-bar"></div>
+    </div>
+    <span id="loader-label">Carregando apresentação...</span>
+  </div>
+
+  <!-- ===== FIXED CHROME BUTTONS ===== -->
+  <button class="fs-btn" onclick="toggleFullscreen()" aria-label="Tela cheia" data-aria-pt="Tela cheia"
+    data-aria-en="Full screen"><span></span></button>
+  <button class="lang-btn" onclick="toggleLang()" aria-label="Switch language"><span id="lang-label">EN</span></button>
+  <button class="touch-arrow touch-prev" onclick="prev()" aria-label="Anterior" data-aria-pt="Anterior"
+    data-aria-en="Previous"></button>
+  <button class="touch-arrow touch-next" onclick="next()" aria-label="Próximo" data-aria-pt="Próximo"
+    data-aria-en="Next"></button>
+
+  <!-- ===== FIXED 16:9 STAGE ===== -->
+  <div class="deck-viewport">
+    <div class="deck-stage" id="stage">
+
+      <!-- ============ SLIDE 0 — CAPA ============ -->
+      <div class="slide s-capa active" data-chapter="Capa">
+        <div class="capa-bg"><img id="capaBg" src="assets/images/bg_hero_blue_compressed.jpg" alt="" loading="eager"></div>
+        <div class="capa-overlay"></div>
+        <img class="world-dot" src="assets/images/world_dotted.svg" alt=""
+          style="opacity:.1; object-fit:contain; object-position:right center; filter:brightness(0) invert(1);">
+        <div class="ripple" style="--rx:86%; --ry:22%;"></div>
+        <img class="brand-arrow" src="assets/brand/seta_outline.svg" alt=""
+          style="right:-30px; top:50%; transform:translateY(-50%); width:540px; opacity:.16;">
+        <div class="capa-content">
+          <div class="capa-logo rv"><img src="assets/logos/zpe_white.png" alt="ZPE Maranhão"></div>
+          <p class="capa-slogan rv" data-pt="A conexão estratégica do Maranhão com o mundo."
+            data-en="Maranhão's strategic connection to the world.">A conexão estratégica do Maranhão com o mundo.</p>
+          <div class="capa-line rv">
+            <div class="accent-bar"></div>
+          </div>
+          <div class="capa-footer-logos rv">
+            <img class="investe-logo" src="assets/logos/investe-ma-logo.png" alt="Investe Maranhão">
+            <img class="gov-brand" src="assets/logos/governo-ma-logo.png" alt="Governo do Maranhão">
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SLIDE 1 — O PROBLEMA ============ -->
+      <div class="slide s-problema surface-dark grain-d" data-chapter="O Problema">
+        <img class="brand-arrow" src="assets/brand/seta_outline.svg" alt=""
+          style="left:-120px; bottom:-120px; width:420px; opacity:.08;">
+        <div class="ripple" style="--rx:100%; --ry:0%;"></div>
+        <div class="problem-head">
+          <h2 class="h-title rv"><span data-pt="Exportar no Brasil custa "
+              data-en="Exporting from Brazil costs ">Exportar no Brasil custa </span><span class="em em-underline"
+              data-pt="caro demais." data-en="too much.">caro demais.</span></h2>
+        </div>
+        <div class="problem-grid">
+          <div class="p-card rv">
+            <div class="p-ico"><svg viewBox="0 0 48 48">
+                <rect x="10" y="6" width="28" height="36" rx="3" />
+                <line x1="18" y1="16" x2="30" y2="16" />
+                <line x1="18" y1="22" x2="30" y2="22" />
+                <line x1="18" y1="28" x2="26" y2="28" />
+              </svg></div>
+            <h3 data-pt="Carga Tributária" data-en="Tax Burden">Carga Tributária</h3>
+            <p data-pt="Impostos em cascata sobre importação de insumos e equipamentos encarecem cada etapa da operação."
+              data-en="Cascading taxes on imported inputs and equipment raise costs at every stage of operations.">
+              Impostos em cascata sobre importação de insumos e equipamentos encarecem cada etapa da operação.</p>
+          </div>
+          <div class="p-card rv">
+            <div class="p-ico"><svg viewBox="0 0 48 48">
+                <path d="M24 8a16 16 0 0 1 0 32" />
+                <path d="M24 40a16 16 0 0 1 0-32" />
+                <polyline points="28 20 24 24 20 20" />
+                <polyline points="20 28 24 24 28 28" />
+              </svg></div>
+            <h3 data-pt="Conversão de Divisas" data-en="Currency Conversion">Conversão de Divisas</h3>
+            <p data-pt="Empresas são obrigadas a converter divisas ao repatriar receitas de exportação, corroendo a margem cambial."
+              data-en="Companies are required to convert foreign currency when repatriating export revenues, eroding exchange margins.">
+              Empresas são obrigadas a converter divisas ao repatriar receitas de exportação, corroendo a margem cambial.
+            </p>
+          </div>
+          <div class="p-card rv">
+            <div class="p-ico"><svg viewBox="0 0 48 48">
+                <circle cx="24" cy="24" r="16" />
+                <polyline points="24 16 24 24 30 28" />
+              </svg></div>
+            <h3 data-pt="Burocracia Aduaneira" data-en="Customs Bureaucracy">Burocracia Aduaneira</h3>
+            <p data-pt="Processos lentos e fragmentados atrasam operações e elevam custos administrativos e de armazenagem."
+              data-en="Slow and fragmented processes delay operations and increase administrative and storage costs.">
+              Processos lentos e fragmentados atrasam operações e elevam custos administrativos e de armazenagem.</p>
+          </div>
+          <div class="p-card rv">
+            <div class="p-ico"><svg viewBox="0 0 48 48">
+                <path d="M24 10l-2 12h4l-2 12" />
+                <circle cx="24" cy="24" r="16" />
+                <circle cx="24" cy="18" r="3" fill="none" />
+              </svg></div>
+            <h3 data-pt="Infraestrutura Cara" data-en="Costly Infrastructure">Infraestrutura Cara</h3>
+            <p data-pt="Logística fragmentada e distante dos grandes mercados globais aumenta o custo por tonelada exportada."
+              data-en="Fragmented logistics far from major global markets increases the cost per exported ton.">Logística
+              fragmentada e distante dos grandes mercados globais aumenta o custo por tonelada exportada.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SLIDE 2 — IMPACTO (citação) ============ -->
+      <div class="slide s-impacto surface-quote grain-d" data-chapter="O Problema">
+        <img class="brand-arrow" src="assets/brand/seta_outline.svg" alt=""
+          style="left:-60px; bottom:-80px; width:380px; opacity:.13;">
+        <div class="ripple" style="--rx:8%; --ry:90%;"></div>
+        <div style="max-width:1240px;">
+          <div class="impacto-mark rv" aria-hidden="true">&ldquo;</div>
+          <p class="impacto-l1 rv" data-pt="O peso do Custo Brasil não se resume a burocracia ou taxas:"
+            data-en="The Brazil Cost goes beyond bureaucracy and taxes:">O peso do Custo Brasil não se resume a
+            burocracia ou taxas:</p>
+          <p class="impacto-l2 rv" data-pt="ele corrói irreversivelmente" data-en="it irreversibly erodes">ele corrói
+            irreversivelmente</p>
+          <p class="impacto-l3 rv"><span class="green" data-pt="a sua margem de lucro "
+              data-en="your profit margin ">a sua margem de lucro </span><span class="white"
+              data-pt="no mercado exterior." data-en="in global markets.">no mercado exterior.</span></p>
+          <div class="accent-bar rv"></div>
+        </div>
+      </div>
+
+      <!-- ============ SLIDE 3 — A SOLUÇÃO ============ -->
+      <div class="slide s-solucao surface-light grain-l" data-chapter="O Problema">
+        <div class="sol-left">
+          <h2 class="h-title rv"><span data-pt="Existe um regime que "
+              data-en="There is a special regime that ">Existe um regime que </span><span class="em em-underline"
+              data-pt="resolve tudo isso." data-en="solves all of this.">resolve tudo isso.</span></h2>
+          <p class="sol-sub rv" data-pt="Garantido por lei federal." data-en="Guaranteed by federal law.">Garantido por
+            lei federal.</p>
+          <div class="sol-map rv">
+            <img class="world-bg" src="assets/images/world_dotted.svg" alt="">
+            <img class="map-img" src="assets/images/maranhao_stylized.jpg" alt="Maranhão">
+            <div class="map-pin" onclick="openDetailScreen()">
+              <div class="pin-dot">
+                <div class="pin-pulse"></div>
+              </div>
+              <div class="pin-tooltip">
+                <div class="t">ZPE MARANHÃO</div>
+                <div class="s">BACABEIRA</div>
+              </div>
+            </div>
+            <div class="badge-20">
+              <div class="n" data-pt="20 ANOS" data-en="20 YEARS">20 ANOS</div>
+              <div class="l" data-pt="DE SEGURANÇA JURÍDICA" data-en="OF LEGAL CERTAINTY">DE SEGURANÇA JURÍDICA</div>
+            </div>
+          </div>
+        </div>
+        <div class="sol-right">
+          <div class="sol-card rv">
+            <div class="sol-ico"><svg viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="14" /><text x="18" y="23" text-anchor="middle" font-size="16"
+                  font-weight="700" fill="#3d9a3c" stroke="none" font-family="Barlow">$</text>
+              </svg></div>
+            <h3 data-pt="Suspensão de Impostos" data-en="Tax Suspension">Suspensão de Impostos</h3>
+            <p data-pt="II, IPI, PIS/COFINS e AFRMM na importação de insumos e equipamentos."
+              data-en="II, IPI, PIS/COFINS and AFRMM suspended on imported inputs and equipment.">II, IPI, PIS/COFINS e
+              AFRMM na importação de insumos e equipamentos.</p>
+          </div>
+          <div class="sol-card rv">
+            <div class="sol-ico"><svg viewBox="0 0 36 36">
+                <polyline points="4 28 12 16 20 22 32 8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg></div>
+            <h3 data-pt="Isenção de ICMS" data-en="ICMS Exemption">Isenção de ICMS</h3>
+            <p data-pt="Garantida pelo Convênio ICMS 99/1998, reduzindo custos de operação."
+              data-en="Guaranteed by ICMS Agreement 99/1998, reducing operating costs.">Garantida pelo Convênio ICMS
+              99/1998, reduzindo custos de operação.</p>
+          </div>
+          <div class="sol-card rv">
+            <div class="sol-ico"><svg viewBox="0 0 36 36">
+                <circle cx="18" cy="18" r="14" />
+                <ellipse cx="18" cy="18" rx="14" ry="6" />
+                <ellipse cx="18" cy="18" rx="6" ry="14" />
+              </svg></div>
+            <h3 data-pt="Liberdade Cambial" data-en="Foreign Exchange Freedom">Liberdade Cambial</h3>
+            <p data-pt="Mantenha 100% das divisas obtidas com exportação no exterior."
+              data-en="Retain 100% of foreign currency earned from exports abroad.">Mantenha 100% das divisas obtidas
+              com exportação no exterior.</p>
+          </div>
+          <div class="sol-card rv">
+            <div class="sol-ico"><svg viewBox="0 0 36 36">
+                <path d="M18 4c0 0-12 10-12 18a12 12 0 0 0 24 0C30 14 18 4 18 4z" />
+                <circle cx="18" cy="22" r="3" fill="none" />
+              </svg></div>
+            <h3 data-pt="Local Estratégico" data-en="Strategic Location">Local Estratégico</h3>
+            <p data-pt="Instalada na Região Metropolitana de São Luís."
+              data-en="Located in the Metropolitan Region of São Luís.">Instalada na Região Metropolitana de São Luís.
+            </p>
+          </div>
+          <div class="sol-card rv">
+            <div class="sol-ico"><svg viewBox="0 0 36 36">
+                <rect x="4" y="4" width="12" height="12" rx="2" />
+                <rect x="20" y="4" width="12" height="12" rx="2" />
+                <rect x="4" y="20" width="12" height="12" rx="2" />
+                <rect x="20" y="20" width="12" height="12" rx="2" />
+              </svg></div>
+            <h3 data-pt="Logística Premium" data-en="Premium Logistics">Logística Premium</h3>
+            <p data-pt="A 60km do Porto do Itaqui, o 4º maior porto público do Brasil."
+              data-en="60km from the Port of Itaqui, Brazil's 4th largest public port.">A 60km do Porto do Itaqui, o 4º
+              maior porto público do Brasil.</p>
+          </div>
+          <div class="sol-card rv">
+            <div class="sol-ico"><svg viewBox="0 0 36 36">
+                <polyline points="18 4 18 18" stroke-linecap="round" />
+                <polyline points="18 18 28 28" stroke-linecap="round" />
+                <polyline points="18 18 8 28" stroke-linecap="round" />
+                <circle cx="18" cy="4" r="2" fill="#4cac4b" stroke="none" />
+                <circle cx="28" cy="28" r="2" fill="#4cac4b" stroke="none" />
+                <circle cx="8" cy="28" r="2" fill="#4cac4b" stroke="none" />
+              </svg></div>
+            <h3 data-pt="Multimodalidade" data-en="Multimodal Access">Multimodalidade</h3>
+            <p data-pt="Única ZPE no NE com infraestrutura multimodal completa."
+              data-en="The only EPZ in Northeast Brazil with full multimodal infrastructure.">Única ZPE no NE com
+              infraestrutura multimodal completa.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ SLIDE 4 — IMPACTO TRIBUTÁRIO ============ -->
+      <div class="slide s-trib surface-data grain-d" data-chapter="O Impacto Financeiro">
+        <div class="ripple" style="--rx:50%; --ry:-10%;"></div>
+        <div class="trib-hero">
+          <div class="eyebrow rv" data-pt="ECONOMIA TRIBUTÁRIA ESTIMADA" data-en="ESTIMATED TAX SAVINGS">ECONOMIA
+            TRIBUTÁRIA ESTIMADA</div>
+          <div class="stat-num trib-num rv"><span class="u">US$</span> <span class="counter"
+              data-target="7">0</span> <span class="u" data-pt="milhões" data-en="million">milhões</span></div>
+          <p class="body-txt rv" style="font-size:20px;"
+            data-pt="para operações que importam US$ 15 mi em insumos e equipamentos por ano"
+            data-en="for operations importing US$ 15M in inputs and equipment per year">para operações que importam US$
+            15 mi em insumos e equipamentos por ano</p>
+        </div>
+        <table class="trib-table rv">
+          <thead>
+            <tr>
+              <th data-pt="Tributo" data-en="Tax">Tributo</th>
+              <th data-pt="Operação Convencional" data-en="Standard Operation">Operação Convencional</th>
+              <th data-pt="ZPE Maranhão" data-en="ZPE Maranhão">ZPE Maranhão</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>II</td>
+              <td data-pt="Alíquota cheia conforme TEC" data-en="Full rate per TEC">Alíquota cheia conforme TEC</td>
+              <td class="zpe" data-pt="Suspenso" data-en="Suspended">Suspenso</td>
+            </tr>
+            <tr>
+              <td>IPI</td>
+              <td data-pt="Alíquota cheia conforme TIPI" data-en="Full rate per TIPI">Alíquota cheia conforme TIPI</td>
+              <td class="zpe" data-pt="Suspenso" data-en="Suspended">Suspenso</td>
+            </tr>
+            <tr>
+              <td>PIS/COFINS</td>
+              <td data-pt="Alíquota cheia" data-en="Full rate">Alíquota cheia</td>
+              <td class="zpe" data-pt="Suspenso" data-en="Suspended">Suspenso</td>
+            </tr>
+            <tr>
+              <td>AFRMM</td>
+              <td data-pt="25% sobre o frete marítimo" data-en="25% on maritime freight">25% sobre o frete marítimo</td>
+              <td class="zpe" data-pt="Suspenso" data-en="Suspended">Suspenso</td>
+            </tr>
+            <tr>
+              <td>ICMS</td>
+              <td data-pt="Variável conforme estado e operação" data-en="Variable by state and operation">Variável
+                conforme estado e operação</td>
+              <td class="zpe" data-pt="Isento via Convênio ICMS 99/1998" data-en="Exempt via ICMS Agreement 99/1998">
+                Isento via Convênio ICMS 99/1998</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="body-txt rv" style="text-align:center;margin-top:26px;max-width:920px;font-size:14px;color:rgba(255,255,255,.5)"
+          data-pt="Baseado no Estudo Tributário Comparado da CZPE, com 11.760 simulações em 20 estados e 147 mercadorias. Valores variam conforme NCM e regime de apuração."
+          data-en="Based on CZPE's Comparative Tax Study, with 11,760 simulations across 20 states and 147 commodities. Values vary by NCM code and tax regime.">
+          Baseado no Estudo Tributário Comparado da CZPE, com 11.760 simulações em 20 estados e 147 mercadorias. Valores
+          variam conforme NCM e regime de apuração.</p>
+      </div>
+
+      <!-- ============ SLIDE 5 — LOGÍSTICA ============ -->
+      <div class="slide s-logistica" data-chapter="O Impacto Financeiro" data-video-slide style="padding:0;">
+        <video class="slide-bg-video" autoplay loop muted playsinline
+          style="object-position:20% center;">
+          <source src="assets/videos/video_ships.mp4" type="video/mp4">
+        </video>
+        <div class="v-scrim"
+          style="background-image: radial-gradient(circle, rgba(255,255,255,.07) 1px, transparent 1px); background-size: 28px 28px; -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%, black 55%, transparent 75%); mask-image: linear-gradient(to right, transparent 0%, black 15%, black 55%, transparent 75%);">
+        </div>
+        <div class="v-scrim"
+          style="background:linear-gradient(to right, rgba(9,16,33,.15) 0%, rgba(9,16,33,.15) 30%, rgba(9,16,33,.72) 52%, rgba(9,16,33,.97) 62%, rgba(9,16,33,1) 100%);">
+        </div>
+        <div class="v-scrim" style="background:linear-gradient(to bottom, rgba(9,16,33,.7) 0%, transparent 30%);"></div>
+        <div class="route-chip rv" style="top:12%;left:38%;">
+          <span class="r" data-pt="Europa" data-en="Europe">Europa</span>
+          <span class="d" data-pt="−5 dias" data-en="−5 days">&#8722;5 dias</span>
+        </div>
+        <div class="route-chip rv" style="top:28%;left:14%;">
+          <span class="r" data-pt="Costa Leste EUA" data-en="US East Coast">Costa Leste EUA</span>
+          <span class="d" data-pt="−6 dias" data-en="−6 days">&#8722;6 dias</span>
+        </div>
+        <div class="route-chip rv" style="top:44%;left:5%;">
+          <span class="r" data-pt="Ásia via Panamá" data-en="Asia via Panama">Ásia via Panamá</span>
+          <span class="d" data-pt="−7 dias" data-en="−7 days">&#8722;7 dias</span>
+        </div>
+        <div class="v-content" style="position:absolute;right:6%;top:50%;transform:translateY(-50%);width:42%;">
+          <h2 class="h-title rv" style="font-size:52px;margin-bottom:40px;"><span
+              data-pt="Menos dias de navegação." data-en="Fewer days at sea.">Menos dias de navegação.</span><br><span
+              class="em" data-pt="Mais margem para sua operação." data-en="More margin for your operation.">Mais margem
+              para sua operação.</span></h2>
+          <div class="rv">
+            <div class="eyebrow" data-pt="VANTAGEM LOGÍSTICA ANUAL ESTIMADA"
+              data-en="ESTIMATED ANNUAL LOGISTICS ADVANTAGE">VANTAGEM LOGÍSTICA ANUAL ESTIMADA</div>
+            <div class="stat-num" style="font-size:104px;margin:10px 0;"><span class="u"
+                style="font-size:.42em;">US$</span> <span class="counter" data-target="30">0</span> <span class="u"
+                style="font-size:.42em;" data-pt="milhões" data-en="million">milhões</span></div>
+            <p class="body-txt" style="font-size:20px;color:rgba(255,255,255,.78);max-width:560px;"
+              data-pt="Vantagem logística anual estimada para operações de 100 mil TEUs/ano. Cada dia a menos de navegação representa até US$ 30.000 em economia por navio."
+              data-en="Estimated annual logistics advantage for operations of 100,000 TEUs/year. Each day less at sea represents up to US$ 30,000 in savings per vessel.">
+              Vantagem logística anual estimada para operações de 100 mil TEUs/ano. Cada dia a menos de navegação
+              representa até US$ 30.000 em economia por navio.</p>
+          </div>
+          <p class="body-txt rv" style="margin-top:26px;font-size:15px;color:rgba(255,255,255,.5);max-width:560px;"
+            data-pt="Porto do Itaqui: calado de 23 metros, o maior do Norte e Nordeste. Comporta navios Capesize e Neo-Panamax. 4º maior porto público do Brasil."
+            data-en="Port of Itaqui: 23-meter draft, the deepest in North and Northeast Brazil. Accommodates Capesize and Neo-Panamax vessels. Brazil's 4th largest public port.">
+            Porto do Itaqui: calado de 23 metros, o maior do Norte e Nordeste. Comporta navios Capesize e Neo-Panamax.
+            4º maior porto público do Brasil.</p>
+        </div>
+      </div>
+
+      <!-- ============ SLIDE 6 — INFRAESTRUTURA (vídeo modais) ============ -->
+      <div class="slide s-modais" data-chapter="A Infraestrutura" data-video-slide
+        style="padding:0; background:var(--blue-darkest);">
+        <video src="assets/videos/modais.mp4" autoplay loop muted playsinline class="slide-bg-video"></video>
+        <div class="v-scrim" style="background:radial-gradient(ellipse 100% 100% at 50% 50%, transparent 62%, rgba(7,13,28,.5) 100%);"></div>
+      </div>
+
+      <!-- ============ SLIDE 7 — CABO SUBMARINO ELLALINK ============ -->
+      <div class="slide s-cabo" data-chapter="A Infraestrutura" data-video-slide
+        style="padding:0; background:var(--blue-darkest);">
+        <video id="cabo-transition-video" src="assets/videos/transicao_modal_cabo.mp4" muted playsinline
+          class="slide-bg-video"></video>
+        <div class="cabo-content" style="opacity:0; position:absolute; inset:0; z-index:2; display:flex;
+          flex-direction:column; justify-content:flex-end; padding:112px;
+          background:linear-gradient(to top, rgba(7,13,28,.94) 0%, rgba(7,13,28,.6) 42%, transparent 72%);">
+          <div class="eyebrow eyebrow-pill" style="margin-bottom:28px; width:fit-content;"><span class="dot"></span><span
+              data-pt="Cabo Submarino EllaLink — 2028" data-en="EllaLink Submarine Cable — 2028">Cabo Submarino
+              EllaLink — 2028</span></div>
+          <p style="font-family:var(--display);font-weight:500;font-size:56px;color:#fff;letter-spacing:-0.02em;
+            line-height:1.1;max-width:20ch;margin-bottom:24px;"
+            data-pt="O Maranhão conectado à internet de alta capacidade global."
+            data-en="Maranhão connected to high-capacity global internet.">O Maranhão conectado à internet de alta
+            capacidade global.</p>
+          <p class="body-txt" style="font-size:20px;color:rgba(255,255,255,.82);max-width:56ch;margin-bottom:14px;"
+            data-pt="Em 2028, o cabo submarino EllaLink vai conectar o Maranhão à internet de alta capacidade global — a mesma infraestrutura que move as maiores economias do planeta."
+            data-en="In 2028, the EllaLink submarine cable will connect Maranhão to high-capacity global internet infrastructure — the same backbone powering the world's largest economies.">
+            Em 2028, o cabo submarino EllaLink vai conectar o Maranhão à internet de alta capacidade global — a mesma
+            infraestrutura que move as maiores economias do planeta.</p>
+          <p style="font-family:var(--display);font-style:italic;font-weight:300;font-size:19px;color:var(--green-soft);
+            line-height:1.6;max-width:60ch;"
+            data-pt="A ZPE de Bacabeira será um dos únicos territórios do Brasil com porto profundo, ferrovia, energia e conectividade submarina no mesmo endereço."
+            data-en="ZPE Bacabeira will be one of the only territories in Brazil with a deep-water port, railway, energy, and submarine connectivity at the same address.">
+            A ZPE de Bacabeira será um dos únicos territórios do Brasil com porto profundo, ferrovia, energia e
+            conectividade submarina no mesmo endereço.</p>
+        </div>
+      </div>
+
+      <!-- ============ SLIDE 8 — TRANSIÇÃO CABO → ZPE ============ -->
+      <div class="slide s-cabozpe" data-chapter="A Infraestrutura" data-video-slide
+        style="padding:0; background:var(--blue-darkest);">
+        <video id="cabo-zpe-video" src="assets/videos/transicao_cabo_zpe.mp4" muted playsinline preload="auto"
+          class="slide-bg-video" style="opacity:0; transition:opacity 600ms ease;"></video>
+      </div>
+
+      <!-- ============ SLIDE 9 — O MOMENTO É AGORA (gps → zpe) ============ -->
+      <div class="slide s-gps" data-chapter="A Infraestrutura" data-video-slide
+        style="padding:0; background:var(--blue-darkest);">
+        <video id="gps-zpe-video" src="assets/videos/transicao_gps_zpe.mp4" muted playsinline class="slide-bg-video"
+          style="opacity:0; transition:opacity 600ms ease;"></video>
+        <img id="gps-final-img" src="assets/images/zpe_3d.jpg"
+          style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1; opacity:0; transition:opacity 800ms ease;">
+        <div id="gps-content" style="opacity:1; position:absolute; inset:0; z-index:2; display:flex;
+          flex-direction:column; justify-content:flex-end; padding:112px;
+          background:linear-gradient(to top, rgba(7,13,28,.98) 0%, rgba(7,13,28,.85) 30%, rgba(7,13,28,.4) 55%, transparent 75%);">
+          <div id="gps-badge" class="eyebrow eyebrow-pill" style="opacity:0; transform:translateY(20px);
+            transition:opacity 600ms ease, transform 600ms ease; margin-bottom:26px; width:fit-content;">
+            <span class="dot"></span><span data-pt="Demanda ativa" data-en="Active demand">Demanda ativa</span>
+          </div>
+          <h2 id="gps-title" style="opacity:0; transform:translateY(20px);
+            transition:opacity 600ms ease, transform 600ms ease;
+            font-family:var(--display);font-weight:300;font-size:104px;color:#fff;
+            letter-spacing:-0.03em;line-height:1.0;margin-bottom:46px;" data-pt="O momento é agora."
+            data-en="The time is now.">O momento é agora.</h2>
+          <div id="gps-indicators" style="opacity:0; transform:translateY(20px);
+            transition:opacity 600ms ease, transform 600ms ease; display:flex; align-items:stretch; gap:0;">
+            <div style="display:flex;flex-direction:column;gap:10px;padding-right:52px;">
+              <span class="stat-num" style="font-size:80px;">+50%</span>
+              <span style="width:44px;height:3px;background:var(--grad-accent-line);border-radius:2px;"></span>
+              <span class="body-txt" style="font-size:17px;color:rgba(255,255,255,.7);max-width:210px;"
+                data-pt="da área já pré-reservada" data-en="of the area already pre-reserved">da área já
+                pré-reservada</span>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,.14);margin-right:52px;flex-shrink:0;"></div>
+            <div style="display:flex;flex-direction:column;gap:10px;padding-right:52px;">
+              <span class="stat-num" style="font-size:80px;">8</span>
+              <span style="width:44px;height:3px;background:var(--grad-accent-line);border-radius:2px;"></span>
+              <span class="body-txt" style="font-size:17px;color:rgba(255,255,255,.7);max-width:210px;"
+                data-pt="projetos em processo de aprovação" data-en="projects under approval">projetos em processo de
+                aprovação</span>
+            </div>
+            <div style="width:1px;background:rgba(255,255,255,.14);margin-right:52px;flex-shrink:0;"></div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <span class="stat-num" style="font-size:80px;">3</span>
+              <span style="width:44px;height:3px;background:var(--grad-accent-line);border-radius:2px;"></span>
+              <span class="body-txt" style="font-size:17px;color:rgba(255,255,255,.7);max-width:210px;"
+                data-pt="projetos aprovados" data-en="approved projects">projetos aprovados</span>
+            </div>
+          </div>
+          <p id="gps-closing" style="opacity:0; transform:translateY(20px);
+            transition:opacity 600ms ease, transform 600ms ease;
+            font-family:var(--display);font-style:italic;font-weight:300;font-size:20px;color:var(--green-soft);
+            line-height:1.6;max-width:60ch;margin-top:36px;"
+            data-pt="2.098 hectares totalmente terraplanados e prontos para instalação imediata."
+            data-en="2,098 hectares fully graded and ready for immediate installation.">2.098 hectares totalmente
+            terraplanados e prontos para instalação imediata.</p>
+        </div>
+      </div>
+
+      <!-- ============ SLIDE 10 — SEGURANÇA JURÍDICA (timeline) ============ -->
+      <div class="slide s-timeline surface-frost grain-l" data-chapter="A Infraestrutura">
+        <img class="world-dot" src="assets/images/world_dotted.svg" alt=""
+          style="opacity:.05; filter:invert(1);">
+        <div class="tl-head">
+          <h2 class="h-title rv" style="font-size:64px;"><span data-pt="O " data-en="The ">O </span><span
+              class="em em-underline" data-pt="projeto avança" data-en="project advances">projeto avança</span><span
+              data-pt=". Com atos formais." data-en=". With formal milestones.">. Com atos formais.</span></h2>
+          <p class="body-txt rv" style="font-size:18px;margin-top:12px;"
+            data-pt="36 anos de evolução legislativa. Os dois últimos marcos são de 2025 e 2026."
+            data-en="36 years of legislative evolution. The last two milestones are from 2025 and 2026.">36 anos de
+            evolução legislativa. Os dois últimos marcos são de 2025 e 2026.</p>
+        </div>
+        <div class="tl-grid">
+          <div class="tl-card rv">
+            <div class="y">1988</div>
+            <div class="div"></div>
+            <div class="d" data-pt="Criação do regime original das ZPEs no Brasil"
+              data-en="Creation of Brazil's original EPZ regime">Criação do regime original das ZPEs no Brasil</div>
+          </div>
+          <div class="tl-card rv">
+            <div class="y">2007</div>
+            <div class="div"></div>
+            <div class="d" data-pt="Modernização do regime — Lei 11.508"
+              data-en="Regime modernization — Law 11,508">Modernização do regime — Lei 11.508</div>
+          </div>
+          <div class="tl-card rv">
+            <div class="y">2021</div>
+            <div class="div"></div>
+            <div class="d" data-pt="Fim do compromisso de 80% de exportação, inclusão de serviços"
+              data-en="End of the 80% export requirement, inclusion of services">Fim do compromisso de 80% de
+              exportação, inclusão de serviços</div>
+          </div>
+          <div class="tl-card rv">
+            <div class="y">2024</div>
+            <div class="div"></div>
+            <div class="d" data-pt="Criação da ZPE Maranhão — Decreto Federal 12.131"
+              data-en="Creation of ZPE Maranhão — Federal Decree 12,131">Criação da ZPE Maranhão — Decreto Federal
+              12.131</div>
+          </div>
+          <div class="tl-card hl rv">
+            <div class="live"></div>
+            <div class="y">Dez/2025</div>
+            <div class="div"></div>
+            <div class="d" data-pt="Licença Prévia emitida — LP 1085517/2025"
+              data-en="Prior License issued — LP 1085517/2025">Licença Prévia emitida — LP 1085517/2025</div>
+          </div>
+          <div class="tl-card hl rv">
+            <div class="live"></div>
+            <div class="y">Fev/2026</div>
+            <div class="div"></div>
+            <div class="d" data-pt="Licença de Instalação emitida — LI 1009637/2026"
+              data-en="Installation License issued — LI 1009637/2026">Licença de Instalação emitida — LI 1009637/2026
+            </div>
+          </div>
+        </div>
+        <p class="tl-closing rv"
+          data-pt="Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada pela Receita Federal e pelo CZPE."
+          data-en="Benefits guaranteed by federal law for 20 years, renewable. Oversight centralized by the Federal Revenue Service and CZPE.">
+          Benefícios garantidos por lei federal por 20 anos, prorrogáveis. Fiscalização centralizada pela Receita
+          Federal e pelo CZPE.</p>
+      </div>
+
+      <!-- ============ SLIDE 11 — COMO INSTALAR (split) ============ -->
+      <div class="slide s-caminho" data-chapter="Próximos Passos">
+        <div class="cm-half cm-left">
+          <img class="world-dot" src="assets/images/world_dotted.svg" alt=""
+            style="opacity:.08; filter:brightness(0) invert(1);">
+          <div style="position:relative;z-index:2;">
+            <div class="cm-label rv" data-pt="FASE 1" data-en="PHASE 1">FASE 1</div>
+            <div class="cm-divider rv"></div>
+            <div class="cm-steps">
+              <div class="cm-card rv">
+                <div class="cm-num">1</div>
+                <div>
+                  <div class="cm-ct" data-pt="Manifestação Digital" data-en="Digital Expression of Interest">
+                    Manifestação Digital</div>
+                  <div class="cm-cd" data-pt="preenchimento do formulário Quero Investir para qualificação imediata"
+                    data-en="completion of the Quero Investir form for immediate qualification">preenchimento do
+                    formulário Quero Investir para qualificação imediata</div>
+                </div>
+              </div>
+              <div class="cm-conn" data-conn-delay="300"></div>
+              <div class="cm-card rv">
+                <div class="cm-num">2</div>
+                <div>
+                  <div class="cm-ct" data-pt="Pré-projeto ZPE" data-en="ZPE Pre-Project">Pré-projeto ZPE</div>
+                  <div class="cm-cd"
+                    data-pt="elaboração do projeto preliminar com informações mínimas conforme requisitos legais"
+                    data-en="preparation of the preliminary project with minimum information per legal requirements">
+                    elaboração do projeto preliminar com informações mínimas conforme requisitos legais</div>
+                </div>
+              </div>
+              <div class="cm-conn" data-conn-delay="600"></div>
+              <div class="cm-card rv">
+                <div class="cm-num">3</div>
+                <div>
+                  <div class="cm-ct" data-pt="Pré-Reserva e Precificação" data-en="Pre-Reservation and Pricing">
+                    Pré-Reserva e Precificação</div>
+                  <div class="cm-cd" data-pt="reserva de área e definição inicial de cronograma e preços"
+                    data-en="area reservation and initial definition of timeline and pricing">reserva de área e
+                    definição inicial de cronograma e preços</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cm-half cm-right">
+          <img class="world-dot" src="assets/images/world_dotted.svg" alt="" style="opacity:.05;">
+          <div style="position:relative;z-index:2;">
+            <div class="cm-label rv" data-pt="FASE 2" data-en="PHASE 2">FASE 2</div>
+            <div class="cm-divider rv"></div>
+            <div class="cm-steps">
+              <div class="cm-card rv">
+                <div class="cm-num">4</div>
+                <div>
+                  <div class="cm-ct" data-pt="Projeto Técnico ZPE" data-en="ZPE Technical Project">Projeto Técnico ZPE
+                  </div>
+                  <div class="cm-cd" data-pt="análise detalhada do projeto para implantação na área"
+                    data-en="detailed project analysis for area implementation">análise detalhada do projeto para
+                    implantação na área</div>
+                </div>
+              </div>
+              <div class="cm-conn" data-conn-delay="500"></div>
+              <div class="cm-card rv">
+                <div class="cm-num">5</div>
+                <div>
+                  <div class="cm-ct" data-pt="Aprovação CZPE" data-en="CZPE Approval">Aprovação CZPE</div>
+                  <div class="cm-cd"
+                    data-pt="aprovação pelo Conselho Nacional das Zonas de Processamento de Exportação"
+                    data-en="approval by the National Council of Export Processing Zones">aprovação pelo Conselho
+                    Nacional das Zonas de Processamento de Exportação</div>
+                </div>
+              </div>
+              <div class="cm-conn" data-conn-delay="800"></div>
+              <div class="cm-card rv">
+                <div class="cm-num">6</div>
+                <div>
+                  <div class="cm-ct" data-pt="Contrato ZPE" data-en="ZPE Agreement">Contrato ZPE</div>
+                  <div class="cm-cd" data-pt="celebração do Contrato de Cessão de Uso Onerosa da área"
+                    data-en="execution of the Onerous Area Use Assignment Agreement">celebração do Contrato de Cessão de
+                    Uso Onerosa da área</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cm-foot rv"
+            data-pt="Cada projeto é analisado individualmente. Prazos variam conforme complexidade e documentação."
+            data-en="Each project is analyzed individually. Timelines vary according to complexity and documentation.">
+            Cada projeto é analisado individualmente. Prazos variam conforme complexidade e documentação.</div>
+        </div>
+        <div class="cm-connector">›</div>
+      </div>
+
+      <!-- ============ SLIDE 12 — CTA FINAL ============ -->
+      <div class="slide s-cta" data-chapter="Próximos Passos">
+        <div class="cta-bg"><img id="ctaBg" src="assets/images/bg_hero_blue_compressed.jpg" alt="" loading="lazy"></div>
+        <div class="cta-overlay"></div>
+        <div class="ripple" style="--rx:50%; --ry:50%; opacity:.4;"></div>
+        <img class="brand-arrow" src="assets/brand/seta_outline.svg" alt=""
+          style="right:80px; top:60px; width:300px; opacity:.1;">
+        <div class="cta-content">
+          <h2 class="cta-title rv"><span data-pt="Vamos analisar " data-en="Let's assess ">Vamos analisar </span><span
+              class="em" data-pt="sua operação." data-en="your operation.">sua operação.</span></h2>
+          <p class="cta-text rv"
+            data-pt="A equipe técnica da ZPE Maranhão avalia a aderência do seu projeto ao regime e estima o impacto tributário e logístico para o seu setor."
+            data-en="The ZPE Maranhão technical team evaluates your project's fit with the regime and estimates the tax and logistics impact for your sector.">
+            A equipe técnica da ZPE Maranhão avalia a aderência do seu projeto ao regime e estima o impacto tributário e
+            logístico para o seu setor.</p>
+          <div class="cta-contact rv">
+            contato@zpe.ma.gov.br<br>
+            zpe.ma.gov.br
+          </div>
+          <p class="cta-tagline rv" data-pt="A conexão estratégica do Maranhão com o mundo."
+            data-en="Maranhão's strategic connection to the world.">A conexão estratégica do Maranhão com o mundo.</p>
+          <div class="cta-logos rv">
+            <img src="assets/logos/logo-zpe.png" alt="ZPE Maranhão">
+            <img class="gov-brand" src="assets/logos/governo-ma-logo.png" alt="Governo do Maranhão">
+          </div>
+        </div>
+      </div>
+
+      <!-- Cortina cinematográfica de transição -->
+      <div class="veil" id="veil"><img src="assets/brand/seta_outline.svg" alt=""></div>
+
+    </div><!-- /deck-stage -->
+  </div><!-- /deck-viewport -->
+
+  <!-- ===== HUD ===== -->
+  <div class="hud" id="hud">
+    <div class="hud-chapter" id="hudChapter"></div>
+    <div class="hud-dots" id="hudDots"></div>
+    <div class="hud-counter" id="hudCounter"></div>
+    <div class="hud-spacer"></div>
+  </div>
+
+  <!-- ===== PROGRESS BAR ===== -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- ===== DETAIL OVERLAY ===== -->
+  <div class="detail-overlay" id="detailOverlay">
+    <button class="detail-close" onclick="closeDetailScreen()" aria-label="Fechar" data-aria-pt="Fechar"
+      data-aria-en="Close"></button>
+    <div class="detail-video-section">
+      <video id="detailVideo" muted loop playsinline>
+        <source src="assets/videos/animacao.mp4" type="video/mp4">
+      </video>
+      <div class="detail-video-label"><span data-pt="O PROJETO" data-en="THE PROJECT">O PROJETO</span></div>
+      <button class="detail-video-fs" onclick="detailVideoFullscreen()" data-pt="Ver em tela cheia"
+        data-en="View fullscreen">Ver em tela cheia</button>
+    </div>
+    <div class="detail-gallery-section">
+      <div class="detail-gallery-label" data-pt="A ÁREA" data-en="THE AREA">A ÁREA</div>
+      <div class="detail-gallery" id="detailGallery">
+        <img src="assets/images/01.webp" alt="Área 1" onclick="openLightbox(0)">
+        <img src="assets/images/02.webp" alt="Área 2" onclick="openLightbox(1)">
+        <img src="assets/images/03.webp" alt="Área 3" onclick="openLightbox(2)">
+        <img src="assets/images/04.webp" alt="Área 4" onclick="openLightbox(3)">
+        <img src="assets/images/05.webp" alt="Área 5" onclick="openLightbox(4)">
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Fechar" data-aria-pt="Fechar"
+      data-aria-en="Close"></button>
+    <button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)" aria-label="Anterior" data-aria-pt="Anterior"
+      data-aria-en="Previous"></button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)" aria-label="Próximo" data-aria-pt="Próximo"
+      data-aria-en="Next"></button>
+  </div>
+
+  <!-- ===== GSAP (CDN) — mandatório para as transições cinematográficas ===== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
+
+  <script>
+    'use strict';
+    /* =========================================================
+       ZPE MARANHÃO · MOTOR DA APRESENTAÇÃO
+       Palco fixo 1920×1080 · transições GSAP cinematográficas
+       ========================================================= */
+
+    const HAS_GSAP = typeof window.gsap !== 'undefined';
+    if (!HAS_GSAP) document.documentElement.classList.add('no-gsap');
+    const RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Ease da marca: cubic-bezier(.2,0,0,1) — saída suave, sem bounce
+    let EASE = 'power2.out';
+    if (HAS_GSAP && window.CustomEase) {
+      gsap.registerPlugin(CustomEase);
+      CustomEase.create('zpe', 'M0,0 C0.2,0,0,1,1,1');
+      EASE = 'zpe';
+      gsap.defaults({ ease: EASE, duration: 0.5 });
+    }
+
+    /* ---------- Palco: escala uniforme (letterbox) ---------- */
+    const stage = document.getElementById('stage');
+    function fitStage() {
+      const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      const x = (window.innerWidth - 1920 * s) / 2;
+      const y = (window.innerHeight - 1080 * s) / 2;
+      stage.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + s + ')';
+    }
+    window.addEventListener('resize', fitStage);
+    document.addEventListener('fullscreenchange', fitStage);
+    fitStage();
+
+    /* ---------- Estado ---------- */
+    const slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+    const N = slides.length;
+    let cur = 0;
+    let busy = false;
+    const FLOW = new Set([6, 7, 8, 9]); // fluxo contínuo de vídeo (modais → cabo → cabo-zpe → gps)
+
+    const CHAPTERS = ['Capa', 'O Problema', 'O Problema', 'O Problema', 'O Impacto Financeiro', 'O Impacto Financeiro', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'Próximos Passos', 'Próximos Passos'];
+    const CHAPTERS_EN = ['Cover', 'The Problem', 'The Problem', 'The Problem', 'Financial Impact', 'Financial Impact', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'Next Steps', 'Next Steps'];
+    let ACTIVE_CHAPTERS = CHAPTERS;
+
+    /* ---------- Idioma ---------- */
+    let currentLang = 'pt';
+    function toggleLang() {
+      currentLang = currentLang === 'pt' ? 'en' : 'pt';
+      const label = document.getElementById('lang-label');
+      if (label) label.textContent = currentLang === 'pt' ? 'EN' : 'PT';
+      document.querySelectorAll('[data-pt]').forEach(function (el) {
+        const val = currentLang === 'pt' ? el.getAttribute('data-pt') : el.getAttribute('data-en');
+        if (val !== null) el.textContent = val;
+      });
+      document.querySelectorAll('[data-aria-pt]').forEach(function (el) {
+        const val = currentLang === 'pt' ? el.getAttribute('data-aria-pt') : el.getAttribute('data-aria-en');
+        if (val !== null) el.setAttribute('aria-label', val);
+      });
+      ACTIVE_CHAPTERS = currentLang === 'pt' ? CHAPTERS : CHAPTERS_EN;
+      const hc = document.getElementById('hudChapter');
+      if (hc) hc.textContent = ACTIVE_CHAPTERS[cur] || '';
+    }
+
+    /* ---------- HUD ---------- */
+    const hud = document.getElementById('hud');
+    const hudChapter = document.getElementById('hudChapter');
+    const hudDots = document.getElementById('hudDots');
+    const hudCounter = document.getElementById('hudCounter');
+    const progressBar = document.getElementById('progressBar');
+    let hudTimeout;
+
+    for (let i = 0; i < N; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'hud-dot' + (i === 0 ? ' active' : '');
+      dot.onclick = (function (idx) { return function () { goTo(idx); }; })(i);
+      hudDots.appendChild(dot);
+    }
+
+    function updateHUD() {
+      hudChapter.textContent = ACTIVE_CHAPTERS[cur] || '';
+      hudCounter.textContent = (cur + 1) + ' / ' + N;
+      hudDots.querySelectorAll('.hud-dot').forEach(function (d, i) {
+        d.classList.toggle('active', i === cur);
+      });
+      if (cur === 0) {
+        progressBar.style.transform = 'scaleX(0)';
+        progressBar.style.opacity = '0';
+      } else {
+        progressBar.style.opacity = '1';
+        progressBar.style.transform = 'scaleX(' + (cur / (N - 1)) + ')';
+      }
+    }
+
+    function showHUD() {
+      hud.classList.add('visible');
+      clearTimeout(hudTimeout);
+      hudTimeout = setTimeout(function () { hud.classList.remove('visible'); }, 3000);
+    }
+    document.addEventListener('mousemove', function (e) {
+      if (e.clientY > window.innerHeight - 90) showHUD();
+    });
+
+    /* ---------- Revelação de conteúdo (stagger) ---------- */
+    function prepHidden(slide) {
+      if (!HAS_GSAP || FLOW.has(slides.indexOf(slide))) return;
+      const els = slide.querySelectorAll('.rv');
+      if (RM) { gsap.set(els, { autoAlpha: 1, y: 0 }); return; }
+      gsap.set(els, { autoAlpha: 0, y: 34 });
+      slide.querySelectorAll('.em-underline').forEach(function (u) { u.style.setProperty('--ul', '0'); });
+    }
+
+    function introReveal(slide) {
+      const els = slide.querySelectorAll('.rv');
+      const uls = slide.querySelectorAll('.em-underline');
+      if (!HAS_GSAP) return;
+      if (RM) {
+        gsap.set(els, { autoAlpha: 1, y: 0 });
+        uls.forEach(function (u) { u.style.setProperty('--ul', '1'); });
+        return;
+      }
+      gsap.killTweensOf(els);
+      gsap.set(els, { autoAlpha: 0, y: 34 });
+      gsap.to(els, {
+        autoAlpha: 1, y: 0, duration: 0.66, ease: EASE, stagger: 0.075, delay: 0.08,
+        onComplete: function () { gsap.set(els, { clearProps: 'transform' }); }
+      });
+      uls.forEach(function (u) {
+        u.style.setProperty('--ul', '0');
+        gsap.to(u, { '--ul': 1, duration: 0.6, ease: EASE, delay: 0.45 });
+      });
+    }
+
+    /* ---------- Contadores ---------- */
+    function animateCounters(slide) {
+      slide.querySelectorAll('.counter').forEach(function (el) {
+        const target = parseInt(el.getAttribute('data-target'), 10);
+        if (isNaN(target)) return;
+        if (!HAS_GSAP || RM) { el.textContent = target.toLocaleString('pt-BR'); return; }
+        const o = { v: 0 };
+        el.textContent = '0';
+        gsap.to(o, {
+          v: target, duration: 1.2, ease: 'power2.out', delay: 0.35,
+          onUpdate: function () { el.textContent = Math.round(o.v).toLocaleString('pt-BR'); }
+        });
+      });
+    }
+
+    /* ---------- Conectores do slide "Como instalar" ---------- */
+    function animateConnectors(slide) {
+      slide.querySelectorAll('.cm-conn').forEach(function (l) {
+        const delay = parseInt(l.dataset.connDelay || '300', 10);
+        if (!HAS_GSAP || RM) { l.style.transform = 'scaleY(1)'; return; }
+        gsap.fromTo(l, { scaleY: 0 }, { scaleY: 1, transformOrigin: 'top', duration: 0.4, ease: EASE, delay: delay / 1000 });
+      });
+    }
+
+    /* ---------- Vídeos: limpeza ao sair ---------- */
+    function cleanupVideos(oldSlide) {
+      oldSlide.querySelectorAll('video').forEach(function (v) {
+        try { v.pause(); } catch (e) { }
+        if (!v.loop) { try { v.currentTime = 0; } catch (e) { } }
+      });
+      const caboContent = oldSlide.querySelector('.cabo-content');
+      if (caboContent) { caboContent.style.transition = ''; caboContent.style.opacity = '0'; }
+      const cz = oldSlide.querySelector('#cabo-zpe-video'); if (cz) cz.style.opacity = '0';
+      const gz = oldSlide.querySelector('#gps-zpe-video'); if (gz) gz.style.opacity = '0';
+      const gimg = oldSlide.querySelector('#gps-final-img'); if (gimg) gimg.style.opacity = '0';
+      ['gps-badge', 'gps-title', 'gps-indicators', 'gps-closing'].forEach(function (id) {
+        const el = oldSlide.querySelector('#' + id);
+        if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; }
+      });
+    }
+
+    /* ---------- Vídeos: início ao entrar ---------- */
+    function startVideos(newSlide) {
+      const cabo = newSlide.querySelector('#cabo-transition-video');
+      const caboZpe = newSlide.querySelector('#cabo-zpe-video');
+      const gps = newSlide.querySelector('#gps-zpe-video');
+
+      if (cabo) {
+        cabo.style.opacity = '0'; cabo.style.transition = 'opacity 600ms ease';
+        cabo.currentTime = 0; cabo.play().catch(function () { });
+        requestAnimationFrame(function () { cabo.style.opacity = '1'; });
+        cabo.addEventListener('ended', function () {
+          const c = newSlide.querySelector('.cabo-content');
+          if (c) { c.style.transition = 'opacity 800ms ease'; c.style.opacity = '1'; }
+        }, { once: true });
+        return;
+      }
+      if (caboZpe) {
+        caboZpe.style.opacity = '0'; caboZpe.currentTime = 0; caboZpe.play().catch(function () { });
+        requestAnimationFrame(function () { caboZpe.style.opacity = '1'; });
+        return;
+      }
+      if (gps) {
+        gps.currentTime = 0; gps.style.opacity = '0'; gps.play().catch(function () { });
+        requestAnimationFrame(function () { gps.style.opacity = '1'; });
+        gps.addEventListener('ended', function () {
+          const gimg = newSlide.querySelector('#gps-final-img');
+          if (gimg) gimg.style.opacity = '1';
+          [['gps-badge', 0], ['gps-title', 150], ['gps-indicators', 350], ['gps-closing', 600]].forEach(function (p) {
+            const el = newSlide.querySelector('#' + p[0]);
+            if (el) setTimeout(function () { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, p[1]);
+          });
+        }, { once: true });
+        return;
+      }
+      const bg = newSlide.querySelector('.slide-bg-video');
+      if (bg) bg.play().catch(function () { });
+    }
+
+    /* ---------- Coreografia de entrada por slide ---------- */
+    function runIntro(n) {
+      const s = slides[n];
+      if (!FLOW.has(n)) introReveal(s);
+      animateCounters(s);
+      if (s.classList.contains('s-caminho')) animateConnectors(s);
+      if (HAS_GSAP && !RM) {
+        if (s.classList.contains('s-capa')) gsap.fromTo('#capaBg', { scale: 1.14 }, { scale: 1.04, duration: 10, ease: 'none' });
+        if (s.classList.contains('s-cta')) gsap.fromTo('#ctaBg', { scale: 1.12 }, { scale: 1.02, duration: 10, ease: 'none' });
+      }
+    }
+
+    /* ---------- Motor de transição ---------- */
+    function goTo(n) {
+      if (busy || n === cur || n < 0 || n >= N) return;
+      busy = true;
+      const oldS = slides[cur];
+      const newS = slides[n];
+      const fwd = n > cur;
+      const bothFlow = FLOW.has(cur) && FLOW.has(n);
+      const chapterChange = CHAPTERS[cur] !== CHAPTERS[n];
+      cur = n;
+
+      cleanupVideos(oldS);
+
+      function swap() {
+        oldS.classList.remove('active');
+        oldS.style.opacity = ''; oldS.style.visibility = '';
+        if (HAS_GSAP) gsap.set(oldS, { clearProps: 'transform,filter,opacity,visibility' });
+        newS.classList.add('active');
+        startVideos(newS);
+      }
+
+      if (!HAS_GSAP) {
+        swap();
+        runIntro(n);
+        updateHUD(); showHUD();
+        busy = false;
+        return;
+      }
+
+      prepHidden(newS);
+      const tl = gsap.timeline({ onComplete: function () { busy = false; } });
+
+      if (bothFlow) {
+        /* crossfade rápido — os vídeos de transição conduzem o movimento */
+        tl.to(oldS, { autoAlpha: 0, duration: 0.35, ease: 'power1.inOut' }, 0);
+        tl.add(swap, 0.22);
+        tl.fromTo(newS, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.5, ease: 'power1.inOut' }, 0.22);
+        tl.add(function () { runIntro(n); }, 0.4);
+      } else if (chapterChange && !RM) {
+        /* cortina cinematográfica entre capítulos */
+        const veil = document.getElementById('veil');
+        gsap.set(veil, { autoAlpha: 1, skewX: -9, xPercent: fwd ? -140 : 140 });
+        tl.to(veil, { xPercent: 0, duration: 0.42, ease: 'power3.in' }, 0);
+        tl.add(swap, 0.42);
+        tl.set(newS, { autoAlpha: 1, scale: 1, filter: 'none' }, 0.42);
+        tl.set(oldS, { autoAlpha: 0 }, 0.42);
+        tl.to(veil, { xPercent: fwd ? 140 : -140, duration: 0.5, ease: 'power3.out' }, 0.46);
+        tl.set(veil, { autoAlpha: 0 });
+        tl.add(function () { runIntro(n); }, 0.62);
+      } else {
+        /* crossfade com profundidade dentro do capítulo */
+        tl.to(oldS, { autoAlpha: 0, scale: 0.94, filter: 'blur(6px)', duration: 0.5, ease: EASE }, 0);
+        tl.add(swap, 0.32);
+        tl.fromTo(newS, { autoAlpha: 0, scale: 1.06, filter: 'blur(8px)' },
+          { autoAlpha: 1, scale: 1, filter: 'blur(0px)', duration: 0.72, ease: EASE }, 0.3);
+        tl.add(function () { runIntro(n); }, 0.5);
+      }
+
+      updateHUD(); showHUD();
+    }
+
+    function next() { goTo(cur + 1); }
+    function prev() { goTo(cur - 1); }
+
+    /* ---------- Teclado ---------- */
+    document.addEventListener('keydown', function (e) {
+      if (document.getElementById('detailOverlay').classList.contains('open')) {
+        if (e.key === 'Escape') closeDetailScreen();
+        return;
+      }
+      if (document.getElementById('lightbox').classList.contains('open')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') lightboxNav(-1);
+        if (e.key === 'ArrowRight') lightboxNav(1);
+        return;
+      }
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); next(); showHUD(); }
+      if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); showHUD(); }
+      if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+    });
+
+    /* ---------- Clique para navegar ---------- */
+    document.querySelector('.deck-viewport').addEventListener('click', function (e) {
+      if (e.target.closest('button, a, .map-pin, .sol-card, .p-card, .tl-card, .cm-card, .hud, .touch-arrow, .fs-btn, .lang-btn')) return;
+      if (e.clientX > window.innerWidth / 2) next(); else prev();
+    });
+
+    /* ---------- Toque / swipe ---------- */
+    let touchStartX = 0, touchStartY = 0;
+    document.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].clientX;
+      touchStartY = e.changedTouches[0].clientY;
+    }, { passive: true });
+    document.addEventListener('touchend', function (e) {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      const dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) { if (dx < 0) next(); else prev(); }
+    }, { passive: true });
+
+    /* ---------- Fullscreen ---------- */
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen().catch(function () { });
+      else document.exitFullscreen().catch(function () { });
+    }
+
+    /* ---------- Tela de detalhe (ZPE) ---------- */
+    function openDetailScreen() {
+      const overlay = document.getElementById('detailOverlay');
+      overlay.classList.add('open');
+      const video = document.getElementById('detailVideo');
+      video.play().catch(function () { });
+    }
+    function closeDetailScreen() {
+      document.getElementById('detailOverlay').classList.remove('open');
+      document.getElementById('detailVideo').pause();
+    }
+    function detailVideoFullscreen() {
+      const video = document.getElementById('detailVideo');
+      if (video.requestFullscreen) video.requestFullscreen();
+      else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+    }
+    document.getElementById('detailOverlay').addEventListener('click', function (e) {
+      if (e.target === this) closeDetailScreen();
+    });
+
+    /* ---------- Lightbox ---------- */
+    const galleryImages = ['assets/images/01.webp', 'assets/images/02.webp', 'assets/images/03.webp', 'assets/images/04.webp', 'assets/images/05.webp'];
+    let lightboxIndex = 0;
+    function openLightbox(i) {
+      lightboxIndex = i;
+      document.getElementById('lightboxImg').src = galleryImages[i];
+      document.getElementById('lightbox').classList.add('open');
+    }
+    function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+    function lightboxNav(dir) {
+      lightboxIndex = (lightboxIndex + dir + galleryImages.length) % galleryImages.length;
+      document.getElementById('lightboxImg').src = galleryImages[lightboxIndex];
+    }
+    document.getElementById('lightbox').addEventListener('click', function (e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    // expõe handlers usados via onclick inline
+    window.next = next; window.prev = prev; window.goTo = goTo;
+    window.toggleFullscreen = toggleFullscreen; window.toggleLang = toggleLang;
+    window.openDetailScreen = openDetailScreen; window.closeDetailScreen = closeDetailScreen;
+    window.detailVideoFullscreen = detailVideoFullscreen;
+    window.openLightbox = openLightbox; window.closeLightbox = closeLightbox; window.lightboxNav = lightboxNav;
+
+    /* ---------- Estado inicial ---------- */
+    if (HAS_GSAP) {
+      slides.forEach(function (s, i) { gsap.set(s, { autoAlpha: i === 0 ? 1 : 0 }); });
+      prepHidden(slides[0]);
+    }
+    updateHUD();
+
+    function startDeck() {
+      runIntro(0);
+      showHUD();
+    }
+
+    /* ---------- Loader / preload de mídia ---------- */
+    (function () {
+      const assets = [
+        'assets/videos/video_ships.mp4',
+        'assets/videos/modais.mp4',
+        'assets/videos/transicao_modal_cabo.mp4',
+        'assets/videos/transicao_cabo_zpe.mp4',
+        'assets/videos/transicao_gps_zpe.mp4',
+        'assets/videos/animacao.mp4',
+        'assets/images/bg_hero_blue_compressed.jpg',
+        'assets/logos/logo-zpe.png',
+        'assets/logos/zpe_white.png',
+        'assets/logos/investe-ma-logo.png',
+        'assets/logos/governo-ma-logo.png',
+        'assets/images/maranhao_stylized.jpg',
+        'assets/images/world_dotted.svg',
+        'assets/images/zpe_3d.jpg',
+        'assets/brand/seta_outline.svg',
+        'assets/images/01.webp', 'assets/images/02.webp', 'assets/images/03.webp', 'assets/images/04.webp', 'assets/images/05.webp'
+      ];
+      const total = assets.length;
+      let loaded = 0, done = false;
+      const bar = document.getElementById('loader-bar');
+      const label = document.getElementById('loader-label');
+      const loader = document.getElementById('app-loader');
+
+      function onProgress() {
+        loaded++;
+        const pct = Math.round((loaded / total) * 100);
+        bar.style.transform = 'scaleX(' + (loaded / total) + ')';
+        label.textContent = 'Carregando... ' + pct + '%';
+        if (loaded >= total) finish();
+      }
+      function finish() {
+        if (done) return;
+        done = true;
+        label.textContent = 'Pronto.';
+        bar.style.transform = 'scaleX(1)';
+        setTimeout(function () {
+          loader.style.opacity = '0';
+          loader.style.visibility = 'hidden';
+          startDeck();
+        }, 350);
+      }
+      assets.forEach(function (src) {
+        const ext = src.split('.').pop().toLowerCase();
+        if (ext === 'mp4' || ext === 'webm') {
+          const v = document.createElement('video');
+          v.preload = 'auto'; v.src = src;
+          v.addEventListener('canplaythrough', onProgress, { once: true });
+          v.addEventListener('error', onProgress, { once: true });
+          v.load();
+        } else {
+          const img = new Image();
+          img.onload = onProgress; img.onerror = onProgress; img.src = src;
+        }
+      });
+      setTimeout(finish, 12000); // fallback
+    })();
+  </script>
+</body>
+
+</html>

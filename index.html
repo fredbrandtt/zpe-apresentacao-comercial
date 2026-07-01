@@ -1538,6 +1538,122 @@
       margin-top: 24px;
     }
 
+    /* ===== SLIDE COMMODITIES — CAPACIDADES DE INDUSTRIALIZAÇÃO ===== */
+    .comm-slide {
+      justify-content: center;
+    }
+
+    .comm-header {
+      text-align: center;
+      margin-bottom: clamp(24px, 4vh, 48px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .comm-slide .label-cat {
+      display: block;
+      margin-bottom: 14px;
+    }
+
+    .comm-slide .slide-title {
+      font-size: clamp(30px, 3.6vw, 54px);
+      margin-bottom: 0;
+    }
+
+    .comm-sub {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(15px, 1.5vw, 20px);
+      line-height: 1.6;
+      color: hsl(0, 0%, 100%, 0.72);
+      max-width: 900px;
+      margin: 16px auto 0;
+    }
+
+    .comm-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(10px, 1.4vw, 18px);
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .comm-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--card-dark-bg);
+      border: 1px solid var(--card-dark-border);
+      border-radius: 14px;
+      padding: clamp(15px, 2vh, 22px) clamp(16px, 1.5vw, 24px);
+      box-shadow: 0 6px 24px hsl(220, 55%, 4%, 0.35);
+      transition: transform 0.32s cubic-bezier(0.2, 0, 0, 1),
+        border-color 0.32s cubic-bezier(0.2, 0, 0, 1),
+        box-shadow 0.32s cubic-bezier(0.2, 0, 0, 1),
+        background 0.32s cubic-bezier(0.2, 0, 0, 1);
+      opacity: 0;
+    }
+
+    .comm-card:hover {
+      transform: translateY(-4px);
+      border-color: hsl(120, 40%, 49%, 0.55);
+      background: hsl(220, 55%, 19%);
+      box-shadow: 0 14px 36px hsl(220, 55%, 4%, 0.55);
+    }
+
+    .slide.active .comm-card {
+      animation: fadeInUp 0.5s cubic-bezier(0.2, 0, 0, 1) var(--comm-delay, 0ms) forwards;
+    }
+
+    .comm-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--zpe-green);
+      box-shadow: 0 0 10px hsl(120, 40%, 49%, 0.5);
+      flex-shrink: 0;
+    }
+
+    .comm-name {
+      font-family: 'Barlow', sans-serif;
+      font-weight: 600;
+      font-size: clamp(15px, 1.45vw, 19px);
+      color: var(--text-white);
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .comm-foot {
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      font-size: clamp(13px, 1.3vw, 16px);
+      line-height: 1.6;
+      color: var(--text-sec);
+      text-align: center;
+      max-width: 960px;
+      margin: clamp(24px, 4vh, 44px) auto 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .comm-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 10px !important;
+      }
+
+      .comm-slide .slide-title {
+        font-size: clamp(24px, 5vw, 36px) !important;
+      }
+
+      .comm-header {
+        margin-bottom: 20px !important;
+      }
+    }
+
     /* ===== SLIDE 10 — COMO INSTALAR ===== */
     .slide-caminho {
       padding: 0 !important;
@@ -2793,6 +2909,64 @@
       </div>
     </div>
 
+    <!-- SLIDE COMMODITIES — CAPACIDADES DE INDUSTRIALIZAÇÃO -->
+    <div class="slide slide-dark-data dot-grid comm-slide" data-chapter="Setores e Oportunidade">
+      <div class="comm-header">
+        <div class="label-cat anim anim-1" data-pt="MATÉRIA-PRIMA NA ORIGEM"
+          data-en="RAW MATERIALS AT THE SOURCE">MATÉRIA-PRIMA NA ORIGEM</div>
+        <h2 class="slide-title anim anim-1" data-pt="Capacidades de industrialização"
+          data-en="Industrialization capabilities">Capacidades de industrialização</h2>
+        <p class="comm-sub anim anim-2"
+          data-pt="Do agronegócio à mineração, da proteína à energia — o Maranhão e sua região de influência concentram um dos portfólios de commodities mais diversos do país, disponível na porta da ZPE para ser processado e exportado."
+          data-en="From agribusiness to mining, from protein to energy — Maranhão and its area of influence concentrate one of the most diverse commodity portfolios in the country, available at the ZPE's doorstep to be processed and exported.">
+          Do agronegócio à mineração, da proteína à energia — o Maranhão e sua região de influência concentram um dos
+          portfólios de commodities mais diversos do país, disponível na porta da ZPE para ser processado e exportado.
+        </p>
+      </div>
+      <div class="comm-grid">
+        <div class="comm-card" style="--comm-delay: 300ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Ouro" data-en="Gold">Ouro</span></div>
+        <div class="comm-card" style="--comm-delay: 330ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Soja" data-en="Soybean">Soja</span></div>
+        <div class="comm-card" style="--comm-delay: 360ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Milho" data-en="Corn">Milho</span></div>
+        <div class="comm-card" style="--comm-delay: 390ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Arroz" data-en="Rice">Arroz</span></div>
+        <div class="comm-card" style="--comm-delay: 420ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Calcário" data-en="Limestone">Calcário</span></div>
+        <div class="comm-card" style="--comm-delay: 450ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Calcário marinho" data-en="Marine limestone">Calcário marinho</span></div>
+        <div class="comm-card" style="--comm-delay: 480ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Celulose" data-en="Wood pulp">Celulose</span></div>
+        <div class="comm-card" style="--comm-delay: 510ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Algodão" data-en="Cotton">Algodão</span></div>
+        <div class="comm-card" style="--comm-delay: 540ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Proteínas" data-en="Proteins">Proteínas</span></div>
+        <div class="comm-card" style="--comm-delay: 570ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Colágeno (aves e peixes)" data-en="Collagen (poultry &amp; fish)">Colágeno (aves e peixes)</span>
+        </div>
+        <div class="comm-card" style="--comm-delay: 600ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Litotânio" data-en="Lithothamnium">Litotânio</span></div>
+        <div class="comm-card" style="--comm-delay: 630ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Terras raras" data-en="Rare earths">Terras raras</span></div>
+        <div class="comm-card" style="--comm-delay: 660ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Minério de ferro" data-en="Iron ore">Minério de ferro</span></div>
+        <div class="comm-card" style="--comm-delay: 690ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Manganês" data-en="Manganese">Manganês</span></div>
+        <div class="comm-card" style="--comm-delay: 720ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Sebo" data-en="Tallow">Sebo</span></div>
+        <div class="comm-card" style="--comm-delay: 750ms"><span class="comm-dot"></span><span class="comm-name"
+            data-pt="Petróleo (margem equatorial)" data-en="Oil (equatorial margin)">Petróleo (margem
+            equatorial)</span></div>
+      </div>
+      <p class="comm-foot anim anim-6"
+        data-pt="Hoje, grande parte é exportada como commodity bruta. Na ZPE, cada cadeia pode ser industrializada e embarcada com valor agregado, incentivos fiscais e a menor rota marítima até os grandes mercados."
+        data-en="Today, much of it is exported as raw commodity. At the ZPE, each chain can be industrialized and shipped with added value, tax incentives, and the shortest maritime route to major markets.">
+        Hoje, grande parte é exportada como commodity bruta. Na ZPE, cada cadeia pode ser industrializada e embarcada com
+        valor agregado, incentivos fiscais e a menor rota marítima até os grandes mercados.
+      </p>
+    </div>
+
     <!-- SLIDE 6 — INFRAESTRUTURA -->
     <div class="slide slide-dark" data-chapter="A Infraestrutura" data-video-slide style="
       background: hsl(220 55% 8%);
@@ -3249,8 +3423,8 @@
     const totalSlides = slides.length;
     let currentSlide = 0;
     let isTransitioning = false;
-    const CHAPTERS = ['Capa', 'O Problema', 'O Problema', 'O Problema', 'O Impacto Financeiro', 'O Impacto Financeiro', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'Próximos Passos', 'Próximos Passos'];
-    const CHAPTERS_EN = ['Cover', 'The Problem', 'The Problem', 'The Problem', 'Financial Impact', 'Financial Impact', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'Next Steps', 'Next Steps'];
+    const CHAPTERS = ['Capa', 'O Problema', 'O Problema', 'O Problema', 'O Impacto Financeiro', 'O Impacto Financeiro', 'Setores e Oportunidade', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'A Infraestrutura', 'Próximos Passos', 'Próximos Passos'];
+    const CHAPTERS_EN = ['Cover', 'The Problem', 'The Problem', 'The Problem', 'Financial Impact', 'Financial Impact', 'Sectors & Opportunity', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'The Infrastructure', 'Next Steps', 'Next Steps'];
 
     // ===== LANGUAGE TOGGLE =====
     let currentLang = 'pt';
@@ -3398,7 +3572,7 @@
 
       setTimeout(() => {
         // Reset all animations before reactivating
-        newSlide.querySelectorAll('.anim, .anim-1, .anim-2, .anim-3, .anim-4, .anim-5, .anim-6, .anim-7, .anim-8, .anim-foot, .capa-logo, .capa-slogan, .capa-line, .capa-footer-logos, .timeline-v-node, .route-line, .route-card, .route-chip, .s10-anim').forEach(el => {
+        newSlide.querySelectorAll('.anim, .anim-1, .anim-2, .anim-3, .anim-4, .anim-5, .anim-6, .anim-7, .anim-8, .anim-foot, .capa-logo, .capa-slogan, .capa-line, .capa-footer-logos, .timeline-v-node, .route-line, .route-card, .route-chip, .s10-anim, .comm-card').forEach(el => {
           el.style.animation = 'none';
           el.offsetHeight; // force reflow
           el.style.animation = '';

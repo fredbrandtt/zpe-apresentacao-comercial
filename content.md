@@ -276,6 +276,24 @@ Texto: 96% dos CEOs globais avaliam relocalização por proximidade. Com fuso GM
 
 ---
 
+## SLIDE — Capacidades de Industrialização (Commodities)
+
+**Capítulo:** Setores e Oportunidade
+**Tema:** dark (grade estática entre os slides de vídeo de Logística e Infraestrutura)
+**Posição na apresentação:** após "Menos dias de navegação. Mais margem para sua operação." (Vantagem Logística) e antes da sequência de Infraestrutura (vídeo dos modais)
+
+**Eyebrow:** MATÉRIA-PRIMA NA ORIGEM
+**Título:** Capacidades de industrialização
+
+**Subtítulo:** Do agronegócio à mineração, da proteína à energia — o Maranhão e sua região de influência concentram um dos portfólios de commodities mais diversos do país, disponível na porta da ZPE para ser processado e exportado.
+
+**Grid 4×4 — 16 commodities (marcador em ponto verde; manter esta ordem exata):**
+Ouro · Soja · Milho · Arroz · Calcário · Calcário marinho · Celulose · Algodão · Proteínas · Colágeno (aves e peixes) · Litotânio · Terras raras · Minério de ferro · Manganês · Sebo · Petróleo (margem equatorial)
+
+**Linha de fechamento:** Hoje, grande parte é exportada como commodity bruta. Na ZPE, cada cadeia pode ser industrializada e embarcada com valor agregado, incentivos fiscais e a menor rota marítima até os grandes mercados.
+
+---
+
 ## SLIDE 10 — Como Instalar
 
 **Título:** O caminho é claro.
