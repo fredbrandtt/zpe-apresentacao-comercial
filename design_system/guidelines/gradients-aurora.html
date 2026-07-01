@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x210" name="Gradients · aurora (premium)" subtitle="Luz que brilha sobre profundidade azul — sempre com grão" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--canvas); padding: 20px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .g { height: 150px; border-radius: 14px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; color: #fff; }
+  .g.dark::after { content:""; position:absolute; inset:0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events:none; }
+  .g.light { color: var(--blue); border: 1px solid var(--line); }
+  .gn { font-family: var(--font-display); font-weight: 600; font-size: 16px; position: relative; z-index: 2; }
+  .gu { font-family: var(--font-mono); font-size: 9px; opacity: .7; margin-top: 4px; position: relative; z-index: 2; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="g dark" style="background:var(--grad-aurora-blue)"><div class="gn">Aurora Blue</div><div class="gu">Capas premium · heros</div></div>
+    <div class="g dark" style="background:var(--grad-aurora-deep)"><div class="gn">Aurora Deep</div><div class="gu">Seções de processo</div></div>
+    <div class="g dark" style="background:var(--grad-aurora-green)"><div class="gn">Aurora Green</div><div class="gu">Sustentabilidade</div></div>
+    <div class="g light" style="background:var(--grad-aurora-mist)"><div class="gn">Aurora Mist</div><div class="gu">Capa clara · relatório</div></div>
+  </div>
+</body>
+</html>

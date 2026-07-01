@@ -1,0 +1,29 @@
+<!-- @dsCard group="Brand" viewport="700x320" name="World dotted" subtitle="Padrão full-bleed centrado — conectividade global" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); }
+  .frame { position: relative; height: 320px; background: var(--grad-abyss); overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .frame::after { content:""; position:absolute; inset:0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events:none; z-index:3; }
+  /* Padrão full-bleed: o mapa cobre toda a superfície, centrado e distribuído */
+  .world { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .32; filter: brightness(0) invert(1); z-index: 1; }
+  .copy { position: relative; z-index: 2; text-align: center; color: #fff; }
+  .logo { height: 52px; }
+  .tag { font-family: var(--font-display); font-weight: 600; font-size: 16px; margin-top: 14px; letter-spacing: -.005em; }
+  .eb { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--green-soft); margin-bottom: 10px; }
+</style>
+</head>
+<body>
+  <div class="frame">
+    <img class="world" src="../assets/brand/world_dotted.svg" alt="">
+    <div class="copy">
+      <div class="eb">Comércio exterior</div>
+      <img class="logo" src="../assets/brand/logo_fundo_branco.svg" alt="ZPE Maranhão">
+      <div class="tag">A conexão estratégica do Maranhão com o mundo</div>
+    </div>
+  </div>
+</body>
+</html>

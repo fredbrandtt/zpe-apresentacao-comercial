@@ -1,0 +1,24 @@
+/* ZPE Maranhão · Spacing, radius & layout tokens. Base 8px. */
+:root {
+  --space-1: 8px;
+  --space-2: 16px;   /* gap padrão */
+  --space-3: 24px;   /* padding de card */
+  --space-4: 32px;
+  --space-5: 48px;
+  --space-6: 64px;
+  --space-section: 88px;  /* respiro entre seções */
+  --space-slide: 96px;    /* padding interno de slide */
+
+  --gap: 16px;
+  --card-padding: 24px;
+
+  /* Raios */
+  --radius-sm: 10px;
+  --radius-card: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Larguras de conteúdo */
+  --content-max: 1120px;
+  --content-wide: 1200px;
+}

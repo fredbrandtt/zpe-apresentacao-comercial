@@ -1,0 +1,43 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Slide · Relatório (capa premium)" subtitle="Aurora + grão + wordmark — estética ATMOS" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--grad-aurora-blue); color: #fff; font-family: var(--font-body); box-sizing: border-box; padding: 72px 80px; display: flex; flex-direction: column; }
+  .slide::after { content: ""; position: absolute; inset: 0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events: none; z-index: 4; }
+  .top { position: relative; z-index: 3; }
+  .toprow { display: flex; justify-content: space-between; align-items: flex-end; font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.7); }
+  .toprow .r { text-align: right; line-height: 1.5; }
+  .rule { height: 1px; background: rgba(255,255,255,.35); margin-top: 16px; }
+  .mid { position: relative; z-index: 3; margin-top: auto; }
+  .eb { font-family: var(--font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--green-soft); }
+  h1 { font-family: var(--font-display); font-weight: 300; font-size: 96px; line-height: .95; letter-spacing: -.03em; margin: 18px 0 0; }
+  h1 b { font-weight: 600; }
+  .bottom { position: relative; z-index: 3; display: flex; justify-content: space-between; align-items: flex-end; margin-top: 56px; }
+  .bottom img { height: 46px; }
+  .tag { font-family: var(--font-body); font-size: 15px; color: rgba(255,255,255,.6); max-width: 32ch; text-align: right; line-height: 1.5; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="top">
+      <div class="toprow">
+        <div>Relatório de<br>Investimento</div>
+        <div class="r">Dezembro 2025<br>São Luís · MA</div>
+      </div>
+      <div class="rule"></div>
+    </div>
+    <div class="mid">
+      <div class="eb">Zona de Processamento de Exportação</div>
+      <h1>Maranhão,<br><b>conectado ao mundo</b></h1>
+    </div>
+    <div class="bottom">
+      <img src="../assets/brand/logo_fundo_branco.svg" alt="ZPE Maranhão">
+      <div class="tag">Infraestrutura de classe mundial e incentivos federais para empresas exportadoras.</div>
+    </div>
+  </div>
+</body>
+</html>

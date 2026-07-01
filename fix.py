@@ -31,13 +31,13 @@ coverslide_target = """      <!-- SLIDE 1 -->
       <div class="slide slide-default slide-dots active" data-chapter="0">"""
 coverslide_new = """      <!-- SLIDE 0 (CAPA) -->
       <div class="slide slide-capa active" data-chapter="-1">
-        <img src="logo-zpe.png" class="capa-logo" alt="Logo ZPE">
+        <img src="assets/logos/logo-zpe.png" class="capa-logo" alt="Logo ZPE">
         <h1 class="capa-title">ZPE Maranhão</h1>
         <div class="capa-subtitle">A conexão estratégica do Maranhão com o mundo.</div>
         <div class="capa-divider"></div>
         <div class="capa-footer-logos">
-          <img src="investe-ma-logo.png" alt="Investe MA">
-          <img src="governo-ma-logo.png" alt="Governo MA">
+          <img src="assets/logos/investe-ma-logo.png" alt="Investe MA">
+          <img src="assets/logos/governo-ma-logo.png" alt="Governo MA">
         </div>
       </div>
 
@@ -63,8 +63,8 @@ for k, v in replacements.items():
 # 4. Slide 10 Logos
 s10_logos_old = '<div class="anim anim-foot s10-logos"><div>LOGO ZPE</div><div>LOGO GOV MA</div></div>'
 s10_logos_new = """<div class="anim anim-foot s10-logos">
-          <img src="logo-zpe.png" style="height: 40px; filter: brightness(0) invert(1);" alt="ZPE">
-          <img src="governo-ma-logo.png" style="height: 40px;" alt="Governo MA">
+          <img src="assets/logos/logo-zpe.png" style="height: 40px; filter: brightness(0) invert(1);" alt="ZPE">
+          <img src="assets/logos/governo-ma-logo.png" style="height: 40px;" alt="Governo MA">
         </div>"""
 content = content.replace(s10_logos_old, s10_logos_new)
 
@@ -78,13 +78,13 @@ svg_old = """<div class="s2-map">
               <div style="width:8px; height:8px; border-radius:50%; background:hsl(120,40%,49%); margin-left:-4px; margin-top:-4px;"></div>
             </div>
           </div>"""
-svg_new = '<img src="maranhao_stylized.jpg" style="height: clamp(240px, 40vh, 380px); object-fit: contain; filter: drop-shadow(0 0 24px hsl(120 40% 49% / 0.4)) brightness(1.1);">'
+svg_new = '<img src="assets/images/maranhao_stylized.jpg" style="height: clamp(240px, 40vh, 380px); object-fit: contain; filter: drop-shadow(0 0 24px hsl(120 40% 49% / 0.4)) brightness(1.1);">'
 content = content.replace(svg_old, svg_new)
 
 # 6. CSS insertions
 css_insertion = """
 /* Theme Alternation */
-.slide-capa { background-image: url('bg_hero_blue_compressed.jpg'); background-size: cover; background-position: center; flex-direction: column; align-items: flex-start; justify-content: center; padding: 0 80px; }
+.slide-capa { background-image: url('assets/images/bg_hero_blue_compressed.jpg'); background-size: cover; background-position: center; flex-direction: column; align-items: flex-start; justify-content: center; padding: 0 80px; }
 .slide-capa::before { content: ''; position: absolute; inset: 0; background: hsl(220 55% 15% / 0.55); z-index: -1; pointer-events: none; }
 .capa-logo { height: 56px; object-fit: contain; margin-bottom: 48px; }
 .capa-title { font-family: 'Barlow', sans-serif; font-weight: 800; font-size: clamp(56px, 7vw, 96px); color: #fff; letter-spacing: -0.025em; line-height: 1.0; margin-bottom: 16px; width: 100%; max-width: none; }
@@ -111,7 +111,7 @@ css_insertion = """
 .slide-light .s6-ndot { background: hsl(220 55% 32%); border-color: hsl(220 55% 32% / 0.5); }
 .slide-light .s9-pt { color: hsl(220 55% 32%); border-bottom-color: hsl(220 55% 32% / 0.2); }
 
-.slide-end { background-image: url('bg_hero_blue_compressed.jpg'); background-size: cover; background-position: center; }
+.slide-end { background-image: url('assets/images/bg_hero_blue_compressed.jpg'); background-size: cover; background-position: center; }
 .slide-end::before { content: ''; position: absolute; inset: 0; background: hsl(220 55% 15% / 0.7); z-index: -2; pointer-events: none; }
 
 /* Slides Specific */

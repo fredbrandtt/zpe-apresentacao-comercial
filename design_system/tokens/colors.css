@@ -1,0 +1,68 @@
+/* ZPE Maranhão · Color tokens
+   Azul institucional domina como estrutura (~70%); verde é acento de ação (~10%);
+   canvas claro é a base (~20%). A proporção é a identidade e não se inverte. */
+:root {
+  /* ─── Azul institucional (estrutura, autoridade) ─── */
+  --blue: #244582;
+  --blue-deep: #1a3160;
+  --blue-darkest: #0f1d3a;
+  --blue-pressed: #142849;
+  --blue-soft: #dbe4f5;
+  --blue-pale: #eef2fb;
+
+  /* ─── Verde de ação (acento, nunca dominante) ─── */
+  --green: #4cac4b;
+  --green-deep: #3d9a3c;
+  --green-pressed: #2f7a2e;
+  --green-soft: #5fb55e;
+  --green-pale: #e4f4e3;
+
+  /* ─── Neutro ─── */
+  --neutral: #b0c4c9;
+
+  /* ─── Canvas (fundos claros) ─── */
+  --canvas: #ffffff;
+  --canvas-soft: #f9f9ff;
+  --canvas-blue: #f0f3ff;
+  --surface: #ffffff;
+
+  /* ─── Texto ─── */
+  --ink: #1a2942;
+  --ink-soft: #4a5a78;
+  --ink-mute: #7a87a0;
+
+  /* ─── Bordas (3 pesos) ─── */
+  --line: #e6eaf2;
+  --line-soft: #eef1f7;
+  --line-strong: #cdd5e4;
+
+  /* ─── Semânticas ─── */
+  --success: #2ead4b;
+  --success-bg: #e4f6e8;
+  --success-text: #0f5523;
+  --warning: #e0a020;
+  --warning-bg: #fbf2dc;
+  --warning-text: #6b4a08;
+  --error: #d03238;
+  --error-bg: #fbe3e4;
+  --error-text: #6e1216;
+  --info: #2f6ec4;
+  --info-bg: #e3edfb;
+  --info-text: #123a6b;
+
+  --on-primary: #ffffff;
+  --on-accent: #ffffff;
+
+  /* ─── Aliases semânticos ─── */
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-soft);
+  --text-muted: var(--ink-mute);
+  --surface-card: var(--surface);
+  --surface-page: var(--canvas);
+  --surface-sunken: var(--canvas-blue);
+  --border-default: var(--line);
+  --border-strong: var(--line-strong);
+  --action: var(--green-pressed);
+  --action-hover: var(--green-deep);
+  --structure: var(--blue);
+}

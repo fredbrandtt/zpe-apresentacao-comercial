@@ -1,0 +1,62 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Botões, badges & eyebrow" subtitle="Variantes, tamanhos e estados" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--canvas-soft, #f9f9ff); font-family: var(--font-body); padding: 24px; }
+  .group { margin-bottom: 22px; }
+  .lab { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-mute); margin-bottom: 12px; }
+  .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { Button, Badge, Eyebrow } = window.ZPEMaranhODesignSystem_408e04;
+    function Demo() {
+      return (
+        <>
+          <div className="group">
+            <div className="lab">Botões · tamanhos & variantes</div>
+            <div className="row">
+              <Button variant="primary" size="lg" iconRight="→">Investir agora</Button>
+              <Button variant="primary">Saiba mais</Button>
+              <Button variant="primary" size="sm">Download</Button>
+              <Button variant="secondary">Contato</Button>
+              <Button variant="ghost">Ver detalhes</Button>
+              <Button variant="primary" disabled>Indisponível</Button>
+            </div>
+          </div>
+          <div className="group">
+            <div className="lab">Badges</div>
+            <div className="row">
+              <Badge variant="green">Ativo</Badge>
+              <Badge variant="blue">Institucional</Badge>
+              <Badge variant="success">Aprovado</Badge>
+              <Badge variant="warning">Em análise</Badge>
+              <Badge variant="error">Pendente</Badge>
+              <Badge variant="info">Informativo</Badge>
+              <Badge variant="outline">Rascunho</Badge>
+            </div>
+          </div>
+          <div className="group" style={{marginBottom:0}}>
+            <div className="lab">Eyebrow</div>
+            <div className="row">
+              <Eyebrow>01 · Paleta</Eyebrow>
+              <Eyebrow tone="blue">Infraestrutura</Eyebrow>
+              <Eyebrow tone="muted">Metadado</Eyebrow>
+            </div>
+          </div>
+        </>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

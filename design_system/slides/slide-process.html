@@ -1,0 +1,55 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Slide · Processo (glass)" subtitle="Painéis translúcidos numerados sobre aurora — estética AERAMAX" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--grad-aurora-deep); color: #fff; font-family: var(--font-body); box-sizing: border-box; padding: 88px 80px; display: flex; flex-direction: column; }
+  .slide::after { content: ""; position: absolute; inset: 0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events: none; z-index: 5; }
+  /* Ripple motif */
+  .ripple { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: .5; }
+  .head { position: relative; z-index: 3; max-width: 60%; }
+  .eb { font-family: var(--font-mono); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--green-soft); }
+  h2 { font-family: var(--font-display); font-weight: 300; font-size: 46px; line-height: 1.02; letter-spacing: -.02em; margin: 12px 0 0; }
+  h2 b { font-weight: 600; }
+  .grid { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 56px; }
+  .panel { position: relative; border-radius: 16px; padding: 26px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 16px 44px -20px rgba(0,0,0,.55); }
+  .panel.accent { background: rgba(76,172,75,.10); border-color: rgba(76,172,75,.30); }
+  .pdot { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .pdot i { width: 8px; height: 8px; border-radius: 50%; background: var(--green-soft); box-shadow: 0 0 12px 1px rgba(76,172,75,.6); }
+  .pdot span { flex: 1; height: 1px; background: rgba(255,255,255,.18); }
+  .pnum { font-family: var(--font-display); font-weight: 300; font-size: 50px; letter-spacing: -.02em; line-height: 1; color: rgba(255,255,255,.92); font-variant-numeric: tabular-nums; }
+  .ptitle { font-family: var(--font-display); font-weight: 600; font-size: 19px; margin-top: 16px; }
+  .pbody { font-family: var(--font-body); font-size: 14px; color: rgba(255,255,255,.62); margin-top: 8px; line-height: 1.55; }
+  .footer { position: absolute; bottom: 40px; left: 80px; right: 80px; display: flex; justify-content: space-between; align-items: center; z-index: 3; }
+  .footer img { height: 28px; opacity: .85; }
+  .pg { font-family: var(--font-mono); font-size: 13px; opacity: .4; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <svg class="ripple" viewBox="0 0 1280 720" preserveAspectRatio="xMidYMid slice" fill="none">
+      <g stroke="rgba(76,172,75,0.22)" stroke-width="1.2">
+        <circle cx="1280" cy="0" r="150"/><circle cx="1280" cy="0" r="260"/><circle cx="1280" cy="0" r="370"/>
+        <circle cx="1280" cy="0" r="480"/><circle cx="1280" cy="0" r="590"/><circle cx="1280" cy="0" r="700"/>
+      </g>
+    </svg>
+    <div class="head">
+      <div class="eb">Modelo de operação</div>
+      <h2>Da seleção do lote à <b>exportação</b></h2>
+    </div>
+    <div class="grid">
+      <div class="panel"><div class="pdot"><i></i><span></span></div><div class="pnum">01</div><div class="ptitle">Localização</div><div class="pbody">Lote urbanizado a 800m do Porto do Itaqui, com utilidades prontas.</div></div>
+      <div class="panel"><div class="pdot"><i></i><span></span></div><div class="pnum">02</div><div class="ptitle">Licenciamento</div><div class="pbody">Regime ZPE com suspensão de tributos federais por 20 anos.</div></div>
+      <div class="panel"><div class="pdot"><i></i><span></span></div><div class="pnum">03</div><div class="ptitle">Instalação</div><div class="pbody">Infraestrutura de energia, água e telecom para operação intensiva.</div></div>
+      <div class="panel accent"><div class="pdot"><i></i><span></span></div><div class="pnum">04</div><div class="ptitle">Exportação</div><div class="pbody">Acesso multimodal: ferrovia, rodovia e porto profundo.</div></div>
+    </div>
+    <div class="footer">
+      <img src="../assets/brand/logo_fundo_branco.svg" alt="ZPE Maranhão">
+      <span class="pg">05 / 12</span>
+    </div>
+  </div>
+</body>
+</html>

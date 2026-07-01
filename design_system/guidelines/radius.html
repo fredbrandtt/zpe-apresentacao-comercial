@@ -1,0 +1,24 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Border radius" subtitle="SM 10 · Card 16 · LG 24 · Pill" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--canvas); padding: 24px; }
+  .grid { display: flex; gap: 22px; align-items: flex-end; }
+  .it { text-align: center; }
+  .box { background: var(--blue-soft); border: 2px solid var(--blue); margin-bottom: 8px; }
+  .rl { font-family: var(--font-mono); font-size: 10px; color: var(--ink-mute); }
+  .rv { font-family: var(--font-display); font-weight: 600; font-size: 13px; color: var(--blue); }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="it"><div class="box" style="width:56px;height:56px;border-radius:10px"></div><div class="rl">SM</div><div class="rv">10px</div></div>
+    <div class="it"><div class="box" style="width:72px;height:72px;border-radius:16px"></div><div class="rl">Card</div><div class="rv">16px</div></div>
+    <div class="it"><div class="box" style="width:88px;height:88px;border-radius:24px"></div><div class="rl">LG</div><div class="rv">24px</div></div>
+    <div class="it"><div class="box" style="width:56px;height:56px;border-radius:9999px"></div><div class="rl">Pill</div><div class="rv">9999px</div></div>
+  </div>
+</body>
+</html>

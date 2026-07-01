@@ -1,0 +1,33 @@
+<!-- @dsCard group="Components" viewport="700x260" name="Formulário · Input" subtitle="Campo com label mono e foco azul" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; background: var(--canvas-soft, #f9f9ff); font-family: var(--font-body); padding: 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 560px; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { Input } = window.ZPEMaranhODesignSystem_408e04;
+    function Demo() {
+      return (
+        <div className="grid">
+          <Input label="Empresa" placeholder="Razão social" defaultValue="Aço Norte Exportadora" />
+          <Input label="E-mail corporativo" type="email" placeholder="nome@empresa.com" />
+          <Input label="CNPJ" hint="Apenas números" placeholder="00.000.000/0001-00" />
+          <Input label="CNPJ" error="CNPJ inválido" defaultValue="123" />
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

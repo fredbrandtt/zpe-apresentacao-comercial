@@ -32,22 +32,22 @@ Total: 12 slides (índices 0 a 11)
 
 ## SLIDE 0 — Capa
 
-**Tema:** dark com bg_hero_blue_compressed.jpg como fundo
+**Tema:** dark com assets/images/bg_hero_blue_compressed.jpg como fundo
 
 **Elementos visuais de fundo:**
-- Imagem de fundo: bg_hero_blue_compressed.jpg
-- Mapa mundi dotted: world_dotted.svg posicionado à direita, opacidade 12%
+- Imagem de fundo: assets/images/bg_hero_blue_compressed.jpg
+- Mapa mundi dotted: assets/images/world_dotted.svg posicionado à direita, opacidade 12%
 - Overlay escuro sobre a imagem
 - Flares azuis nos cantos
 - Fades laterais para profundidade
 
 **Conteúdo (coluna esquerda, ~55% da largura, PERFEITAMENTE CENTRALIZADO VERTICALMENTE):**
-- Logo: logo-zpe.png — sem filtro, cores originais
+- Logo: assets/logos/logo-zpe.png — sem filtro, cores originais
 - Slogan: "A conexão estratégica do Maranhão com o mundo."
 - Linha divisória verde (64px largura, 3px altura)
 - Logos de rodapé lado a lado:
-  - investe-ma-logo.png com filter: brightness(0) invert(1) opacity(0.8) (versão branca)
-  - governo-ma-logo.png sem filtro (cores originais)
+  - assets/logos/investe-ma-logo.png com filter: brightness(0) invert(1) opacity(0.8) (versão branca)
+  - assets/logos/governo-ma-logo.png sem filtro (cores originais)
 
 **REGRA CRÍTICA DE LAYOUT DA CAPA:**
 O slide capa NÃO usa o padding padrão dos outros slides.
@@ -121,8 +121,8 @@ Linha divisória verde (64px largura, 4px altura) centralizada abaixo da frase.
 **Layout: duas colunas**
 
 Coluna esquerda (~55%) — mapa e badge:
-- world_dotted.svg como fundo decorativo, opacidade 15%, filtro invertido
-- maranhao_stylized.jpg como imagem central
+- assets/images/world_dotted.svg como fundo decorativo, opacidade 15%, filtro invertido
+- assets/images/maranhao_stylized.jpg como imagem central
 - Pin clicável com tooltip:
   - Ponto verde pulsante
   - Tooltip: "ZPE MARANHÃO" (título) + "BACABEIRA" (subtítulo verde)
@@ -299,7 +299,7 @@ Fase 2 (direita):
 
 ## SLIDE 11 — CTA Final
 
-**Tema:** dark com bg_hero_blue_compressed.jpg como fundo + overlay escuro
+**Tema:** dark com assets/images/bg_hero_blue_compressed.jpg como fundo + overlay escuro
 
 **Conteúdo centralizado:**
 
@@ -315,8 +315,8 @@ zpe.ma.gov.br
 Linha final (itálico, cinza claro): "A conexão estratégica do Maranhão com o mundo."
 
 Logos no rodapé (gap 40px):
-- logo-zpe.png altura 40px, sem filtro
-- governo-ma-logo.png altura 40px, sem filtro
+- assets/logos/logo-zpe.png altura 40px, sem filtro
+- assets/logos/governo-ma-logo.png altura 40px, sem filtro
 
 ---
 
@@ -326,12 +326,12 @@ Abre ao clicar no pin "ZPE MARANHÃO / BACABEIRA" no slide 3.
 Fecha com botão X, tecla Escape ou clique fora.
 
 **Linha superior (62vh):**
-- Vídeo animacao.mp4 — autoplay, loop, muted, object-fit cover
+- Vídeo assets/videos/animacao.mp4 — autoplay, loop, muted, object-fit cover
 - Fade nas bordas via mask-image
 - Label "O PROJETO" no canto inferior esquerdo (verde uppercase)
 - Botão "Ver em tela cheia" no canto inferior esquerdo
 
 **Linha inferior (28vh):**
 - Label "A ÁREA" acima da galeria
-- Galeria horizontal com scroll: 01.webp, 02.webp, 03.webp, 04.webp, 05.webp
+- Galeria horizontal com scroll: assets/images/01.webp, assets/images/02.webp, assets/images/03.webp, assets/images/04.webp, assets/images/05.webp
 - Cada foto clicável abre lightbox com navegação por setas e Escape para fechar

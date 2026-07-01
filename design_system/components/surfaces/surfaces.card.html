@@ -1,0 +1,37 @@
+<!-- @dsCard group="Components" viewport="700x300" name="GlassPanel · processo translúcido" subtitle="Cards numerados sobre profundidade azul (AERAMAX)" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); }
+  .stage { position: relative; overflow: hidden; background: var(--grad-aurora-blue); padding: 28px; min-height: 300px; box-sizing: border-box; display: flex; align-items: center; }
+  .stage::after { content:""; position:absolute; inset:0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events:none; }
+  .grid { position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 100%; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { GlassPanel } = window.ZPEMaranhODesignSystem_408e04;
+    function Demo() {
+      return (
+        <div className="stage">
+          <div className="grid">
+            <GlassPanel number="01" title="Localização">Lote urbanizado a 800m do Porto do Itaqui.</GlassPanel>
+            <GlassPanel number="02" title="Licenciamento">Regime ZPE com suspensão de tributos federais.</GlassPanel>
+            <GlassPanel number="03" title="Instalação">Infraestrutura de utilidades pronta para operar.</GlassPanel>
+            <GlassPanel number="04" title="Exportação" accent>Acesso multimodal: ferrovia, rodovia e porto.</GlassPanel>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

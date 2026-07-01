@@ -1,0 +1,39 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Slide · Citação" subtitle="Ocean Floor + aspas verde — fala de liderança" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--grad-ocean-floor); color: #fff; font-family: var(--font-body); display: flex; flex-direction: column; justify-content: center; padding: 96px; box-sizing: border-box; }
+  .slide::after { content: ""; position: absolute; inset: 0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events: none; }
+  .arrow { position: absolute; left: -40px; bottom: -40px; width: 320px; opacity: .14; z-index: 1; }
+  .inner { position: relative; z-index: 3; max-width: 70%; }
+  .mark { font-family: var(--font-display); font-weight: 300; font-size: 120px; line-height: .6; color: var(--green-soft); opacity: .85; }
+  .quote { font-family: var(--font-display); font-weight: 300; font-size: 46px; line-height: 1.18; letter-spacing: -.015em; margin-top: 16px; max-width: 24ch; }
+  .quote b { font-weight: 600; }
+  .bar { width: 48px; height: 3px; background: var(--grad-accent-line); border-radius: 2px; margin: 28px 0 18px; }
+  .author { font-family: var(--font-mono); font-size: 14px; letter-spacing: .04em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .footer { position: absolute; bottom: 56px; left: 96px; right: 96px; display: flex; justify-content: space-between; align-items: center; z-index: 3; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .02em; opacity: .6; }
+  .logo span { font-weight: 300; margin-left: 6px; }
+  .pg { font-family: var(--font-mono); font-size: 13px; opacity: .4; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <img class="arrow" src="../assets/brand/seta_outline.svg" alt="">
+    <div class="inner">
+      <div class="mark">"</div>
+      <div class="quote">A ZPE é o maior projeto de <b>infraestrutura industrial</b> do Maranhão na última década.</div>
+      <div class="bar"></div>
+      <div class="author">Rakel Murad · Diretora-Presidente</div>
+    </div>
+    <div class="footer">
+      <img src="../assets/brand/logo_fundo_branco.svg" alt="ZPE Maranhão" style="height:32px">
+      <span class="pg">07 / 12</span>
+    </div>
+  </div>
+</body>
+</html>

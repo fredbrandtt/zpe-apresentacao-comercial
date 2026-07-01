@@ -1,0 +1,26 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Semânticas" subtitle="Status: success, warning, error, info" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--canvas); padding: 20px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .sw { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .chip { height: 56px; }
+  .info { padding: 9px 11px; }
+  .name { font-weight: 600; font-size: 12px; color: var(--ink); }
+  .hex { font-family: var(--font-mono); font-size: 10px; color: var(--ink-mute); margin-top: 2px; }
+  .tint { display:inline-block; margin-top:6px; font-family: var(--font-mono); font-size:9px; padding:3px 8px; border-radius:9999px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:#2ead4b"></div><div class="info"><div class="name">Success</div><div class="hex">#2ead4b</div><span class="tint" style="background:#e4f6e8;color:#0f5523">Aprovado</span></div></div>
+    <div class="sw"><div class="chip" style="background:#e0a020"></div><div class="info"><div class="name">Warning</div><div class="hex">#e0a020</div><span class="tint" style="background:#fbf2dc;color:#6b4a08">Em análise</span></div></div>
+    <div class="sw"><div class="chip" style="background:#d03238"></div><div class="info"><div class="name">Error</div><div class="hex">#d03238</div><span class="tint" style="background:#fbe3e4;color:#6e1216">Pendente</span></div></div>
+    <div class="sw"><div class="chip" style="background:#2f6ec4"></div><div class="info"><div class="name">Info</div><div class="hex">#2f6ec4</div><span class="tint" style="background:#e3edfb;color:#123a6b">Informativo</span></div></div>
+  </div>
+</body>
+</html>

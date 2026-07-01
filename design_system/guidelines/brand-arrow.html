@@ -1,0 +1,35 @@
+<!-- @dsCard group="Brand" viewport="700x230" name="Seta da marca" subtitle="Elemento gráfico primário — direção, exportação" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); padding: 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .pane { min-height: 230px; display: flex; align-items: center; gap: 28px; padding: 28px; }
+  .light { background: var(--canvas); }
+  .dark { background: var(--grad-abyss); position: relative; overflow: hidden; }
+  .dark::after { content:""; position:absolute; inset:0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; }
+  .lab { position: absolute; top: 12px; left: 14px; font-family: var(--font-mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-mute); }
+  .dark .lab { color: rgba(255,255,255,.5); }
+  .big { width: 150px; opacity: .18; }
+  .dark .big { width: 170px; opacity: .35; }
+  .solid { width: 56px; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="pane light" style="position:relative">
+      <span class="lab">Sólida + outline · sobre claro</span>
+      <img class="solid" src="../assets/brand/seta_solid.svg" alt="Seta ZPE">
+      <img class="big" src="../assets/brand/seta_outline.svg" alt="">
+    </div>
+    <div class="pane dark">
+      <span class="lab">Decorativa · sobre escuro</span>
+      <img class="big" src="../assets/brand/seta_outline.svg" alt="" style="opacity:.4">
+      <img class="solid" src="../assets/brand/seta_solid.svg" alt="" style="width:64px">
+    </div>
+  </div>
+</body>
+</html>

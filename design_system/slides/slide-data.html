@@ -1,0 +1,49 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Slide · Dados" subtitle="Canvas claro + frost + stat cards" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--canvas); color: var(--ink); font-family: var(--font-body); display: grid; grid-template-columns: 1fr 1.1fr; box-sizing: border-box; }
+  .left { padding: 88px 72px; display: flex; flex-direction: column; justify-content: center; }
+  .right { background: var(--grad-frost); padding: 88px 72px; display: flex; flex-direction: column; justify-content: center; position: relative; }
+  .right::after { content: ""; position: absolute; inset: 0; background: var(--grain) repeat; mix-blend-mode: multiply; pointer-events: none; }
+  .eb { font-family: var(--font-mono); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--green-deep); font-weight: 500; }
+  h2 { font-family: var(--font-display); font-weight: 300; font-size: 48px; color: var(--blue); letter-spacing: -.015em; line-height: 1.05; margin: 14px 0 0; }
+  h2 b { font-weight: 600; }
+  .bar { width: 48px; height: 3px; background: var(--grad-accent-line); border-radius: 2px; margin: 20px 0; }
+  .body { font-size: 19px; color: var(--ink-soft); max-width: 36ch; line-height: 1.6; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; position: relative; z-index: 2; }
+  .stat { background: var(--grad-abyss); border-radius: 16px; padding: 26px; color: #fff; position: relative; overflow: hidden; }
+  .stat::after { content: ""; position: absolute; inset: 0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; }
+  .stat .l { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.5); position: relative; z-index: 2; }
+  .stat .n { font-family: var(--font-display); font-weight: 600; font-size: 52px; letter-spacing: -.02em; font-variant-numeric: tabular-nums; line-height: 1; margin-top: 8px; position: relative; z-index: 2; }
+  .stat .n u { font-style: normal; font-size: .4em; color: var(--green-soft); margin-left: 6px; }
+  .footer { position: absolute; bottom: 40px; left: 72px; display: flex; gap: 18px; align-items: center; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 16px; color: var(--blue); }
+  .logo span { font-weight: 300; color: var(--ink-soft); margin-left: 6px; }
+  .pg { font-family: var(--font-mono); font-size: 12px; color: var(--ink-mute); }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <div class="left">
+      <div class="eb">Dados estratégicos</div>
+      <h2>Números que demonstram <b>escala</b></h2>
+      <div class="bar"></div>
+      <p class="body">A ZPE Maranhão concentra infraestrutura logística multimodal em um raio de menos de 5km, com capacidade de expansão planejada.</p>
+      <div class="footer"><img src="../assets/brand/logo_fundo_azul.svg" alt="ZPE Maranhão" style="height:30px"><span class="pg">· 04 / 12</span></div>
+    </div>
+    <div class="right">
+      <div class="grid">
+        <div class="stat"><div class="l">Área industrial</div><div class="n">300<u>ha</u></div></div>
+        <div class="stat"><div class="l">Ferrovia Carajás</div><div class="n">3<u>km</u></div></div>
+        <div class="stat"><div class="l">Porto do Itaqui</div><div class="n">800<u>m</u></div></div>
+        <div class="stat"><div class="l">Expansão prevista</div><div class="n">40<u>%</u></div></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Marca · Logo & Seta" subtitle="Wordmark oficial e o símbolo da seta" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .pane { padding: 28px; display: flex; flex-direction: column; gap: 18px; align-items: flex-start; justify-content: center; min-height: 240px; }
+  .light { background: var(--canvas, #fff); }
+  .dark { background: var(--grad-abyss); position: relative; }
+  .lab { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-mute); }
+  .dark .lab { color: rgba(255,255,255,.5); }
+  .arrows { display: flex; gap: 18px; align-items: center; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { Logo, BrandArrow } = window.ZPEMaranhODesignSystem_408e04;
+    function Demo() {
+      return (
+        <div className="grid">
+          <div className="pane light">
+            <div className="lab">Sobre claro · wordmark azul</div>
+            <Logo theme="light" basePath="../../" size={40} />
+            <div className="arrows">
+              <BrandArrow size={40} />
+              <BrandArrow size={40} mode="outline" />
+            </div>
+          </div>
+          <div className="pane dark">
+            <div className="lab">Sobre escuro · wordmark branco</div>
+            <Logo theme="dark" basePath="../../" size={40} />
+            <div className="arrows">
+              <BrandArrow size={40} color="var(--green-soft)" />
+              <BrandArrow size={56} mode="outline" color="rgba(76,172,75,0.4)" />
+            </div>
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Colors" viewport="700x210" name="Gradients · profundidade azul" subtitle="Abyss, Ocean Floor, Deep Horizon — sempre com grão" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--canvas); padding: 20px; }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .g { height: 150px; border-radius: 14px; position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px; color: #fff; }
+  .g::after { content:""; position:absolute; inset:0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events:none; }
+  .gn { font-family: var(--font-display); font-weight: 600; font-size: 17px; position: relative; z-index: 2; }
+  .gu { font-family: var(--font-mono); font-size: 10px; opacity: .6; margin-top: 4px; position: relative; z-index: 2; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="g" style="background:var(--grad-abyss)"><div class="gn">Abyss</div><div class="gu">Hero · capas · impacto</div></div>
+    <div class="g" style="background:var(--grad-ocean-floor)"><div class="gn">Ocean Floor</div><div class="gu">Backgrounds imersivos</div></div>
+    <div class="g" style="background:var(--grad-deep-horizon)"><div class="gn">Deep Horizon</div><div class="gu">Topo escuro, base que abre</div></div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!-- @dsCard group="Slides" viewport="1280x720" name="Slide · Conexão global" subtitle="Capa centrada sobre o mapa pontilhado full-bleed" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html, body { margin: 0; }
+  .slide { width: 1280px; height: 720px; position: relative; overflow: hidden; background: var(--grad-deep-horizon); color: #fff; font-family: var(--font-body); display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; }
+  .slide::after { content: ""; position: absolute; inset: 0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events: none; z-index: 4; }
+  .world { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: .16; filter: brightness(0) invert(1); z-index: 1; }
+  .lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; opacity: .5; }
+  .inner { position: relative; z-index: 3; text-align: center; padding: 0 40px; }
+  .eb { font-family: var(--font-mono); font-size: 14px; letter-spacing: .12em; text-transform: uppercase; color: var(--green-soft); margin-bottom: 22px; }
+  .logo { height: 88px; }
+  .tag { font-family: var(--font-display); font-weight: 600; font-size: 30px; letter-spacing: -.01em; margin-top: 24px; }
+  .footer { position: absolute; bottom: 48px; left: 0; right: 0; display: flex; justify-content: center; gap: 40px; align-items: center; z-index: 3; }
+  .footer img { height: 38px; opacity: .9; }
+  .pg { position: absolute; bottom: 52px; right: 64px; font-family: var(--font-mono); font-size: 13px; opacity: .4; z-index: 3; }
+</style>
+</head>
+<body>
+  <div class="slide">
+    <img class="world" src="../assets/brand/world_dotted.svg" alt="">
+    <svg class="lines" viewBox="0 0 1280 720" fill="none" preserveAspectRatio="none">
+      <path d="M-40 250 L 520 380 L 980 210 L 1340 470" stroke="rgba(76,172,75,0.35)" stroke-width="1.2"/>
+      <path d="M120 640 L 540 360 L 760 430 L 1180 120" stroke="rgba(76,172,75,0.22)" stroke-width="1.2"/>
+      <circle cx="520" cy="380" r="3.5" fill="rgba(76,172,75,0.7)"/>
+      <circle cx="980" cy="210" r="3.5" fill="rgba(76,172,75,0.7)"/>
+      <circle cx="540" cy="360" r="3" fill="rgba(76,172,75,0.6)"/>
+      <circle cx="760" cy="430" r="3" fill="rgba(76,172,75,0.6)"/>
+    </svg>
+    <div class="inner">
+      <div class="eb">Comércio exterior</div>
+      <img class="logo" src="../assets/brand/logo_fundo_branco.svg" alt="ZPE Maranhão">
+      <div class="tag">A conexão estratégica do Maranhão com o mundo</div>
+    </div>
+    <span class="pg">02 / 12</span>
+  </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!-- @dsCard group="Spacing" viewport="700x230" name="Escala de espaço" subtitle="Base 8px — gap, padding, seções" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--canvas); padding: 24px; }
+  .r { display: flex; align-items: center; gap: 16px; padding: 7px 0; }
+  .name { font-size: 13px; color: var(--ink-soft); min-width: 130px; }
+  .val { font-family: var(--font-mono); font-size: 11px; color: var(--ink-mute); min-width: 56px; }
+  .bar { background: var(--blue-soft); border-radius: 4px; height: 22px; }
+</style>
+</head>
+<body>
+  <div class="r"><span class="name">Base</span><span class="val">8px</span><span class="bar" style="width:8px"></span></div>
+  <div class="r"><span class="name">Gap</span><span class="val">16px</span><span class="bar" style="width:16px"></span></div>
+  <div class="r"><span class="name">Card padding</span><span class="val">24px</span><span class="bar" style="width:24px"></span></div>
+  <div class="r"><span class="name">Bloco</span><span class="val">48px</span><span class="bar" style="width:48px"></span></div>
+  <div class="r"><span class="name">Section</span><span class="val">88px</span><span class="bar" style="width:88px"></span></div>
+  <div class="r"><span class="name">Slide padding</span><span class="val">96px</span><span class="bar" style="width:96px"></span></div>
+</body>
+</html>

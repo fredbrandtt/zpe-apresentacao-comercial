@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x180" name="Canvas & neutro" subtitle="Base clara — ~20% da área, espaço negativo" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--canvas-soft); padding: 20px; }
+  .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .sw { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; }
+  .chip { height: 64px; }
+  .info { padding: 9px 11px; }
+  .name { font-weight: 600; font-size: 12px; color: var(--blue); }
+  .hex { font-family: var(--font-mono); font-size: 10px; color: var(--ink-mute); margin-top: 2px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:#ffffff;border-bottom:1px solid var(--line)"></div><div class="info"><div class="name">Canvas</div><div class="hex">#ffffff</div></div></div>
+    <div class="sw"><div class="chip" style="background:#f9f9ff"></div><div class="info"><div class="name">Soft</div><div class="hex">#f9f9ff</div></div></div>
+    <div class="sw"><div class="chip" style="background:#f0f3ff"></div><div class="info"><div class="name">Blue tint</div><div class="hex">#f0f3ff</div></div></div>
+    <div class="sw"><div class="chip" style="background:#b0c4c9"></div><div class="info"><div class="name">Neutral</div><div class="hex">#B0C4C9</div></div></div>
+  </div>
+</body>
+</html>

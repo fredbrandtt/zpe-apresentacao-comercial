@@ -1,0 +1,47 @@
+<!-- @dsCard group="Components" viewport="700x320" name="Motivos · Ripple & Seta-imagem" subtitle="Linhas concêntricas + recorte dentro da seta" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .pane { position: relative; overflow: hidden; min-height: 320px; display: flex; align-items: center; justify-content: center; gap: 28px; }
+  .dark { background: var(--grad-aurora-deep); }
+  .dark::after { content:""; position:absolute; inset:0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events:none; }
+  .light { background: var(--canvas); }
+  .lab { position: absolute; top: 14px; left: 16px; z-index: 6; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+  .light .lab { color: var(--ink-mute); }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { RippleField, ArrowImage } = window.ZPEMaranhODesignSystem_408e04;
+    function Demo() {
+      return (
+        <div className="grid">
+          <div className="pane dark">
+            <span className="lab">RippleField · alcance</span>
+            <RippleField origin="top-right" color="rgba(95,181,94,0.30)" opacity={0.9} count={9} gap={86} />
+            <div style={{ position: 'relative', zIndex: 2, fontFamily: 'var(--font-display)', fontWeight: 300, fontSize: 26, color: '#fff', letterSpacing: '-.01em' }}>
+              Conexão que <b style={{ fontWeight: 600 }}>irradia</b>
+            </div>
+          </div>
+          <div className="pane light">
+            <span className="lab">ArrowImage · seta como recorte</span>
+            <ArrowImage size={168} tone="blue" />
+            <ArrowImage size={120} tone="green" />
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+  </script>
+</body>
+</html>

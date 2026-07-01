@@ -1,0 +1,23 @@
+<!-- @dsCard group="Spacing" viewport="700x190" name="Textura · grão" subtitle="Com grão vs. sem — o acabamento premium" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; font-family: var(--font-body); background: var(--canvas); padding: 20px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .d { height: 130px; border-radius: 14px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #fff; }
+  .d.grain::after { content:""; position:absolute; inset:0; background: var(--grain-dark) repeat; mix-blend-mode: overlay; pointer-events:none; }
+  .t { font-family: var(--font-display); font-weight: 500; font-size: 20px; position: relative; z-index: 2; }
+  .s { font-family: var(--font-mono); font-size: 9px; opacity: .6; margin-top: 4px; position: relative; z-index: 2; }
+  .tag { position:absolute; top:10px; right:12px; font-family: var(--font-mono); font-size: 9px; letter-spacing:.06em; text-transform:uppercase; opacity:.55; z-index:3; }
+</style>
+</head>
+<body>
+  <div class="grid">
+    <div class="d grain" style="background:var(--grad-deep-horizon)"><span class="tag">Com grão</span><div class="t">Deep Horizon</div><div class="s">overlay · 6% — materialidade</div></div>
+    <div class="d" style="background:var(--grad-deep-horizon)"><span class="tag">Sem grão</span><div class="t">Deep Horizon</div><div class="s">flat digital · sem textura</div></div>
+  </div>
+</body>
+</html>
