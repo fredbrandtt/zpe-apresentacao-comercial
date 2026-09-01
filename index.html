@@ -2851,6 +2851,19 @@
       }
     }
 
+    /* ===== SLIDE GPS — TERRITORY + PIPELINE ===== */
+    @media (max-width: 900px) {
+      #gps-indicators { flex-direction: column; align-items: stretch; gap: 28px; flex-wrap: nowrap; }
+      #gps-indicators > div { flex: 0 0 auto !important; }
+      #gps-indicators .gps-sep { display: none; }
+      #gps-indicators .gps-terr { max-width: 100%; min-width: 0; }
+      #gps-indicators .gps-pipe { min-width: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #gps-terr-fill { transition: none !important; }
+    }
+
     /* ===== REDUCED MOTION ===== */
     @media (prefers-reduced-motion: reduce) {
 
@@ -3637,41 +3650,95 @@
           O momento é agora.
         </h2>
         <div id="gps-indicators" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
-          display:flex; align-items:center; gap:0; margin-bottom:0;">
-          <div style="display:flex;flex-direction:column;gap:6px;padding-right:48px;">
-            <span style="font-family:'Barlow',sans-serif;font-weight:800;
-              font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">+50%</span>
+          display:flex; align-items:stretch; gap:clamp(32px,4vw,64px); margin-bottom:0; flex-wrap:wrap;">
+
+          <!-- TERRITÓRIO: 876 ha pré-reservados dentro de 2.098 ha -->
+          <div class="gps-terr" style="display:flex;flex-direction:column;gap:14px;flex:1 1 380px;max-width:520px;min-width:300px;">
+            <div style="display:flex;align-items:baseline;gap:10px;">
+              <span style="font-family:'Barlow',sans-serif;font-weight:800;
+                font-size:clamp(48px,6vw,80px);color:hsl(0 0% 96%);line-height:0.9;letter-spacing:-0.02em;">876</span>
+              <span style="font-family:'Barlow',sans-serif;font-weight:600;
+                font-size:clamp(18px,2vw,28px);color:hsl(120 40% 55%);line-height:1;">ha</span>
+            </div>
             <span style="font-family:'Inter',sans-serif;font-weight:400;
-              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;"
-              data-pt="da área já pré-reservada" data-en="of the area already pre-reserved">
-              da área já pré-reservada</span>
+              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;"
+              data-pt="já pré-reservados por investidores" data-en="already pre-reserved by investors">
+              já pré-reservados por investidores</span>
+
+            <!-- Faixa territorial: fatia pré-reservada vs. terreno restante -->
+            <div style="display:flex;flex-direction:column;gap:9px;margin-top:6px;">
+              <div style="position:relative;height:26px;border-radius:2px;overflow:hidden;
+                background:hsl(220 30% 88% / 0.14);
+                box-shadow:inset 0 0 0 1px hsl(0 0% 100% / 0.18);">
+                <!-- terreno restante: hachura sutil -->
+                <div aria-hidden="true" style="position:absolute;inset:0;opacity:0.5;
+                  background:repeating-linear-gradient(115deg, transparent 0 7px, hsl(0 0% 100% / 0.16) 7px 8px);"></div>
+                <!-- fatia pré-reservada -->
+                <div id="gps-terr-fill" style="position:absolute;inset:0 auto 0 0;width:0;
+                  background:hsl(220 55% 38%);
+                  border-right:3px solid hsl(120 40% 49%);
+                  box-shadow:0 0 22px hsl(120 40% 49% / 0.45);
+                  transition:width 1500ms cubic-bezier(.2,0,0,1);"></div>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+                <span style="font-family:'Barlow',sans-serif;font-weight:600;font-size:11px;
+                  text-transform:uppercase;letter-spacing:0.12em;color:hsl(120 40% 58%);"
+                  data-pt="Pré-reservado" data-en="Pre-reserved">Pré-reservado</span>
+                <span style="font-family:'Barlow',sans-serif;font-weight:600;font-size:11px;
+                  text-transform:uppercase;letter-spacing:0.12em;color:hsl(0 0% 100% / 0.5);"
+                  data-pt="Disponível · de 2.098 ha totais" data-en="Available · of 2,098 ha total">Disponível · de 2.098 ha totais</span>
+              </div>
+            </div>
           </div>
-          <div style="width:1px;height:80px;background:hsl(0 0% 100% / 0.12);margin-right:48px;flex-shrink:0;"></div>
-          <div style="display:flex;flex-direction:column;gap:6px;padding-right:48px;">
-            <span style="font-family:'Barlow',sans-serif;font-weight:800;
-              font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">8</span>
-            <span style="font-family:'Inter',sans-serif;font-weight:400;
-              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;"
-              data-pt="projetos em processo de aprovação" data-en="projects under approval">
-              projetos em processo de aprovação</span>
-          </div>
-          <div style="width:1px;height:80px;background:hsl(0 0% 100% / 0.12);margin-right:48px;flex-shrink:0;"></div>
-          <div style="display:flex;flex-direction:column;gap:6px;">
-            <span style="font-family:'Barlow',sans-serif;font-weight:800;
-              font-size:clamp(48px,6vw,80px);color:hsl(120 40% 49%);line-height:0.9;">3</span>
-            <span style="font-family:'Inter',sans-serif;font-weight:400;
-              font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:200px;"
-              data-pt="projetos aprovados" data-en="approved projects">
-              projetos aprovados</span>
+
+          <!-- Divisor -->
+          <div class="gps-sep" style="width:1px;background:hsl(0 0% 100% / 0.12);flex-shrink:0;align-self:stretch;"></div>
+
+          <!-- PIPELINE: 12 no total → 8 aprovação interna → 4 aprovados CZPE -->
+          <div class="gps-pipe" style="display:flex;flex-direction:column;gap:14px;flex:0 1 auto;">
+
+            <!-- Contexto: o total, como eyebrow -->
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span style="font-family:'Barlow',sans-serif;font-weight:600;
+                font-size:clamp(12px,1.15vw,15px);text-transform:uppercase;letter-spacing:0.14em;
+                color:hsl(0 0% 100% / 0.72);white-space:nowrap;"
+                data-pt="12 projetos no total" data-en="12 projects in total">12 projetos no total</span>
+              <div style="height:1px;flex:1;min-width:24px;background:linear-gradient(90deg, hsl(0 0% 100% / 0.22), transparent);"></div>
+            </div>
+
+            <!-- Os dois estágios, em escala de telão -->
+            <div class="gps-stages" style="display:flex;align-items:flex-start;gap:clamp(28px,3vw,52px);">
+
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <span style="font-family:'Barlow',sans-serif;font-weight:800;
+                  font-size:clamp(48px,6vw,80px);color:hsl(0 0% 96%);line-height:0.9;letter-spacing:-0.02em;">8</span>
+                <span style="font-family:'Inter',sans-serif;font-weight:400;
+                  font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;max-width:180px;"
+                  data-pt="em aprovação interna" data-en="under internal approval">em aprovação interna</span>
+              </div>
+
+              <div style="display:flex;flex-direction:column;gap:6px;position:relative;padding-left:clamp(28px,3vw,52px);">
+                <div style="position:absolute;left:0;top:2px;bottom:2px;width:3px;border-radius:2px;
+                  background:linear-gradient(180deg, hsl(120 40% 52%) 0%, hsl(120 40% 49% / 0.25) 100%);
+                  box-shadow:0 0 14px hsl(120 40% 49% / 0.65);"></div>
+                <span style="font-family:'Barlow',sans-serif;font-weight:800;
+                  font-size:clamp(48px,6vw,80px);color:hsl(0 0% 96%);line-height:0.9;letter-spacing:-0.02em;
+                  text-shadow:0 0 40px hsl(120 40% 49% / 0.4);">4</span>
+                <span style="font-family:'Inter',sans-serif;font-weight:500;
+                  font-size:clamp(14px,1.4vw,17px);color:hsl(120 40% 62%);line-height:1.4;max-width:180px;"
+                  data-pt="aprovados pelo CZPE" data-en="approved by CZPE">aprovados pelo CZPE</span>
+              </div>
+
+            </div>
           </div>
         </div>
         <p id="gps-closing" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
           font-family:'Inter',sans-serif;font-weight:400;font-style:italic;
           font-size:clamp(15px,1.5vw,19px);color:hsl(194 20% 74%);line-height:1.6;max-width:700px;
           margin-top:clamp(24px,3vh,36px);"
-          data-pt="2.098 hectares totalmente terraplanados e prontos para instalação imediata."
-          data-en="2,098 hectares fully graded and ready for immediate installation.">
-          2.098 hectares totalmente terraplanados e prontos para instalação imediata.
+          data-pt="Área totalmente terraplanada e pronta para instalação imediata."
+          data-en="Fully graded land, ready for immediate installation.">
+          Área totalmente terraplanada e pronta para instalação imediata.
         </p>
       </div>
     </div>
@@ -4123,6 +4190,14 @@
           const el = document.getElementById(id);
           if (el) { el.style.opacity = '0'; el.style.transform = 'translateY(20px)'; }
         });
+        const gpsTerrFill = document.getElementById('gps-terr-fill');
+        if (gpsTerrFill) {
+          gpsTerrFill.style.transition = 'none';
+          gpsTerrFill.style.width = '0';
+          requestAnimationFrame(() => {
+            gpsTerrFill.style.transition = 'width 1400ms cubic-bezier(.2,0,0,1)';
+          });
+        }
         setTimeout(() => {
           gpsZpeVidOld.pause();
           gpsZpeVidOld.currentTime = 0;
@@ -4242,7 +4317,20 @@
             const closing = document.getElementById('gps-closing');
             setTimeout(() => { badge.style.opacity = '1'; badge.style.transform = 'translateY(0)'; }, 0);
             setTimeout(() => { title.style.opacity = '1'; title.style.transform = 'translateY(0)'; }, 150);
-            setTimeout(() => { indicators.style.opacity = '1'; indicators.style.transform = 'translateY(0)'; }, 350);
+            setTimeout(() => {
+              indicators.style.opacity = '1'; indicators.style.transform = 'translateY(0)';
+              // Territory bar: 876 of 2,098 ha pre-reserved (no percentage stated)
+              const terrFill = document.getElementById('gps-terr-fill');
+              if (terrFill) {
+                const pct = (876 / 2098) * 100;
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                  terrFill.style.transition = 'none';
+                  terrFill.style.width = pct + '%';
+                } else {
+                  setTimeout(() => { terrFill.style.width = pct + '%'; }, 200);
+                }
+              }
+            }, 350);
             setTimeout(() => { closing.style.opacity = '1'; closing.style.transform = 'translateY(0)'; }, 600);
           });
         }

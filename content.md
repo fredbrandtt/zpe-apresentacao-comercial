@@ -256,6 +256,29 @@ Texto: 96% dos CEOs globais avaliam relocalização por proximidade. Com fuso GM
 
 ---
 
+## SLIDE GPS-ZPE — Demanda Ativa ("O momento é agora")
+
+**Capítulo:** A Infraestrutura
+**Tema:** dark (frame final do vídeo `transicao_gps_zpe.mp4` + `zpe_3d.jpg`)
+
+**Eyebrow:** DEMANDA ATIVA
+**Título:** O momento é agora.
+
+**Coluna 1 — Território:**
+- Número: "876" + unidade "ha" | Label: já pré-reservados por investidores
+- Faixa territorial: fatia pré-reservada (azul sólido, borda verde na fronteira) sobre terreno restante (hachura). Largura da fatia = 876/2.098. **Nenhum percentual é exibido** — a proporção é apenas visual, pois não há área útil definida para servir de denominador.
+- Legendas da faixa: "Pré-reservado" (esq.) / "Disponível · de 2.098 ha totais" (dir.)
+
+**Coluna 2 — Pipeline:**
+- Eyebrow de contexto: "12 PROJETOS NO TOTAL" + linha fina (o total é apenas a soma dos dois estágios, então não recebe escala de display)
+- Número: "8" | Label: em aprovação interna
+- Número: "4" | Label: aprovados pelo CZPE — com barra vertical verde à esquerda e glow, por ser ato formal externo (tração mais forte)
+- **8 e 4 usam a mesma escala do 876** (80px em 1920×1080). Requisito de legibilidade em telão.
+
+**Linha de fechamento:** Área totalmente terraplanada e pronta para instalação imediata.
+
+---
+
 ## SLIDE 9 — Pipeline Comercial
 
 **Título:** A demanda cresce. A área é finita.
