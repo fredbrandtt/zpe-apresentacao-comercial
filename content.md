@@ -265,9 +265,10 @@ Texto: 96% dos CEOs globais avaliam relocalização por proximidade. Com fuso GM
 **Título:** O momento é agora.
 
 **Coluna 1 — Território:**
-- Número: "876" + unidade "ha" | Label: já pré-reservados por investidores
-- Faixa territorial: fatia pré-reservada (azul sólido, borda verde na fronteira) sobre terreno restante (hachura). Largura da fatia = 876/2.098. **Nenhum percentual é exibido** — a proporção é apenas visual, pois não há área útil definida para servir de denominador.
-- Legendas da faixa: "Pré-reservado" (esq.) / "Disponível · de 2.098 ha totais" (dir.)
+- Número: "892" + unidade "ha" | Label: negociados
+- Faixa territorial: fatia negociada (azul sólido, borda verde na fronteira) sobre área disponível (hachura). Largura fixada em **60%**, batendo com o percentual exibido.
+- Legendas da faixa: "Negociado · 60%" (esq.) / "Disponível · 40% de 1.499 ha" (dir.)
+- **Área total de referência: 1.499 ha** (892 negociados + 607 disponíveis) — não confundir com os 2.098 ha da área bruta citada em outros slides.
 
 **Coluna 2 — Pipeline:**
 - Eyebrow de contexto: "12 PROJETOS NO TOTAL" + linha fina (o total é apenas a soma dos dois estágios, então não recebe escala de display)

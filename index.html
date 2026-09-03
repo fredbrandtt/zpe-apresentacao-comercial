@@ -3652,20 +3652,20 @@
         <div id="gps-indicators" style="opacity:0; transform:translateY(20px); transition: opacity 600ms ease, transform 600ms ease;
           display:flex; align-items:stretch; gap:clamp(32px,4vw,64px); margin-bottom:0; flex-wrap:wrap;">
 
-          <!-- TERRITÓRIO: 876 ha pré-reservados dentro de 2.098 ha -->
+          <!-- TERRITÓRIO: 892 ha negociados (60%) dentro de 1.499 ha -->
           <div class="gps-terr" style="display:flex;flex-direction:column;gap:14px;flex:1 1 380px;max-width:520px;min-width:300px;">
             <div style="display:flex;align-items:baseline;gap:10px;">
               <span style="font-family:'Barlow',sans-serif;font-weight:800;
-                font-size:clamp(48px,6vw,80px);color:hsl(0 0% 96%);line-height:0.9;letter-spacing:-0.02em;">876</span>
+                font-size:clamp(48px,6vw,80px);color:hsl(0 0% 96%);line-height:0.9;letter-spacing:-0.02em;">892</span>
               <span style="font-family:'Barlow',sans-serif;font-weight:600;
                 font-size:clamp(18px,2vw,28px);color:hsl(120 40% 55%);line-height:1;">ha</span>
             </div>
             <span style="font-family:'Inter',sans-serif;font-weight:400;
               font-size:clamp(14px,1.4vw,17px);color:hsl(0 0% 100% / 0.65);line-height:1.4;"
-              data-pt="já pré-reservados por investidores" data-en="already pre-reserved by investors">
-              já pré-reservados por investidores</span>
+              data-pt="negociados" data-en="under negotiation">
+              negociados</span>
 
-            <!-- Faixa territorial: fatia pré-reservada vs. terreno restante -->
+            <!-- Faixa territorial: fatia negociada (60%) vs. disponível (40%) -->
             <div style="display:flex;flex-direction:column;gap:9px;margin-top:6px;">
               <div style="position:relative;height:26px;border-radius:2px;overflow:hidden;
                 background:hsl(220 30% 88% / 0.14);
@@ -3673,7 +3673,7 @@
                 <!-- terreno restante: hachura sutil -->
                 <div aria-hidden="true" style="position:absolute;inset:0;opacity:0.5;
                   background:repeating-linear-gradient(115deg, transparent 0 7px, hsl(0 0% 100% / 0.16) 7px 8px);"></div>
-                <!-- fatia pré-reservada -->
+                <!-- fatia negociada -->
                 <div id="gps-terr-fill" style="position:absolute;inset:0 auto 0 0;width:0;
                   background:hsl(220 55% 38%);
                   border-right:3px solid hsl(120 40% 49%);
@@ -3683,10 +3683,10 @@
               <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
                 <span style="font-family:'Barlow',sans-serif;font-weight:600;font-size:11px;
                   text-transform:uppercase;letter-spacing:0.12em;color:hsl(120 40% 58%);"
-                  data-pt="Pré-reservado" data-en="Pre-reserved">Pré-reservado</span>
+                  data-pt="Negociado · 60%" data-en="Negotiated · 60%">Negociado · 60%</span>
                 <span style="font-family:'Barlow',sans-serif;font-weight:600;font-size:11px;
                   text-transform:uppercase;letter-spacing:0.12em;color:hsl(0 0% 100% / 0.5);"
-                  data-pt="Disponível · de 2.098 ha totais" data-en="Available · of 2,098 ha total">Disponível · de 2.098 ha totais</span>
+                  data-pt="Disponível · 40% de 1.499 ha" data-en="Available · 40% of 1,499 ha">Disponível · 40% de 1.499 ha</span>
               </div>
             </div>
           </div>
@@ -4319,10 +4319,10 @@
             setTimeout(() => { title.style.opacity = '1'; title.style.transform = 'translateY(0)'; }, 150);
             setTimeout(() => {
               indicators.style.opacity = '1'; indicators.style.transform = 'translateY(0)';
-              // Territory bar: 876 of 2,098 ha pre-reserved (no percentage stated)
+              // Territory bar: 892 of 1,499 ha negotiated — pinned to the stated 60%
               const terrFill = document.getElementById('gps-terr-fill');
               if (terrFill) {
-                const pct = (876 / 2098) * 100;
+                const pct = 60;
                 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                   terrFill.style.transition = 'none';
                   terrFill.style.width = pct + '%';
